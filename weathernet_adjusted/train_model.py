@@ -47,11 +47,7 @@ random_seed: int = args.seed
 set_random_seed(random_seed)
 
 
-# CIFAR10 Dataset (Images and Labels) (for testing)
-# night-net will be used to predict airplane?
-# glare-net will be used to predict automobile?
-# precipitation-net will be used to predict bird / cat / deer?
-# fog-net will be used to predict frog?
+# CIFAR10 Dataset (Images and Labels) (for TESTING ONLY)
 train_dataset: dsets.CIFAR10 = dsets.CIFAR10(
     root="data",
     train=True,
@@ -110,13 +106,18 @@ print(model.parameters())
 optimizer = torch.optim.Adam(model.parameters())
 
 
-# Label mapping function
+# Label mapping function ONLY FOR TESTING
 def map_labels(cifar_labels):
     """
     Convert CIFAR-10 labels to our custom labels for night-net, glare-net, and weather-net.
     """
-    _night_labels = torch.where((cifar_labels == 0) | (cifar_labels == 1) | (cifar_labels == 2) | (cifar_labels == 3),
-                               cifar_labels, torch.tensor(3))  # Map others to 3 (undefined)
+    _night_labels = torch.where(
+        (cifar_labels == 0) |
+        (cifar_labels == 1) |
+        (cifar_labels == 2) |
+        (cifar_labels == 3),
+        cifar_labels, torch.tensor(3)
+    )  # Map 0,1,2, to day/night, daytime, night, map all others to undefined
     
     _glare_labels = (cifar_labels == 1).float()  # Binary: 1 for automobile, 0 for others
     
@@ -127,27 +128,99 @@ def map_labels(cifar_labels):
     return _night_labels.to(device), _glare_labels.to(device), _weather_labels.to(device)
 
 # Training loop
+train_loss_list = []
+train_acc_list = []
+test_loss_list = []
+test_acc_list = []
+total_training_time = 0
 for epoch in range(args.epochs):
     model.train()
-    total_loss = 0
+    training_loss = 0
+    training_correct = 0
+    training_total = 0
+    epoch_start_time = time.time()
     print(f"Epoch {epoch+1}")
 
-    for images, labels in train_loader:
+    start = time.time()
+    batch_idx:int = 0
+    for batch_idx, (images, labels) in enumerate(train_loader):
         images, labels = images.to(device), labels.to(device)
         night_labels, glare_labels, weather_labels = map_labels(labels)
 
         optimizer.zero_grad()
 
         # Forward pass
-        predictions = model(images)
+        (night_pred, glare_pred, weather_pred) = model(images)
 
         # Compute loss
-        loss = model.compute_loss(predictions, (night_labels, glare_labels, weather_labels))
-        total_loss += loss.item()
-        print(f"Batch Loss: {loss.item()}")
+        loss = model.compute_loss(
+            (night_pred, glare_pred, weather_pred),
+            (night_labels, glare_labels, weather_labels)
+        )
+        training_loss += loss.item()
+        # print(f"Batch Loss: {loss.item()}")
 
         # Backward pass
         loss.backward()
         optimizer.step()
 
-    print(f"Epoch [{epoch+1}/{args.epochs}], Loss: {total_loss/len(train_loader):.4f}")
+        # Calculate accuracy
+        _, night_predicted = night_pred.max(1)
+        _, weather_predicted = weather_pred.max(1)
+        training_total += night_labels.size(0) + weather_labels.size(0) + glare_labels.size(0)
+        training_correct += (night_predicted == night_labels).sum().item()
+        training_correct += (weather_predicted == weather_labels).sum().item()
+        training_correct += (glare_pred.squeeze() > 0.5).eq(glare_labels).sum().item()
+
+        if (batch_idx + 1) % 5 == 0:
+            print(
+                "Epoch: [%d/%d], Step: [%d/%d], Loss: %.4f Acc: %.2f%%"
+                % (
+                    epoch + 1,
+                    num_epochs,
+                    batch_idx + 1,
+                    len(train_dataset) // batch_size,
+                    training_loss / (batch_idx + 1),
+                    100.0 * training_correct / training_total,
+                )
+            )
+
+    per_epoch_training_time = time.time() - start
+    total_training_time += per_epoch_training_time
+    train_loss_list.append(training_loss / (batch_idx+1))
+    train_acc_list.append(100*training_correct / training_total)
+
+    # Testing Phase
+    testing_correct = 0
+    testing_total = 0
+    test_loss = 0
+    model = model.eval()
+    with torch.no_grad():
+        for batch_idx, (images, labels) in enumerate(test_loader):
+            images, labels = images.to(device), labels.to(device)
+            night_labels, glare_labels, weather_labels = map_labels(labels)
+
+            # Forward pass
+            (night_pred, glare_pred, weather_pred) = model(images)
+
+            # Compute loss
+            loss = model.compute_loss(
+                (night_pred, glare_pred, weather_pred),
+                (night_labels, glare_labels, weather_labels)
+            )
+            test_loss += loss.item()
+
+            # Calculate accuracy
+            _, night_predicted = night_pred.max(1)
+            _, weather_predicted = weather_pred.max(1)
+            testing_total += night_labels.size(0) + weather_labels.size(0) + glare_labels.size(0)
+            testing_correct += (night_predicted == night_labels).sum().item()
+            testing_correct += (weather_predicted == weather_labels).sum().item()
+            testing_correct += (glare_pred.squeeze() > 0.5).eq(glare_labels).sum().item()
+    print(
+        "Test loss:",
+        f"{test_loss / (batch_idx + 1):.4f}",
+        f"Test accuracy: {100.0 * testing_correct / testing_total:.2f}%"
+    )
+    test_loss_list.append(test_loss / (batch_idx + 1))
+    test_acc_list.append(100.0 * testing_correct / testing_total)

@@ -58,7 +58,11 @@ class AdjustedWeatherNet(nn.Module):
         self.weather_loss = nn.CrossEntropyLoss()
 
     def forward(self, x):
-        """forward pass"""
+        """
+        forward pass
+        gets called by model()
+        returns a Tuple (night_pred, glare_pred, weather_pred) 
+        """
         # night-net prediction, 4 classes
         night = self.night_net(x)
 
