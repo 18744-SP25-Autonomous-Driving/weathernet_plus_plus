@@ -118,13 +118,13 @@ def map_labels(cifar_labels):
         (cifar_labels == 3),
         cifar_labels, torch.tensor(3)
     )  # Map 0,1,2, to day/night, daytime, night, map all others to undefined
-    
+
     _glare_labels = (cifar_labels == 1).float()  # Binary: 1 for automobile, 0 for others
-    
+
     _weather_labels = torch.full_like(cifar_labels, 4)  # Default to "undefined"
     for i, label in enumerate([2, 3, 4, 5, 6]):  # bird, cat, deer, dog, frog
         _weather_labels[cifar_labels == label] = i  # Map to 0-4
-    
+
     return _night_labels.to(device), _glare_labels.to(device), _weather_labels.to(device)
 
 # Training loop
@@ -158,7 +158,6 @@ for epoch in range(args.epochs):
             (night_labels, glare_labels, weather_labels)
         )
         training_loss += loss.item()
-        # print(f"Batch Loss: {loss.item()}")
 
         # Backward pass
         loss.backward()
@@ -174,15 +173,10 @@ for epoch in range(args.epochs):
 
         if (batch_idx + 1) % 5 == 0:
             print(
-                "Epoch: [%d/%d], Step: [%d/%d], Loss: %.4f Acc: %.2f%%"
-                % (
-                    epoch + 1,
-                    num_epochs,
-                    batch_idx + 1,
-                    len(train_dataset) // batch_size,
-                    training_loss / (batch_idx + 1),
-                    100.0 * training_correct / training_total,
-                )
+                f"Epoch: [{epoch + 1}/{num_epochs}], "
+                f"Step: [{batch_idx + 1}/{len(train_dataset) // batch_size}], "
+                f"Loss: {training_loss / (batch_idx + 1):.4f} "
+                f"Acc: {100.0 * training_correct / training_total:.2f}%"
             )
 
     per_epoch_training_time = time.time() - start
