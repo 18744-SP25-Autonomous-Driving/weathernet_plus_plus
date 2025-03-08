@@ -20,7 +20,7 @@ from set_seed import set_random_seed
 from weathernet_base import weathernet
 
 # Argument parser
-parser = argparse.ArgumentParser(
+parser: argparse.ArgumentParser = argparse.ArgumentParser(
     description="18744 Autonomous Driving Project - Model Trainer"
 )
 
@@ -39,9 +39,9 @@ parser.add_argument(
 args = parser.parse_args()
 
 # Set the number of epochs and batch size in locals
-num_epochs = args.epochs
-batch_size = args.batch_size
-random_seed = args.seed
+num_epochs: int = args.epochs
+batch_size: int = args.batch_size
+random_seed: int = args.seed
 
 # Set Random Seed (reproducibility)
 set_random_seed(random_seed)
@@ -52,7 +52,7 @@ set_random_seed(random_seed)
 # glare-net will be used to predict automobile?
 # precipitation-net will be used to predict bird / cat / deer?
 # fog-net will be used to predict frog?
-train_dataset = dsets.CIFAR10(
+train_dataset: dsets.CIFAR10 = dsets.CIFAR10(
     root="data",
     train=True,
     transform=transforms.Compose(
@@ -67,7 +67,7 @@ train_dataset = dsets.CIFAR10(
 )
 
 
-test_dataset = dsets.CIFAR10(
+test_dataset: dsets.CIFAR10 = dsets.CIFAR10(
     root="data",
     train=False,
     transform=transforms.Compose(
@@ -90,11 +90,11 @@ test_loader: DataLoader[Tuple[torch.Tensor, int]] = DataLoader(
 )
 
 
-model = weathernet.WeatherNet()
-model_str = "base_weathernet"
+model: weathernet.WeatherNet = weathernet.WeatherNet()
+model_str: str = "base_weathernet"
 
 # Put the model on the GPU/accelerator if available
-device = torch.device("cpu")
+device: torch.device = torch.device("cpu")
 if torch.cuda.is_available():
     print("Using Nvidia GPU")
     device = torch.device("cuda")
@@ -106,13 +106,12 @@ if torch.backends.mps.is_available():
 model = model.to(device)
 
 # Define your loss and optimizer
-criterion = model.criterion  # Softmax is internally computed.
 print(model.parameters())
 optimizer = torch.optim.Adam(model.parameters())
 
 
 # Training loop
-train_loss_list = [] 
+train_loss_list = []
 train_acc_list = []
 test_loss_list = []
 test_acc_list = []
@@ -125,6 +124,8 @@ for epoch in range(num_epochs):
     start = time.time()
     # Sets the model in training mode.
     model = model.train()
+
+    batch_idx: int = 0
     for batch_idx, (images, labels) in enumerate(train_loader):
         # Put the images and labels on the GPU
         images = images.to(device)
@@ -138,8 +139,8 @@ for epoch in range(num_epochs):
 
         # Compute the loss between the predictions (outputs) and the ground-truth labels
         # and do backprop
-        loss: weathernet.WeatherNet.LossCriterion = criterion(outputs, labels)
-        loss.backward()
+        loss: weathernet.WeatherNet.WeatherNetLoss = model.loss(outputs, labels)
+        model.backward()  # Backpropagation
 
         # Performs a single optimization step (parameter update)
         optimizer.step()
@@ -147,22 +148,23 @@ for epoch in range(num_epochs):
 
         # The outputs are one-hot labels, we need to find the actual predicted
         # labels which have the highest output confidence
-        _, predicted = outputs.max(1)
-        train_total += labels.size(0)
-        train_correct += predicted.eq(labels).sum().item()
-        # Print every 100 steps the following information
-        if (batch_idx + 1) % 100 == 0:
-            print(
-                "Epoch: [%d/%d], Step: [%d/%d], Loss: %.4f Acc: %.2f%%"
-                % (
-                    epoch + 1,
-                    num_epochs,
-                    batch_idx + 1,
-                    len(train_dataset) // batch_size,
-                    train_loss / (batch_idx + 1),
-                    100.0 * train_correct / train_total,
-                )
-            )
+        # _, predicted = outputs.max(1)
+        # train_total += labels.size(0)
+        # train_correct += predicted.eq(labels).sum().item()
+
+        # # Print every 100 steps the following information
+        # if (batch_idx + 1) % 100 == 0:
+        #     print(
+        #         "Epoch: [%d/%d], Step: [%d/%d], Loss: %.4f Acc: %.2f%%"
+        #         % (
+        #             epoch + 1,
+        #             num_epochs,
+        #             batch_idx + 1,
+        #             len(train_dataset) // batch_size,
+        #             train_loss / (batch_idx + 1),
+        #             100.0 * train_correct / train_total,
+        #         )
+        #     )
 
     end = time.time()
     per_epoch_training_time = end - start
@@ -171,35 +173,38 @@ for epoch in range(num_epochs):
     train_acc_list.append(100.0 * train_correct / train_total)
 
     # Testing phase
-    test_correct = 0
-    test_total = 0
-    test_loss = 0
-    # Sets the model in evaluation mode
-    model = model.eval()
-    # Disabling gradient calculation is useful for inference.
-    # It will reduce memory consumption for computations.
-    with torch.no_grad():
-        for batch_idx, (images, labels) in enumerate(test_loader):
-            # Put the images and labels on the GPU
-            images = images.to(device)
-            labels = labels.to(device)
-            # Perform the actual inference
-            outputs = model(images)
-            # Compute the loss
-            loss = criterion(outputs, labels)
-            test_loss += loss.item()
-            # The outputs are one-hot labels, we need to find the actual predicted
-            # labels which have the highest output confidence
-            _, predicted = torch.max(outputs.data, 1)
-            test_total += labels.size(0)
-            test_correct += predicted.eq(labels).sum().item()
-    print(
-        "Test loss: %.4f Test accuracy: %.2f %%"
-        % (test_loss / (batch_idx + 1), 100.0 * test_correct / test_total)
-    )
+    # test_correct = 0
+    # test_total = 0
+    # test_loss = 0
+    # # Sets the model in evaluation mode
+    # model = model.eval()
+    # # Disabling gradient calculation is useful for inference.
+    # # It will reduce memory consumption for computations.
+    # with torch.no_grad():
+    #     for batch_idx, (images, labels) in enumerate(test_loader):
+    #         # Put the images and labels on the GPU
+    #         images = images.to(device)
+    #         labels = labels.to(device)
+    #         # Perform the actual inference
+    #         outputs = model(images)
+    #         # Compute the loss
+    #         loss = model.loss(outputs, labels)
+    #         test_loss += loss.total_loss
 
-    test_loss_list.append(test_loss / (batch_idx + 1))
-    test_acc_list.append(100.0 * test_correct / test_total)
+    #         # The outputs are one-hot labels, we need to find the actual predicted
+    #         # labels which have the highest output confidence
+    #         _, predicted = torch.max(outputs.data, 1)
+    #         test_total += labels.size(0)
+    #         test_correct += predicted.eq(labels).sum().item()
+
+    # print(
+    #     "Test loss:",
+    #     f"{test_loss / (batch_idx + 1):.4f}",
+    #     f"Test accuracy: {100.0 * test_correct / test_total:.2f}%"
+    # )
+
+    # test_loss_list.append(test_loss / (batch_idx + 1))
+    # test_acc_list.append(100.0 * test_correct / test_total)
 
     # Save the PyTorch model in .pt format
     os.makedirs(f"ckpt/{model_str}/", exist_ok=True)
@@ -208,10 +213,14 @@ for epoch in range(num_epochs):
 
 
 with open(f"{model_str}.csv", "w+") as csv_file:
-    csv_file.write(f"Epoch,Train acc,Train loss,Test acc,Test loss\n")
+    csv_file.write("Epoch,Train acc,Train loss,Test acc,Test loss\n")
     for epoch in range(num_epochs):
         csv_file.write(
-            f"{epoch},{train_acc_list[epoch]},{train_loss_list[epoch]},{test_acc_list[epoch]},{test_loss_list[epoch]}\n"
+            f"{epoch},"
+            f"{train_acc_list[epoch]},"
+            f"{train_loss_list[epoch]},"
+            f"{test_acc_list[epoch]},"
+            f"{test_loss_list[epoch]}\n"
         )
 
 
@@ -221,15 +230,7 @@ num_trainable_params = 0
 for param in trainable_param_list:
     num_trainable_params += np.prod(param.cpu().data.numpy().shape)
 
-print(
-    "Overall training accuracy at the end of %d epochs : %.4f"
-    % (num_epochs, train_acc_list[-1])
-    + "%"
-)
-print(
-    "Overall test accuracy at the end of %d epochs : %.4f"
-    % (num_epochs, test_acc_list[-1])
-    + "%"
-)
-print("Total time for training : %.4f seconds" % total_training_time)
-print("Total number of trainable parameters : %d" % num_trainable_params)
+# print(f"Overall training accuracy at the end of {num_epochs} epochs : {train_acc_list[-1]:.4f}%")
+# print(f"Overall test accuracy at the end of {num_epochs} epochs : {test_acc_list[-1]:.4f}%")
+print(f"Total time for training : {total_training_time:.4f} seconds")
+print(f"Total number of trainable parameters : {num_trainable_params}")

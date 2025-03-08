@@ -1,4 +1,4 @@
-'''WeatherNet: Implementation of the WeatherNet model.'''
+'''WeatherNet: Implementation of the standard WeatherNet model.'''
 from typing import List, Tuple, TypedDict
 import torch
 import torch.nn as nn
@@ -7,24 +7,14 @@ from torchvision.models import resnet50, ResNet50_Weights
 
 class WeatherNet(nn.Module):
     '''WeatherNet: Implementation of the WeatherNet model.'''
-    class LossCriterion():
-        '''LossCriterion: TypedDict for loss criterion object.'''
+    class WeatherNetLoss():
+        '''WeathernetLoss: Wrapper for Weathernet pipeline-wise loss objects, and total loss.'''
         def __init__(self, loss_dict: dict) -> None:
-            self.night_loss: torch.nn.BCEWithLogitsLoss = loss_dict['night_loss']
-            self.glare_loss: torch.nn.BCEWithLogitsLoss = loss_dict['glare_loss']
-            self.fog_loss: torch.nn.BCEWithLogitsLoss = loss_dict['fog_loss']
-            self.precip_loss: torch.nn.CrossEntropyLoss = loss_dict['precip_loss']
-            self.total_loss: int = loss_dict['total_loss']
-
-        def backward(self):
-            '''backward pass of loss criterion'''
-            self.night_loss().backward()
-            self.glare_loss().backward()
-            self.fog_loss().backward()
-            self.precip_loss().backward()
-
-
-
+            self.night_loss:    int =   loss_dict['night_loss']
+            self.glare_loss:    int =   loss_dict['glare_loss']
+            self.fog_loss:      int =   loss_dict['fog_loss']
+            self.precip_loss:   int =   loss_dict['precip_loss']
+            self.total_loss:    int =   loss_dict['total_loss']
 
     def __init__(self) -> None:
         super(WeatherNet, self).__init__()
@@ -82,27 +72,29 @@ class WeatherNet(nn.Module):
 
         return torch.cat([night, glare, precipitation, fog], dim=1)
 
-    def criterion(self, predictions, labels)->LossCriterion:
+    def backward(self):
+        '''backward pass'''
+        self.night_loss().backward()
+        self.glare_loss().backward()
+        self.fog_loss().backward()
+        self.precipitation_loss().backward()
+
+    def loss(self, predictions, labels)->WeatherNetLoss:
         '''
-        compute loss of model outputs.
-        Returns night_loss, glare_loss, fog_loss, precipitation_loss objects
+        Compute and return loss of model outputs.
         '''
         night, glare, precipitation, fog = predictions.split(1, 1, 3, 1, dim=1)
 
+        # predictions will be in a 2d, 1 column tensor, so we need to unsqueeze the labels to match
         night_loss_val  = self.night_loss(night, labels[:, 0].unsqueeze(1))
         glare_loss_val  = self.glare_loss(glare, labels[:, 1].unsqueeze(1))
         fog_loss_val    = self.fog_loss(fog, labels[:, 2].unsqueeze(1))
         precipitation_loss_val = self.precipitation_loss(precipitation, labels[:, 3].long())
 
-        return WeatherNet.LossCriterion({
-            'night_loss': self.night_loss,
-            'glare_loss': self.glare_loss,
-            'fog_loss': self.fog_loss,
-            'precip_loss': self.precipitation_loss,
+        return WeatherNet.WeatherNetLoss({
+            'night_loss': night_loss_val,
+            'glare_loss': glare_loss_val,
+            'fog_loss': fog_loss_val,
+            'precip_loss': precipitation_loss_val,
             'total_loss': night_loss_val + glare_loss_val + fog_loss_val + precipitation_loss_val
         })
-
-    def compute_metrics(self, predictions, labels):
-        '''compute metrics of model outputs'''
-        #TODO
-        return
