@@ -36,12 +36,19 @@ parser.add_argument("--epochs", type=int, default=100, help="Number of epochs to
 parser.add_argument(
     "--seed", type=int, default=42, help="Random seed for reproducibility"
 )
+
+parser.add_argument(
+    "--saved-state", type=str, default=None, help="Path to saved model state"
+)
+
+
 args = parser.parse_args()
 
 # Set the number of epochs and batch size in locals
 num_epochs: int = args.epochs
 batch_size: int = args.batch_size
 random_seed: int = args.seed
+saved_state: str = args.saved_state
 
 # Set Random Seed (reproducibility)
 set_random_seed(random_seed)
@@ -99,6 +106,10 @@ if torch.backends.mps.is_available():
     print("Using Apple Silicon GPU")
     device = torch.device("mps")
 
+if(saved_state is not None):
+    print(f"Loading saved state from {saved_state}")
+    model.load_state_dict(torch.load(saved_state, weights_only=True))
+
 model = model.to(device)
 
 # Define your loss and optimizer
@@ -106,7 +117,7 @@ print(model.parameters())
 optimizer = torch.optim.Adam(model.parameters())
 
 
-# Label mapping function ONLY FOR TESTING
+# Label mapping function ONLY FOR CIFAR TESTING, DELETE ONCE BDD100K IS IMPORTED
 def map_labels(cifar_labels):
     """
     Convert CIFAR-10 labels to our custom labels for night-net, glare-net, and weather-net.
@@ -218,3 +229,23 @@ for epoch in range(args.epochs):
     )
     test_loss_list.append(test_loss / (batch_idx + 1))
     test_acc_list.append(100.0 * testing_correct / testing_total)
+
+    # checkpoint the model
+    os.makedirs(f"ckpt/{model_str}/", exist_ok=True)
+    path = f"ckpt/{model_str}/{model_str}_{epoch}.pt"
+    torch.save(model.state_dict(), path)
+
+
+#dump the collected stats
+with open(f"{model_str}.csv", "w+") as csv_file:
+    csv_file.write("Epoch,Train acc,Train loss,Test acc,Test loss\n")
+    for epoch in range(num_epochs):
+        csv_file.write(
+            f"{epoch},"
+            f"{train_acc_list[epoch]},"
+            f"{train_loss_list[epoch]},"
+            f"{test_acc_list[epoch]},"
+            f"{test_loss_list[epoch]}\n"
+        )
+
+print(f"Total time for training : {total_training_time:.4f} seconds")
