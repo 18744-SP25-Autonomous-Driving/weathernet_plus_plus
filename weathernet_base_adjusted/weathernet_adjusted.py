@@ -11,19 +11,6 @@ from torchvision.models import resnet50, ResNet50_Weights
 
 class AdjustedWeatherNet(nn.Module):
     """WeatherNet: Implementation of the WeatherNet model."""
-
-    class AdjustedWeatherNetLoss:
-        """
-        AdjustedWeathernetLoss: Wrapper for AdjustedWeathernet 
-        pipeline-wise loss objects, and total loss.
-        """
-
-        def __init__(self, loss_dict: dict) -> None:
-            self.night_loss: int = loss_dict["night_loss"]
-            self.glare_loss: int = loss_dict["glare_loss"]
-            self.weather_loss: int = loss_dict["weather_loss"]
-            self.total_loss: int = loss_dict["total_loss"]
-
     def __init__(self) -> None:
         super(AdjustedWeatherNet, self).__init__()
 
