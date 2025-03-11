@@ -7,7 +7,6 @@ from typing import Any, Callable, Optional, Tuple, Union
 import numpy as np
 from PIL import Image
 
-from torch.utils import check_integrity, download_and_extract_archive
 from torchvision.datasets import VisionDataset
 
 import torch
@@ -21,7 +20,7 @@ from torchvision import transforms, utils
 class BDD100K_plus(VisionDataset):
     """BDD100K_plus Dataset.
 
-    TODO: remove labels in parentheses, group "partly cloudy" and "overcast" into "cloudy"
+    TODO: remove labels in parentheses, relabel "undefined" from BDD100K
     
     Label categories:
         fog (not implemented yet): {0=no fog, 1=fog}
@@ -58,8 +57,8 @@ class BDD100K_plus(VisionDataset):
         self.train = train  # training set or test set
         
         # Setup dataset specifics here
-        img_dir = os.path.join(self.root, 'data/images')
-        labels_file = os.path.join(self.root, 'data/labels.csv')
+        self.img_dir = os.path.join(self.root, 'images')
+        self.labels_file = os.path.join(self.root, 'labels.csv')
         
         # Instantiate image paths and labels as empty lists
         self.img_paths = [] # list of strings
@@ -68,6 +67,9 @@ class BDD100K_plus(VisionDataset):
         
         # Parse labels file and populate lists
         with open(self.labels_file, 'r') as f:
+            # Skip the header line
+            header = f.readline()
+
             for line in f:
                 # follows the header format of our CSV file
                 img_name, glare, road, traffic, weather, scene, timeofday = line.strip().split(',')
@@ -89,10 +91,11 @@ class BDD100K_plus(VisionDataset):
                 self.img_paths.append(os.path.join(self.img_dir, img_name))
                 self.labels.append(pipeline_labels)
     
-    def __getitem__(self, index):
+    def __getitem__(self, index, open=False):
         # Load the image
         img_path = self.img_paths[index]
         image = Image.open(img_path).convert('RGB')
+        if (open): Image.open(img_path).show() # debugging option to see images
         pipeline_labels = self.labels[index] # dict[str, str]
         
         # Apply transformations if any
@@ -106,3 +109,25 @@ class BDD100K_plus(VisionDataset):
     
     def __len__(self):
         return len(self.img_paths)
+    
+
+'''
+# BDD100K Dataset (TESTING)
+x = BDD100K_plus(
+    root="data",
+    train=True,
+    transform=transforms.Compose(
+        [
+            transforms.ToTensor(),
+            transforms.Normalize(
+                mean=(0.4914, 0.4822, 0.4465), std=(0.2023, 0.1994, 0.2010)
+            ),
+        ]
+    ),
+    download=False,
+)
+
+y = x.__getitem__(0)
+print(y)
+z = x.__getitem__(150, True)
+'''
