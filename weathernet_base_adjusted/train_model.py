@@ -19,6 +19,9 @@ import numpy as np
 from set_seed import set_random_seed
 from weathernet_adjusted import AdjustedWeatherNet
 
+from BDD100K_plus import BDD100K_plus
+import matplotlib.pyplot as plt
+
 # Argument parser
 parser: argparse.ArgumentParser = argparse.ArgumentParser(
     description="18744 Autonomous Driving Project - Model Trainer"
@@ -53,7 +56,7 @@ saved_state: str = args.saved_state
 # Set Random Seed (reproducibility)
 set_random_seed(random_seed)
 
-
+'''
 # CIFAR10 Dataset (Images and Labels) (for TESTING ONLY)
 train_dataset: dsets.CIFAR10 = dsets.CIFAR10(
     root="data",
@@ -82,6 +85,38 @@ test_dataset: dsets.CIFAR10 = dsets.CIFAR10(
         ]
     ),
 )
+'''
+
+#### BDD100K_plus DATASET (IMAGES & LABELS) ###
+train_dataset = BDD100K_plus(
+    root="data",
+    train=True,
+    transform=transforms.Compose(
+        [
+            transforms.ToTensor(),
+            # transforms.Resize((32, 32)),
+            # transforms.Normalize(
+            #     mean=(0.4914, 0.4822, 0.4465), std=(0.2023, 0.1994, 0.2010)
+            # ),
+        ]
+    ),
+    download=False,
+)
+
+test_dataset = BDD100K_plus(
+    root="data",
+    train=False,
+    transform=transforms.Compose(
+        [
+            transforms.ToTensor(),
+            # transforms.Resize((32, 32)),
+            # transforms.Normalize(
+            #     mean=(0.4914, 0.4822, 0.4465), std=(0.2023, 0.1994, 0.2010)
+            # ),
+        ]
+    ),
+    download=False,
+)
 
 # Load the datasets into torch dataloaders
 train_loader: DataLoader[Tuple[torch.Tensor, int]] = DataLoader(
@@ -92,6 +127,48 @@ test_loader: DataLoader[Tuple[torch.Tensor, int]] = DataLoader(
     dataset=test_dataset, batch_size=batch_size, shuffle=False
 )
 
+
+'''
+DEBUG VISUALIZATION FOR BDD100K DATALOADERS
+def plot_batch(images, labels):
+    """Visualize a batch of images"""
+    batch_size = images.size(0)
+    grid_size = int(np.ceil(np.sqrt(batch_size)))
+    
+    plt.figure(figsize=(12, 12))
+    for i in range(batch_size):
+        plt.subplot(grid_size, grid_size, i+1)
+        
+        # Convert tensor to numpy for matplotlib
+        if images[i].shape[0] == 3:  # RGB image
+            # Convert [3,H,W] tensor to [H,W,3] numpy array
+            img = images[i].permute(1, 2, 0).numpy()
+            plt.imshow(img)
+        else:  # Grayscale image
+            plt.imshow(images[i][0], cmap='gray')
+            
+        plt.title(f"Label: {labels[i]}")
+        plt.axis('off')
+    
+    plt.tight_layout()
+    plt.show()
+
+try:
+    for i, (images, labels) in enumerate(train_loader):
+        print(f"Batch {i+1}: shape={images.shape}, labels={labels["timeofday"]}")
+        
+        # Visualize the first batch
+        if i == 0:
+            plot_batch(images, labels["timeofday"])
+            
+        # Just check a few batches
+        if i >= 2:
+            break
+            
+    print("DataLoader test successful!")
+except Exception as e:
+    print(f"Error testing dataloader: {e}")
+'''
 
 model: AdjustedWeatherNet = AdjustedWeatherNet()
 model_str: str = "adjusted_weathernet"
