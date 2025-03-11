@@ -65,31 +65,12 @@ class BDD100K_plus(VisionDataset):
         self.labels = [] # list of dicts, e.g. dict["weather"] = "clear", dict["road"] = "0"
         # TODO: maybe this is inefficient? could replace with list, where indices correspond to specific pipelines
         
-        # Parse labels file and populate lists
-        with open(self.labels_file, 'r') as f:
-            # Skip the header line
-            header = f.readline()
-
-            for line in f:
-                # follows the header format of our CSV file
-                img_name, glare, road, traffic, weather, scene, timeofday = line.strip().split(',')
-                
-                # TODO: after adding fog labels, switch this line in for the one above
-                # img_name, fog, glare, road, traffic, weather, scene, timeofday = line.strip().split(',')
-
-                pipeline_labels = {
-                    # TODO: uncomment fog after adding fog labels
-                    # "fog": fog,
-                    "glare": glare,
-                    "road": road,
-                    "traffic": traffic,
-                    "weather": weather,
-                    "scene": scene,
-                    "timeofday": timeofday
-                }
-
-                self.img_paths.append(os.path.join(self.img_dir, img_name))
-                self.labels.append(pipeline_labels)
+        # Load the labels file using pandas
+        self.df_labels = pd.read_csv(self.labels_file)
+        # Populate the image paths list
+        self.img_paths = [os.path.join(self.img_dir, img_name) for img_name in self.df_labels.iloc[:, 0]]
+        # Convert DataFrame rows to dictionaries for our labels
+        self.labels = self.df_labels.iloc[:, 1:].to_dict('records')
     
     def __getitem__(self, index, open=False):
         # Load the image
@@ -109,6 +90,26 @@ class BDD100K_plus(VisionDataset):
     
     def __len__(self):
         return len(self.img_paths)
+    
+    def __repr__(self) -> str:
+        head = "Dataset " + self.__class__.__name__
+        body = [f"Number of datapoints: {self.__len__()}"]
+        if self.root is not None:
+            body.append(f"Root location: {self.root}")
+        body += self.extra_repr().splitlines()
+        if hasattr(self, "transforms") and self.transforms is not None:
+            body += [repr(self.transforms)]
+        lines = [head] + [" " * self._repr_indent + line for line in body]
+
+        dataset_info = "\n".join(lines) + "\n"
+
+        # Provides information on the number of labels for each pipeline
+        # e.g. for weather, how many clear, partly cloudy, etc.
+        labels_info = "\n* * * * * LABELS SPREAD * * * * *\n"
+        for pipeline in self.labels[0].keys():
+            labels_info += f"\n{self.df_labels[pipeline].value_counts().to_string()}\n"
+
+        return dataset_info + labels_info
     
 
 '''
