@@ -168,9 +168,9 @@ def map_labels(cifar_labels):
 
     _fog_labels = (cifar_labels == 2).float()  # Binary: 1 for class 2, 0 for others
     return (
-        _night_labels.to(device), 
-        _glare_labels.to(device), 
-        _weather_labels.to(device), 
+        _night_labels.to(device),
+        _glare_labels.to(device),
+        _weather_labels.to(device),
         _fog_labels.to(device)
         )
 
@@ -182,9 +182,25 @@ test_acc_list = []
 total_training_time = 0
 for epoch in range(args.epochs):
     model.train()
+
+    # Variables to collect stats
     training_loss = 0
+    night_training_loss = 0
+    glare_training_loss = 0
+    weather_training_loss = 0
+    fog_training_loss = 0
+
     training_correct = 0
+    night_training_correct = 0
+    glare_training_correct = 0
+    weather_training_correct = 0
+    fog_training_correct = 0
     training_total = 0
+    night_training_total = 0
+    glare_training_total = 0
+    weather_training_total = 0
+    fog_training_total = 0
+
     epoch_start_time = time.time()
     print(f"Epoch {epoch+1}")
 
@@ -205,27 +221,54 @@ for epoch in range(args.epochs):
             (night_pred, glare_pred, weather_pred, fog_pred),
             (night_labels, glare_labels, weather_labels, fog_labels)
         )
-        training_loss += loss.item()
+        training_loss += loss.total_loss.item()
+        night_training_loss += loss.night_loss.item()
+        glare_training_loss += loss.glare_loss.item()
+        weather_training_loss += loss.weather_loss.item()
+        fog_training_loss += loss.fog_loss.item()
 
         # Backward pass
-        loss.backward()
+        loss.total_loss.backward()
         optimizer.step()
 
         # Calculate accuracy
         _, night_predicted = night_pred.max(1)
         _, weather_predicted = weather_pred.max(1)
-        training_total += night_labels.size(0) + weather_labels.size(0) + glare_labels.size(0)
-        training_correct += (night_predicted == night_labels).sum().item()
-        training_correct += (weather_predicted == weather_labels).sum().item()
-        training_correct += (glare_pred.squeeze() > 0.5).eq(glare_labels).sum().item()
-        training_correct += (fog_pred.squeeze() > 0.5).eq(fog_labels).sum().item()
+
+        night_training_total += night_labels.size(0)
+        glare_training_total += glare_labels.size(0)
+        weather_training_total += weather_labels.size(0)
+        fog_training_total += fog_labels.size(0)
+
+        night_training_correct += (night_predicted == night_labels).sum().item()
+        glare_training_correct += (glare_pred.squeeze() > 0.5).eq(glare_labels).sum().item()
+        weather_training_correct += (weather_predicted == weather_labels).sum().item()
+        fog_training_correct += (fog_pred.squeeze() > 0.5).eq(fog_labels).sum().item()
+
 
         if (batch_idx + 1) % 5 == 0:
             print(
                 f"Epoch: [{epoch + 1}/{num_epochs}], "
                 f"Step: [{batch_idx + 1}/{len(train_dataset) // batch_size}], "
-                f"Loss: {training_loss / (batch_idx + 1):.4f} "
-                f"Acc: {100.0 * training_correct / training_total:.2f}%"
+                f"Total Acc: {100.0 * ( \
+                    night_training_correct+ \
+                    glare_training_correct+ \
+                    weather_training_correct+ \
+                    fog_training_correct \
+                    ) / ( \
+                    night_training_total+ \
+                    glare_training_total+ \
+                    weather_training_total+ \
+                    fog_training_total):.2f}%" 
+                f"Night Acc: {100.0 * night_training_correct / night_training_total:.2f}% "
+                f"Glare Acc: {100.0 * glare_training_correct / glare_training_total:.2f}% "
+                f"Weather Acc: {100.0 * weather_training_correct / weather_training_total:.2f}% "
+                f"Fog Acc: {100.0 * fog_training_correct / fog_training_total:.2f}% "
+                f"Total Loss: {training_loss / (batch_idx + 1):.4f} "
+                f"Night Loss: {night_training_loss / (batch_idx + 1):.4f} "
+                f"Glare Loss: {glare_training_loss / (batch_idx + 1):.4f} "
+                f"Weather Loss: {weather_training_loss / (batch_idx + 1):.4f} "
+                f"Fog Loss: {fog_training_loss / (batch_idx + 1):.4f} "
             )
 
     per_epoch_training_time = time.time() - start
@@ -252,11 +295,12 @@ for epoch in range(args.epochs):
                 (night_pred, glare_pred, weather_pred, fog_pred),
                 (night_labels, glare_labels, weather_labels, fog_labels)
             )
-            test_loss += loss.item()
+            test_loss += loss.total_loss.item()
 
             # Calculate accuracy
             _, night_predicted = night_pred.max(1)
             _, weather_predicted = weather_pred.max(1)
+            
             testing_total += night_labels.size(0) + weather_labels.size(0) + glare_labels.size(0)
             testing_correct += (night_predicted == night_labels).sum().item()
             testing_correct += (weather_predicted == weather_labels).sum().item()
@@ -278,7 +322,7 @@ for epoch in range(args.epochs):
 
 #dump the collected stats
 with open(f"{model_str}.csv", "w+", encoding='utf8') as csv_file:
-    csv_file.write("Epoch,Train acc,Train loss,Test acc,Test loss\n")
+    csv_file.write("Epoch,Total Train acc,Total Train loss,Total Test acc, Total Test loss\n")
     for epoch in range(num_epochs):
         csv_file.write(
             f"{epoch},"

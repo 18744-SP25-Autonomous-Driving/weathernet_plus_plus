@@ -21,6 +21,18 @@ class AdjustedWeatherNet(nn.Module):
         glare_pred: torch.Tensor
         weather_pred: torch.Tensor
         fog_pred: torch.Tensor
+    
+    class AdjustedWeatherNetLoss(NamedTuple):
+        '''
+        Structure of the loss of the model.
+        Use total_loss to get the total loss.
+        Use night_loss, glare_loss, weather_loss, fog_loss to get the individual losses.
+        '''
+        night_loss: torch.Tensor
+        glare_loss: torch.Tensor
+        weather_loss: torch.Tensor
+        fog_loss: torch.Tensor
+        total_loss: torch.Tensor
 
     def __init__(self) -> None:
         super(AdjustedWeatherNet, self).__init__()
@@ -83,7 +95,7 @@ class AdjustedWeatherNet(nn.Module):
 
         return AdjustedWeatherNet.AdjustedWeatherNetOutput(night, glare, weather, fog)
 
-    def compute_loss(self, predictions, targets):
+    def compute_loss(self, predictions, targets) -> AdjustedWeatherNetLoss:
         """
         Compute total loss.
         Args:
@@ -111,4 +123,11 @@ class AdjustedWeatherNet(nn.Module):
 
         # Total loss (weighted sum if needed)
         total_loss = loss_night + loss_glare + loss_weather + loss_fog
-        return total_loss
+
+        return AdjustedWeatherNet.AdjustedWeatherNetLoss(
+            night_loss=loss_night,
+            glare_loss=loss_glare,
+            weather_loss=loss_weather,
+            fog_loss=loss_fog,
+            total_loss=total_loss
+        )
