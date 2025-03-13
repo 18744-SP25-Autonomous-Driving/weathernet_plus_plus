@@ -3,7 +3,7 @@ WeatherNet: Adjusted Implementation of standard WeatherNet model
 to conform to BDD100K dataset labels
 """
 
-from typing import List, Tuple, TypedDict
+from typing import List, Tuple, TypedDict, NamedTuple
 import torch
 import torch.nn as nn
 from torchvision.models import resnet50, ResNet50_Weights
@@ -11,6 +11,17 @@ from torchvision.models import resnet50, ResNet50_Weights
 
 class AdjustedWeatherNet(nn.Module):
     """WeatherNet: Implementation of the WeatherNet model."""
+
+    class AdjustedWeatherNetOutput(NamedTuple):
+        '''
+        Structure of the output
+        of the forward pass of the model.
+        '''
+        night_pred: torch.Tensor
+        glare_pred: torch.Tensor
+        weather_pred: torch.Tensor
+        fog_pred: torch.Tensor
+
     def __init__(self) -> None:
         super(AdjustedWeatherNet, self).__init__()
 
@@ -31,9 +42,15 @@ class AdjustedWeatherNet(nn.Module):
         # Weather is five classes (clear, rain, snow, partly cloudy, undefined),
         # so we use five outputs with
         # softmax activation to predict the probability of each class.
+        # This replaces the original WeatherNet's Precipitation Classifier.
         self.weather_net = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
         self.weather_net.fc = nn.Linear(self.weather_net.fc.in_features, 5)
 
+        # fog-net: resnet50, replaced linear layer at end to be one output, followed by sigmoid.
+        # Fog is a single class, so we use a single output with sigmoid activation to predict
+        # the probability of fog.
+        self.fog_net = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
+        self.fog_net.fc = nn.Linear(self.fog_net.fc.in_features, 1)
         # Define loss functions
         # Binary Cross Entropy with Logits Loss for binary classification
         # combines cross entropy with a sigmoid activation function in a single class,
@@ -43,8 +60,10 @@ class AdjustedWeatherNet(nn.Module):
         self.night_loss = nn.CrossEntropyLoss()
         self.glare_loss = nn.BCEWithLogitsLoss()
         self.weather_loss = nn.CrossEntropyLoss()
+        self.fog_loss = nn.BCEWithLogitsLoss()
 
-    def forward(self, x):
+
+    def forward(self, x) -> AdjustedWeatherNetOutput:
         """
         forward pass
         gets called by model()
@@ -59,7 +78,10 @@ class AdjustedWeatherNet(nn.Module):
         # weather-net prediction, 5 classes
         weather = self.weather_net(x)
 
-        return night, glare, weather
+        # fog-net prediction, 1 class
+        fog = self.fog_net(x)
+
+        return AdjustedWeatherNet.AdjustedWeatherNetOutput(night, glare, weather, fog)
 
     def compute_loss(self, predictions, targets):
         """
@@ -70,8 +92,8 @@ class AdjustedWeatherNet(nn.Module):
         Returns:
             Total loss (scalar)
         """
-        night_pred, glare_pred, weather_pred = predictions
-        night_target, glare_target, weather_target = targets
+        night_pred, glare_pred, weather_pred, fog_pred = predictions
+        night_target, glare_target, weather_target, fog_target = targets
 
         # Compute individual losses
 
@@ -84,6 +106,9 @@ class AdjustedWeatherNet(nn.Module):
         # CrossEntropyLoss expects (batch, 5) logits and (batch,) labels
         loss_weather = self.weather_loss(weather_pred, weather_target)
 
+        # BCEWithLogitsLoss expects (batch,) logits and (batch,) labels
+        loss_fog = self.fog_loss(fog_pred.squeeze(), fog_target.float())
+
         # Total loss (weighted sum if needed)
-        total_loss = loss_night + loss_glare + loss_weather
+        total_loss = loss_night + loss_glare + loss_weather + loss_fog
         return total_loss
