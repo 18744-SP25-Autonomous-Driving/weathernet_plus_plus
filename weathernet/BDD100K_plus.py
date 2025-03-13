@@ -1,25 +1,19 @@
 from __future__ import print_function, division
 import os
 
+import torch
 from pathlib import Path
 from typing import Any, Callable, Optional, Tuple, Union
 from PIL import Image
-
 from torchvision.datasets import VisionDataset
-
-import torch
 import pandas as pd
-from skimage import io, transform
-import matplotlib.pyplot as plt
-from torch.utils.data import Dataset, DataLoader
-from torchvision import transforms, utils
 
 
 class BDD100K_plus(VisionDataset):
     """BDD100K_plus Dataset.
 
     TODO: remove labels in parentheses, relabel "undefined" from BDD100K
-    
+
     Label categories:
         fog (not implemented yet): {0=no fog, 1=fog}
         glare: {0=no glare, 1=glare}
@@ -41,6 +35,7 @@ class BDD100K_plus(VisionDataset):
         download (bool, optional): UNUSED!
 
     """
+
     def __init__(
         self,
         root: Union[str, Path],
@@ -55,9 +50,9 @@ class BDD100K_plus(VisionDataset):
         self.train = train # training set or test set
         
         # Setup dataset specifics here
-        self.img_dir = os.path.join(self.root, 'images')
-        self.labels_file = os.path.join(self.root, 'labels.csv')
-        
+        self.img_dir = os.path.join(self.root, "images")
+        self.labels_file = os.path.join(self.root, "labels.csv")
+
         # Instantiate image paths and labels as empty lists
         self.img_paths = [] # list of strings
         # Load the labels file using pandas
@@ -82,12 +77,12 @@ class BDD100K_plus(VisionDataset):
         
         if self.target_transform is not None: # might be funky... idk if we use target_transforms.
             pipeline_labels = self.target_transform(pipeline_labels)
-            
+
         return image, pipeline_labels
-    
+
     def __len__(self):
         return len(self.img_paths)
-    
+
     def __repr__(self) -> str:
         head = "Dataset " + self.__class__.__name__
         body = [f"Number of datapoints: {self.__len__()}"]
@@ -119,9 +114,9 @@ class BDD100K_plus(VisionDataset):
             labels_info += f"\n{col_name}:\n{value_counts}\n"
 
         return dataset_info + labels_info
-    
 
-'''
+
+"""
 # BDD100K Dataset (TESTING)
 x = BDD100K_plus(
     root="data",
@@ -140,4 +135,4 @@ x = BDD100K_plus(
 y = x.__getitem__(0)
 print(y)
 z = x.__getitem__(150, True)
-'''
+"""

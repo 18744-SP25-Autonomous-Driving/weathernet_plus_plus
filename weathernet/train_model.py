@@ -3,24 +3,20 @@ Main Training Code for models
 """
 
 import os
-import random
 import time
 import argparse
 from typing import Tuple
 
 import torch
-import torch.nn as nn
 import torch.utils.data.dataloader
 from torch.utils.data import DataLoader
 import torchvision.datasets as dsets
 import torchvision.transforms as transforms
-import numpy as np
 
 from set_seed import set_random_seed
 from weathernet_adjusted import AdjustedWeatherNet
 
 from BDD100K_plus import BDD100K_plus
-import matplotlib.pyplot as plt
 
 # Argument parser
 parser: argparse.ArgumentParser = argparse.ArgumentParser(
@@ -56,7 +52,38 @@ saved_state: str = args.saved_state
 # Set Random Seed (reproducibility)
 set_random_seed(random_seed)
 
-'''
+#### BDD100K_plus DATASET (IMAGES & LABELS) ###
+# train_dataset = BDD100K_plus(
+#     root="data",
+#     train=True,
+#     transform=transforms.Compose(
+#         [
+#             transforms.ToTensor(),
+#             transforms.Normalize(
+#                 # experimentally determined
+#                 mean=(0.2843, 0.3026, 0.2996),
+#                 std=(0.1918, 0.1945, 0.1989)
+#             ),
+#         ]
+#     ),
+#     download=False,
+# )
+
+# test_dataset = BDD100K_plus(
+#     root="data",
+#     train=False,
+#     transform=transforms.Compose(
+#         [
+#             transforms.ToTensor(),
+#             transforms.Normalize(
+#                 mean=(0.2843, 0.3026, 0.2996),
+#                 std=(0.1918, 0.1945, 0.1989)
+#             ),
+#         ]
+#     ),
+#     download=False,
+# )
+
 # CIFAR10 Dataset (Images and Labels) (for TESTING ONLY)
 train_dataset: dsets.CIFAR10 = dsets.CIFAR10(
     root="data",
@@ -85,38 +112,7 @@ test_dataset: dsets.CIFAR10 = dsets.CIFAR10(
         ]
     ),
 )
-'''
 
-#### BDD100K_plus DATASET (IMAGES & LABELS) ###
-train_dataset = BDD100K_plus(
-    root="data",
-    train=True,
-    transform=transforms.Compose(
-        [
-            transforms.ToTensor(),
-            # transforms.Resize((32, 32)),
-            # transforms.Normalize(
-            #     mean=(0.4914, 0.4822, 0.4465), std=(0.2023, 0.1994, 0.2010)
-            # ),
-        ]
-    ),
-    download=False,
-)
-
-test_dataset = BDD100K_plus(
-    root="data",
-    train=False,
-    transform=transforms.Compose(
-        [
-            transforms.ToTensor(),
-            # transforms.Resize((32, 32)),
-            # transforms.Normalize(
-            #     mean=(0.4914, 0.4822, 0.4465), std=(0.2023, 0.1994, 0.2010)
-            # ),
-        ]
-    ),
-    download=False,
-)
 
 # Load the datasets into torch dataloaders
 train_loader: DataLoader[Tuple[torch.Tensor, int]] = DataLoader(
@@ -126,49 +122,6 @@ train_loader: DataLoader[Tuple[torch.Tensor, int]] = DataLoader(
 test_loader: DataLoader[Tuple[torch.Tensor, int]] = DataLoader(
     dataset=test_dataset, batch_size=batch_size, shuffle=False
 )
-
-
-'''
-DEBUG VISUALIZATION FOR BDD100K DATALOADERS
-def plot_batch(images, labels):
-    """Visualize a batch of images"""
-    batch_size = images.size(0)
-    grid_size = int(np.ceil(np.sqrt(batch_size)))
-    
-    plt.figure(figsize=(12, 12))
-    for i in range(batch_size):
-        plt.subplot(grid_size, grid_size, i+1)
-        
-        # Convert tensor to numpy for matplotlib
-        if images[i].shape[0] == 3:  # RGB image
-            # Convert [3,H,W] tensor to [H,W,3] numpy array
-            img = images[i].permute(1, 2, 0).numpy()
-            plt.imshow(img)
-        else:  # Grayscale image
-            plt.imshow(images[i][0], cmap='gray')
-            
-        plt.title(f"Label: {labels[i]}")
-        plt.axis('off')
-    
-    plt.tight_layout()
-    plt.show()
-
-try:
-    for i, (images, labels) in enumerate(train_loader):
-        print(f"Batch {i+1}: shape={images.shape}, labels={labels["timeofday"]}")
-        
-        # Visualize the first batch
-        if i == 0:
-            plot_batch(images, labels["timeofday"])
-            
-        # Just check a few batches
-        if i >= 2:
-            break
-            
-    print("DataLoader test successful!")
-except Exception as e:
-    print(f"Error testing dataloader: {e}")
-'''
 
 model: AdjustedWeatherNet = AdjustedWeatherNet()
 model_str: str = "adjusted_weathernet"
@@ -213,7 +166,13 @@ def map_labels(cifar_labels):
     for i, label in enumerate([2, 3, 4, 5, 6]):  # bird, cat, deer, dog, frog
         _weather_labels[cifar_labels == label] = i  # Map to 0-4
 
-    return _night_labels.to(device), _glare_labels.to(device), _weather_labels.to(device)
+    _fog_labels = (cifar_labels == 2).float()  # Binary: 1 for class 2, 0 for others
+    return (
+        _night_labels.to(device), 
+        _glare_labels.to(device), 
+        _weather_labels.to(device), 
+        _fog_labels.to(device)
+        )
 
 # Training loop
 train_loss_list = []
@@ -233,17 +192,18 @@ for epoch in range(args.epochs):
     batch_idx:int = 0
     for batch_idx, (images, labels) in enumerate(train_loader):
         images, labels = images.to(device), labels.to(device)
-        night_labels, glare_labels, weather_labels = map_labels(labels)
+        night_labels, glare_labels, weather_labels, fog_labels = map_labels(labels)
 
         optimizer.zero_grad()
 
         # Forward pass
-        (night_pred, glare_pred, weather_pred) = model(images)
+        predictions:AdjustedWeatherNet.AdjustedWeatherNetOutput = model(images)
+        (night_pred, glare_pred, weather_pred, fog_pred) = predictions
 
         # Compute loss
         loss = model.compute_loss(
-            (night_pred, glare_pred, weather_pred),
-            (night_labels, glare_labels, weather_labels)
+            (night_pred, glare_pred, weather_pred, fog_pred),
+            (night_labels, glare_labels, weather_labels, fog_labels)
         )
         training_loss += loss.item()
 
@@ -258,6 +218,7 @@ for epoch in range(args.epochs):
         training_correct += (night_predicted == night_labels).sum().item()
         training_correct += (weather_predicted == weather_labels).sum().item()
         training_correct += (glare_pred.squeeze() > 0.5).eq(glare_labels).sum().item()
+        training_correct += (fog_pred.squeeze() > 0.5).eq(fog_labels).sum().item()
 
         if (batch_idx + 1) % 5 == 0:
             print(
@@ -280,15 +241,16 @@ for epoch in range(args.epochs):
     with torch.no_grad():
         for batch_idx, (images, labels) in enumerate(test_loader):
             images, labels = images.to(device), labels.to(device)
-            night_labels, glare_labels, weather_labels = map_labels(labels)
+            night_labels, glare_labels, weather_labels, fog_labels = map_labels(labels)
 
             # Forward pass
-            (night_pred, glare_pred, weather_pred) = model(images)
+            predictions:AdjustedWeatherNet.AdjustedWeatherNetOutput = model(images)
+            (night_pred, glare_pred, weather_pred, fog_pred) = model(images)
 
             # Compute loss
             loss = model.compute_loss(
-                (night_pred, glare_pred, weather_pred),
-                (night_labels, glare_labels, weather_labels)
+                (night_pred, glare_pred, weather_pred, fog_pred),
+                (night_labels, glare_labels, weather_labels, fog_labels)
             )
             test_loss += loss.item()
 
@@ -299,6 +261,7 @@ for epoch in range(args.epochs):
             testing_correct += (night_predicted == night_labels).sum().item()
             testing_correct += (weather_predicted == weather_labels).sum().item()
             testing_correct += (glare_pred.squeeze() > 0.5).eq(glare_labels).sum().item()
+            testing_correct += (fog_pred.squeeze() > 0.5).eq(fog_labels).sum().item()
     print(
         "Test loss:",
         f"{test_loss / (batch_idx + 1):.4f}",
@@ -314,7 +277,7 @@ for epoch in range(args.epochs):
 
 
 #dump the collected stats
-with open(f"{model_str}.csv", "w+") as csv_file:
+with open(f"{model_str}.csv", "w+", encoding='utf8') as csv_file:
     csv_file.write("Epoch,Train acc,Train loss,Test acc,Test loss\n")
     for epoch in range(num_epochs):
         csv_file.write(
