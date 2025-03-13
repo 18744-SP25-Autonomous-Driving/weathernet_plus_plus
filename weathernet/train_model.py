@@ -282,7 +282,7 @@ for epoch in range(args.epochs):
             # Calculate accuracy
             _, night_predicted = night_pred.max(1)
             _, weather_predicted = weather_pred.max(1)
-            testing_total += night_labels.size(0) + weather_labels.size(0) + glare_labels.size(0)
+            testing_total += night_labels.size(0) + weather_labels.size(0) + glare_labels.size(0) + fog_labels.size(0)
             testing_correct += (night_predicted == night_labels).sum().item()
             testing_correct += (weather_predicted == weather_labels).sum().item()
             testing_correct += (glare_pred.squeeze() > 0.5).eq(glare_labels).sum().item()

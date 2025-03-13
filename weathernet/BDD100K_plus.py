@@ -61,7 +61,14 @@ class BDD100K_plus(VisionDataset):
         # all columns besides 0th column (filename) MUST BE INTS
         self.labels = torch.tensor(self.df_labels.iloc[:, 1:].values, dtype=torch.int64)
         # Populate the image paths list
-        self.img_paths = [os.path.join(self.img_dir, img_name) for img_name in self.df_labels.iloc[:, 0]]
+        # If self.train is True, load the training set (first 800 images for now)
+        if self.train:
+            self.img_paths = [os.path.join(self.img_dir, img_name) for img_name in self.df_labels.iloc[:800, 0]]
+        # Otherwise, load the test set (last 200 images for now)
+        else:
+            self.img_paths = [os.path.join(self.img_dir, img_name) for img_name in self.df_labels.iloc[800:, 0]]
+        
+        # self.img_paths = [os.path.join(self.img_dir, img_name) for img_name in self.df_labels.iloc[:, 0]]
     
     def __getitem__(self, index, open=False):
         # Load the image
