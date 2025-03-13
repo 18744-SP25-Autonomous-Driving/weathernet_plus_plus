@@ -87,8 +87,8 @@ class AdjustedWeatherNet(nn.Module):
         """
         Compute total loss.
         Args:
-            predictions: Tuple (night_pred, glare_pred, weather_pred)
-            targets: Tuple (night_target, glare_target, weather_target)
+            predictions: Tuple (night_pred, glare_pred, weather_pred, fog_pred)
+            targets: Tuple (night_target, glare_target, weather_target, fog_target)
         Returns:
             Total loss (scalar)
         """
