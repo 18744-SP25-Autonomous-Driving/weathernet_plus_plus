@@ -39,12 +39,12 @@ class AdjustedWeatherNet(nn.Module):
 
         # weather-net: resnet50, replaced linear layer at end to be FIVE output,
         # followed by softmax.
-        # Weather is five classes (clear, rain, snow, partly cloudy, undefined),
+        # Weather is SIX classes (clear, partly cloudy, overcast, rainy, snowy, undefined)
         # so we use five outputs with
         # softmax activation to predict the probability of each class.
         # This replaces the original WeatherNet's Precipitation Classifier.
         self.weather_net = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
-        self.weather_net.fc = nn.Linear(self.weather_net.fc.in_features, 5)
+        self.weather_net.fc = nn.Linear(self.weather_net.fc.in_features, 6)
 
         # fog-net: resnet50, replaced linear layer at end to be one output, followed by sigmoid.
         # Fog is a single class, so we use a single output with sigmoid activation to predict
@@ -75,7 +75,7 @@ class AdjustedWeatherNet(nn.Module):
         # glare-net prediction, 1 class
         glare = self.glare_net(x)
 
-        # weather-net prediction, 5 classes
+        # weather-net prediction, 6 classes
         weather = self.weather_net(x)
 
         # fog-net prediction, 1 class

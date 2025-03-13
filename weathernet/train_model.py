@@ -17,6 +17,7 @@ from set_seed import set_random_seed
 from weathernet_adjusted import AdjustedWeatherNet
 
 from BDD100K_plus import BDD100K_plus
+import pdb
 
 # Argument parser
 parser: argparse.ArgumentParser = argparse.ArgumentParser(
@@ -212,7 +213,7 @@ for epoch in range(args.epochs):
     for batch_idx, (images, labels) in enumerate(train_loader):
         print(f"Batch {batch_idx+1}")
         images, labels = images.to(device), labels.to(device)
-        night_labels, glare_labels, weather_labels, fog_labels = map_labels(labels)
+        fog_labels, glare_labels, weather_labels, night_labels = map_labels(labels)
 
         optimizer.zero_grad()
 
