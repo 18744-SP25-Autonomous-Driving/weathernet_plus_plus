@@ -23,9 +23,9 @@ parser: argparse.ArgumentParser = argparse.ArgumentParser(
     description="18744 Autonomous Driving Project - Model Trainer"
 )
 
-# Define the mini-batch size, here the size is 128 images per batch
+# Define the mini-batch size, here the size is 32 images per batch
 parser.add_argument(
-    "--batch_size", type=int, default=128, help="Number of samples per mini-batch"
+    "--batch_size", type=int, default=32, help="Number of samples per mini-batch"
 )
 
 # Define the number of epochs for training
@@ -52,38 +52,41 @@ saved_state: str = args.saved_state
 # Set Random Seed (reproducibility)
 set_random_seed(random_seed)
 
-#### BDD100K_plus DATASET (IMAGES & LABELS) ###
-# train_dataset = BDD100K_plus(
-#     root="data",
-#     train=True,
-#     transform=transforms.Compose(
-#         [
-#             transforms.ToTensor(),
-#             transforms.Normalize(
-#                 # experimentally determined
-#                 mean=(0.2843, 0.3026, 0.2996),
-#                 std=(0.1918, 0.1945, 0.1989)
-#             ),
-#         ]
-#     ),
-#     download=False,
-# )
+### BDD100K_plus DATASET (IMAGES & LABELS) ###
+train_dataset = BDD100K_plus(
+    root="data",
+    train=True,
+    transform=transforms.Compose(
+        [
+            transforms.ToTensor(),
+            transforms.Normalize(
+                # experimentally determined
+                mean=(0.2843, 0.3026, 0.2996),
+                std=(0.1918, 0.1945, 0.1989)
+            ),
+            transforms.Resize((224, 224))
+        ]
+    ),
+    download=False,
+)
 
-# test_dataset = BDD100K_plus(
-#     root="data",
-#     train=False,
-#     transform=transforms.Compose(
-#         [
-#             transforms.ToTensor(),
-#             transforms.Normalize(
-#                 mean=(0.2843, 0.3026, 0.2996),
-#                 std=(0.1918, 0.1945, 0.1989)
-#             ),
-#         ]
-#     ),
-#     download=False,
-# )
+test_dataset = BDD100K_plus(
+    root="data",
+    train=False,
+    transform=transforms.Compose(
+        [
+            transforms.ToTensor(),
+            transforms.Normalize(
+                mean=(0.2843, 0.3026, 0.2996),
+                std=(0.1918, 0.1945, 0.1989)
+            ),
+            transforms.Resize((224, 224))
+        ]
+    ),
+    download=False,
+)
 
+'''
 # CIFAR10 Dataset (Images and Labels) (for TESTING ONLY)
 train_dataset: dsets.CIFAR10 = dsets.CIFAR10(
     root="data",
@@ -112,6 +115,7 @@ test_dataset: dsets.CIFAR10 = dsets.CIFAR10(
         ]
     ),
 )
+'''
 
 
 # Load the datasets into torch dataloaders
@@ -148,7 +152,7 @@ optimizer = torch.optim.Adam(model.parameters())
 
 
 # Label mapping function ONLY FOR CIFAR TESTING, DELETE ONCE BDD100K IS IMPORTED
-def map_labels(cifar_labels):
+def map_cifar_labels(cifar_labels):
     """
     Convert CIFAR-10 labels to our custom labels for night-net, glare-net, and weather-net.
     """
@@ -174,6 +178,21 @@ def map_labels(cifar_labels):
         _fog_labels.to(device)
         )
 
+def map_labels(labels):
+    """
+    Separates labels ONLY into fog, glare, weather, and timeofday for WeatherNet
+    """
+
+    # TODO: Create enums for the pipeline categories, e.g. FOG = 0
+    _fog_labels = labels[:, 0]
+    _glare_labels = labels[:, 1]
+    _weather_labels = labels[:, 4]
+    _night_labels = labels[:, 6]
+    # CSV category name is timeofday, but weathernet calls the pipeline nightnet
+
+    return (_fog_labels.to(device), _glare_labels.to(device), 
+        _weather_labels.to(device), _night_labels.to(device))
+
 # Training loop
 train_loss_list = []
 train_acc_list = []
@@ -191,6 +210,7 @@ for epoch in range(args.epochs):
     start = time.time()
     batch_idx:int = 0
     for batch_idx, (images, labels) in enumerate(train_loader):
+        print(f"Batch {batch_idx+1}")
         images, labels = images.to(device), labels.to(device)
         night_labels, glare_labels, weather_labels, fog_labels = map_labels(labels)
 
@@ -199,6 +219,10 @@ for epoch in range(args.epochs):
         # Forward pass
         predictions:AdjustedWeatherNet.AdjustedWeatherNetOutput = model(images)
         (night_pred, glare_pred, weather_pred, fog_pred) = predictions
+
+        # debug
+        # print(glare_pred)
+        # print(glare_labels)
 
         # Compute loss
         loss = model.compute_loss(
