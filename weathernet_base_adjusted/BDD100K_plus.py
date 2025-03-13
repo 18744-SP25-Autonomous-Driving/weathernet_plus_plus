@@ -1,10 +1,8 @@
 from __future__ import print_function, division
 import os
 
-import pickle
 from pathlib import Path
 from typing import Any, Callable, Optional, Tuple, Union
-import numpy as np
 from PIL import Image
 
 from torchvision.datasets import VisionDataset
@@ -54,7 +52,7 @@ class BDD100K_plus(VisionDataset):
         # Initialize the parent class
         super().__init__(root, transform=transform, target_transform=target_transform)
         
-        self.train = train  # training set or test set
+        self.train = train # training set or test set
         
         # Setup dataset specifics here
         self.img_dir = os.path.join(self.root, 'images')
@@ -62,28 +60,27 @@ class BDD100K_plus(VisionDataset):
         
         # Instantiate image paths and labels as empty lists
         self.img_paths = [] # list of strings
-        self.labels = [] # list of dicts, e.g. dict["weather"] = "clear", dict["road"] = "0"
-        # TODO: maybe this is inefficient? could replace with list, where indices correspond to specific pipelines
-        
         # Load the labels file using pandas
         self.df_labels = pd.read_csv(self.labels_file)
+        # Populate labels into a tensor, converting numeric strings to int64
+        # all columns besides 0th column (filename) MUST BE INTS
+        self.labels = torch.tensor(self.df_labels.iloc[:, 1:].values, dtype=torch.int64)
         # Populate the image paths list
         self.img_paths = [os.path.join(self.img_dir, img_name) for img_name in self.df_labels.iloc[:, 0]]
-        # Convert DataFrame rows to dictionaries for our labels
-        self.labels = self.df_labels.iloc[:, 1:].to_dict('records')
     
     def __getitem__(self, index, open=False):
         # Load the image
         img_path = self.img_paths[index]
         image = Image.open(img_path).convert('RGB')
         if (open): Image.open(img_path).show() # debugging option to see images
-        pipeline_labels = self.labels[index] # dict[str, str]
+        # pipeline_labels = self.labels[index] # dict[str, str]
+        pipeline_labels = self.labels[index, :] # tensor of size (1x7)
         
         # Apply transformations if any
         if self.transform is not None:
             image = self.transform(image)
         
-        if self.target_transform is not None:
+        if self.target_transform is not None: # might be funky... idk if we use target_transforms.
             pipeline_labels = self.target_transform(pipeline_labels)
             
         return image, pipeline_labels
@@ -106,8 +103,20 @@ class BDD100K_plus(VisionDataset):
         # Provides information on the number of labels for each pipeline
         # e.g. for weather, how many clear, partly cloudy, etc.
         labels_info = "\n* * * * * LABELS SPREAD * * * * *\n"
-        for pipeline in self.labels[0].keys():
-            labels_info += f"\n{self.df_labels[pipeline].value_counts().to_string()}\n"
+        
+        # Get column names from the dataframe (skipping the first column which is image name)
+        label_columns = self.df_labels.columns[1:]
+        
+        # For each label category, show distribution
+        for i, col_name in enumerate(label_columns):
+            # Extract the corresponding column from the tensor
+            col_values = self.labels[:, i].numpy()
+            # Count unique values and their frequencies
+            unique_values, counts = torch.unique(self.labels[:, i], return_counts=True)
+            
+            # Format the output string
+            value_counts = "\n".join([f"{val.item()}: {count.item()}" for val, count in zip(unique_values, counts)])
+            labels_info += f"\n{col_name}:\n{value_counts}\n"
 
         return dataset_info + labels_info
     
