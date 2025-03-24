@@ -10,14 +10,12 @@ from typing import Tuple
 import torch
 import torch.utils.data.dataloader
 from torch.utils.data import DataLoader
-import torchvision.datasets as dsets
 import torchvision.transforms as transforms
 
 from set_seed import set_random_seed
 from weathernet_adjusted import AdjustedWeatherNet
 
-from BDD100K_plus import BDD100K_plus
-import pdb
+from BDD100K_plus import Bdd100kPlus
 
 # Argument parser
 parser: argparse.ArgumentParser = argparse.ArgumentParser(
@@ -54,7 +52,7 @@ saved_state: str = args.saved_state
 set_random_seed(random_seed)
 
 ### BDD100K_plus DATASET (IMAGES & LABELS) ###
-train_dataset = BDD100K_plus(
+train_dataset = Bdd100kPlus(
     root="data",
     train=True,
     transform=transforms.Compose(
@@ -63,31 +61,28 @@ train_dataset = BDD100K_plus(
             transforms.Normalize(
                 # experimentally determined
                 mean=(0.2843, 0.3026, 0.2996),
-                std=(0.1918, 0.1945, 0.1989)
+                std=(0.1918, 0.1945, 0.1989),
             ),
-            transforms.Resize((224, 224))
+            transforms.Resize((224, 224)),
         ]
     ),
-    download=False,
 )
 
-test_dataset = BDD100K_plus(
+test_dataset = Bdd100kPlus(
     root="data",
     train=False,
     transform=transforms.Compose(
         [
             transforms.ToTensor(),
             transforms.Normalize(
-                mean=(0.2843, 0.3026, 0.2996),
-                std=(0.1918, 0.1945, 0.1989)
+                mean=(0.2843, 0.3026, 0.2996), std=(0.1918, 0.1945, 0.1989)
             ),
-            transforms.Resize((224, 224))
+            transforms.Resize((224, 224)),
         ]
     ),
-    download=False,
 )
 
-'''
+"""
 # CIFAR10 Dataset (Images and Labels) (for TESTING ONLY)
 train_dataset: dsets.CIFAR10 = dsets.CIFAR10(
     root="data",
@@ -116,7 +111,7 @@ test_dataset: dsets.CIFAR10 = dsets.CIFAR10(
         ]
     ),
 )
-'''
+"""
 
 
 # Load the datasets into torch dataloaders
@@ -141,7 +136,7 @@ if torch.backends.mps.is_available():
     print("Using Apple Silicon GPU")
     device = torch.device("mps")
 
-if(saved_state is not None):
+if saved_state is not None:
     print(f"Loading saved state from {saved_state}")
     model.load_state_dict(torch.load(saved_state, weights_only=True))
 
@@ -158,14 +153,17 @@ def map_cifar_labels(cifar_labels):
     Convert CIFAR-10 labels to our custom labels for night-net, glare-net, and weather-net.
     """
     _night_labels = torch.where(
-        (cifar_labels == 0) |
-        (cifar_labels == 1) |
-        (cifar_labels == 2) |
-        (cifar_labels == 3),
-        cifar_labels, torch.tensor(3)
+        (cifar_labels == 0)
+        | (cifar_labels == 1)
+        | (cifar_labels == 2)
+        | (cifar_labels == 3),
+        cifar_labels,
+        torch.tensor(3),
     )  # Map 0,1,2, to day/night, daytime, night, map all others to undefined
 
-    _glare_labels = (cifar_labels == 1).float()  # Binary: 1 for automobile, 0 for others
+    _glare_labels = (
+        cifar_labels == 1
+    ).float()  # Binary: 1 for automobile, 0 for others
 
     _weather_labels = torch.full_like(cifar_labels, 4)  # Default to "undefined"
     for i, label in enumerate([2, 3, 4, 5, 6]):  # bird, cat, deer, dog, frog
@@ -173,26 +171,32 @@ def map_cifar_labels(cifar_labels):
 
     _fog_labels = (cifar_labels == 2).float()  # Binary: 1 for class 2, 0 for others
     return (
-        _night_labels.to(device), 
-        _glare_labels.to(device), 
-        _weather_labels.to(device), 
-        _fog_labels.to(device)
-        )
+        _night_labels.to(device),
+        _glare_labels.to(device),
+        _weather_labels.to(device),
+        _fog_labels.to(device),
+    )
 
-def map_labels(labels):
+
+def map_labels(_labels):
     """
     Separates labels ONLY into fog, glare, weather, and timeofday for WeatherNet
     """
 
     # TODO: Create enums for the pipeline categories, e.g. FOG = 0
-    _fog_labels = labels[:, 0]
-    _glare_labels = labels[:, 1]
-    _weather_labels = labels[:, 4]
-    _night_labels = labels[:, 6]
+    _fog_labels = _labels[:, 0]
+    _glare_labels = _labels[:, 1]
+    _weather_labels = _labels[:, 4]
+    _night_labels = _labels[:, 6]
     # CSV category name is timeofday, but weathernet calls the pipeline nightnet
 
-    return (_fog_labels.to(device), _glare_labels.to(device), 
-        _weather_labels.to(device), _night_labels.to(device))
+    return (
+        _fog_labels.to(device),
+        _glare_labels.to(device),
+        _weather_labels.to(device),
+        _night_labels.to(device),
+    )
+
 
 # Training loop
 train_loss_list = []
@@ -209,7 +213,7 @@ for epoch in range(args.epochs):
     print(f"Epoch {epoch+1}")
 
     start = time.time()
-    batch_idx:int = 0
+    batch_idx: int = 0
     for batch_idx, (images, labels) in enumerate(train_loader):
         print(f"Batch {batch_idx+1}")
         images, labels = images.to(device), labels.to(device)
@@ -218,7 +222,7 @@ for epoch in range(args.epochs):
         optimizer.zero_grad()
 
         # Forward pass
-        predictions:AdjustedWeatherNet.AdjustedWeatherNetOutput = model(images)
+        predictions: AdjustedWeatherNet.AdjustedWeatherNetOutput = model(images)
         (night_pred, glare_pred, weather_pred, fog_pred) = predictions
 
         # debug
@@ -228,7 +232,7 @@ for epoch in range(args.epochs):
         # Compute loss
         loss = model.compute_loss(
             (night_pred, glare_pred, weather_pred, fog_pred),
-            (night_labels, glare_labels, weather_labels, fog_labels)
+            (night_labels, glare_labels, weather_labels, fog_labels),
         )
         training_loss += loss.item()
 
@@ -239,7 +243,12 @@ for epoch in range(args.epochs):
         # Calculate accuracy
         _, night_predicted = night_pred.max(1)
         _, weather_predicted = weather_pred.max(1)
-        training_total += night_labels.size(0) + weather_labels.size(0) + glare_labels.size(0) + fog_labels.size(0)
+        training_total += (
+            night_labels.size(0)
+            + weather_labels.size(0)
+            + glare_labels.size(0)
+            + fog_labels.size(0)
+        )
         training_correct += (night_predicted == night_labels).sum().item()
         training_correct += (weather_predicted == weather_labels).sum().item()
         training_correct += (glare_pred.squeeze() > 0.5).eq(glare_labels).sum().item()
@@ -255,8 +264,8 @@ for epoch in range(args.epochs):
 
     per_epoch_training_time = time.time() - start
     total_training_time += per_epoch_training_time
-    train_loss_list.append(training_loss / (batch_idx+1))
-    train_acc_list.append(100*training_correct / training_total)
+    train_loss_list.append(training_loss / (batch_idx + 1))
+    train_acc_list.append(100 * training_correct / training_total)
 
     # Testing Phase
     testing_correct = 0
@@ -269,28 +278,35 @@ for epoch in range(args.epochs):
             night_labels, glare_labels, weather_labels, fog_labels = map_labels(labels)
 
             # Forward pass
-            predictions:AdjustedWeatherNet.AdjustedWeatherNetOutput = model(images)
+            predictions: AdjustedWeatherNet.AdjustedWeatherNetOutput = model(images)
             (night_pred, glare_pred, weather_pred, fog_pred) = model(images)
 
             # Compute loss
             loss = model.compute_loss(
                 (night_pred, glare_pred, weather_pred, fog_pred),
-                (night_labels, glare_labels, weather_labels, fog_labels)
+                (night_labels, glare_labels, weather_labels, fog_labels),
             )
             test_loss += loss.item()
 
             # Calculate accuracy
             _, night_predicted = night_pred.max(1)
             _, weather_predicted = weather_pred.max(1)
-            testing_total += night_labels.size(0) + weather_labels.size(0) + glare_labels.size(0) + fog_labels.size(0)
+            testing_total += (
+                night_labels.size(0)
+                + weather_labels.size(0)
+                + glare_labels.size(0)
+                + fog_labels.size(0)
+            )
             testing_correct += (night_predicted == night_labels).sum().item()
             testing_correct += (weather_predicted == weather_labels).sum().item()
-            testing_correct += (glare_pred.squeeze() > 0.5).eq(glare_labels).sum().item()
+            testing_correct += (
+                (glare_pred.squeeze() > 0.5).eq(glare_labels).sum().item()
+            )
             testing_correct += (fog_pred.squeeze() > 0.5).eq(fog_labels).sum().item()
     print(
         "Test loss:",
         f"{test_loss / (batch_idx + 1):.4f}",
-        f"Test accuracy: {100.0 * testing_correct / testing_total:.2f}%"
+        f"Test accuracy: {100.0 * testing_correct / testing_total:.2f}%",
     )
     test_loss_list.append(test_loss / (batch_idx + 1))
     test_acc_list.append(100.0 * testing_correct / testing_total)
@@ -301,8 +317,8 @@ for epoch in range(args.epochs):
     torch.save(model.state_dict(), path)
 
 
-#dump the collected stats
-with open(f"{model_str}.csv", "w+", encoding='utf8') as csv_file:
+# dump the collected stats
+with open(f"{model_str}.csv", "w+", encoding="utf8") as csv_file:
     csv_file.write("Epoch,Train acc,Train loss,Test acc,Test loss\n")
     for epoch in range(num_epochs):
         csv_file.write(
