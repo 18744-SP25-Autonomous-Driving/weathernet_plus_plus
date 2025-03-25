@@ -4,7 +4,7 @@ augmented to to include scene detection, road detection, and traffic detection.
 to conform to BDD100K dataset labels
 """
 
-from typing import List, Tuple, TypedDict, NamedTuple
+from typing import NamedTuple
 import torch
 import torch.nn as nn
 from torchvision.models import resnet50, ResNet50_Weights
@@ -14,10 +14,11 @@ class WeatherNetPlusPlus(nn.Module):
     """WeatherNet: Implementation of the WeatherNet model."""
 
     class WeatherNetPlusPlusOutput(NamedTuple):
-        '''
+        """
         Structure of the output
         of the forward pass of the model.
-        '''
+        """
+
         fog_pred: torch.Tensor
         glare_pred: torch.Tensor
         road_pred: torch.Tensor
@@ -53,7 +54,8 @@ class WeatherNetPlusPlus(nn.Module):
         self.traffic_net = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
         self.traffic_net.fc = nn.Linear(self.traffic_net.fc.in_features, 3)
 
-        # weather-net: resnet50, replaced linear layer at end to be SIX outputs, followed by softmax.
+        # weather-net: resnet50, replaced linear layer at end to be SIX outputs,
+        # followed by softmax.
         # weather is SIX classes (clear, partly cloudy, overcast, rainy, snowy, undefined)
         # so we use six outputs with softmax activation to predict the probability of each class.
         self.weather_net = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
@@ -86,12 +88,12 @@ class WeatherNetPlusPlus(nn.Module):
         self.scene_loss = nn.CrossEntropyLoss()
         self.night_loss = nn.CrossEntropyLoss()
 
-
     def forward(self, x):
         """
         forward pass
         gets called by model()
-        returns a Tuple (fog_pred, glare_pred, road_pred, traffic_pred, weather_pred, scene_pred, night_pred)
+        returns a Tuple:
+        (fog_pred, glare_pred, road_pred, traffic_pred, weather_pred, scene_pred, night_pred)
         """
         # fog-net prediction, 1 class
         fog = self.fog_net(x)
@@ -122,8 +124,10 @@ class WeatherNetPlusPlus(nn.Module):
         """
         Compute total loss.
         Args:
-            predictions: Tuple (fog_pred, glare_pred, road_pred, traffic_pred, weather_pred, scene_pred, night_pred)
-            targets: Tuple (fog_target, glare_target, road_target, traffic_target, weather_target, scene_target, night_target)
+            predictions:
+            Tuple (fog_pred, glare_pred, road_pred, traffic_pred, weather_pred, scene_pred, night_pred)
+            targets:
+            Tuple (fog_target, glare_target, road_target, traffic_target, weather_target, scene_target, night_target)
         Returns:
             Total loss (scalar)
         """
@@ -146,7 +150,6 @@ class WeatherNetPlusPlus(nn.Module):
             scene_target,
             night_target,
         ) = targets
-
 
         # Compute individual losses
 
