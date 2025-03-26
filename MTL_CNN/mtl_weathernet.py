@@ -23,6 +23,7 @@ class MtlBackbone(Enum):
 
     ResNet50 = "resnet50"
     EfficientNetB4 = "efficientnet_b4"
+    Vgg16 = "vgg16"
 
 
 class MtlWeatherNet(nn.Module):
@@ -53,6 +54,8 @@ class MtlWeatherNet(nn.Module):
             self.backbone = nn.Sequential(
                 *list(self.backbone.children())[:-1]
             )  # Remove the classification layer
+        elif backbone == MtlBackbone.Vgg16:
+            raise ValueError("VGG16 Backbone not yet implemented")
         else:
             raise ValueError(f"Unsupported backbone: {backbone}")
 
