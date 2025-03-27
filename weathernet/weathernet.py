@@ -3,7 +3,6 @@ WeatherNet: Standard WeatherNet model
 working with Bdd100k labels. Deals with 4 labels.
 """
 
-from typing import NamedTuple
 import torch
 import torch.nn as nn
 from torchvision.models import resnet50, ResNet50_Weights
@@ -51,6 +50,16 @@ class WeatherNet(nn.Module):
         self.glare_loss = nn.BCEWithLogitsLoss()
         self.weather_loss = nn.CrossEntropyLoss()
         self.fog_loss = nn.BCEWithLogitsLoss()
+
+    # TODO: make this an interface thing if possible and use it in all models?
+    def get_num_pipelines(self) -> int:
+        """
+        Get number of pipelines in the model.
+        Standard function across all of our custom models.
+        Returns:
+            int: number of pipelines
+        """
+        return 4
 
     def forward(self, x) -> torch.Tensor:
         """
@@ -102,10 +111,10 @@ class WeatherNet(nn.Module):
         weather_pred = predictions[:, 4:10]
         fog_pred = predictions[:, 10]
 
-        night_target = targets[:, 0].long()
-        glare_target = targets[:, 1].long()
-        weather_target = targets[:, 2].long()
-        fog_target = targets[:, 3].long()
+        night_target = targets[:, 0].float()
+        glare_target = targets[:, 1].float()
+        weather_target = targets[:, 2].float()
+        fog_target = targets[:, 3].float()
 
         # Compute individual losses
 

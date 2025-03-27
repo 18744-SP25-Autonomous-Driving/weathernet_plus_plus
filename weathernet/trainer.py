@@ -1,35 +1,28 @@
 import torch
 
+
 def evaluate_loss(model, criterion, dataloader, device):
     # set model to eval mode
     model.eval()
     total_loss = 0.0
-    # with torch.no_grad():
-    #     for inputs, labels in dataloader:
-    #         # load inputs and labels to device
-    #         inputs, labels = inputs.to(device), labels.to(device)
-    #         # Call model and get outputs
-    #         outputs = model(inputs)
-    #         # Calculate the loss using loss function
-    #         loss = criterion(outputs, labels)
-    #         total_loss += loss.item()
-    # average_loss = total_loss / len(dataloader)
-
     with torch.no_grad():
         for inputs, labels in dataloader:
             # load inputs and labels to device
             inputs, labels = inputs.to(device=device), labels.to(device=device)
+
             # Separate labels for each pipeline
-            fog_labels, glare_labels, weather_labels, night_labels = map_labels(labels, device)
+            model_dim = model.get_num_pipelines()
+            labels = labels[:, :model_dim]
+
             # FORWARD PASS: call model and get outputs
             outputs = model(inputs)
-            (night_out, glare_out, weather_out, fog_out) = outputs
             # Calculate the loss using loss function
             loss = model.compute_loss(
-                (night_out, glare_out, weather_out, fog_out),
-                (night_labels, glare_labels, weather_labels, fog_labels),
+                outputs,
+                labels,
             )
             total_loss += loss.item()
+
     average_loss = total_loss / len(dataloader)
     return average_loss
 
@@ -41,45 +34,58 @@ def evaluate_accuracy(model, dataloader, device):
     correct = 0
     total = 0
 
-    # with torch.no_grad():
-    #     for inputs, labels in dataloader:
-    #         # load inputs and labels to device
-    #         inputs, labels = inputs.to(device), labels.to(device)
-    #         # Call model and get outputs
-    #         outputs = model(inputs)
-    #         _, predicted = torch.max(outputs.data, 1)
-    #         total += labels.size(0)
-    #         correct += (predicted == labels).sum().item()
-
-    # accuracy = (correct / total) * 100
-    # return accuracy
-
     with torch.no_grad():
         for inputs, labels in dataloader:
             # load inputs and labels to device
             inputs, labels = inputs.to(device=device), labels.to(device=device)
+
             # Separate labels for each pipeline
-            fog_labels, glare_labels, weather_labels, night_labels = map_labels(labels, device)
+            model_dim = model.get_num_pipelines()
+            labels = labels[:, :model_dim]
+
             # FORWARD PASS: call model and get outputs
             outputs = model(inputs)
-            (night_out, glare_out, weather_out, fog_out) = outputs
+
+            # TODO: Make this generic to support any of our models (ie. 7 pipelines and 4 pipelines)
+
+            # convert raw logits on multiclass to categorical labels
+            night_out = outputs[:, 0:3]
+            night_out = outputs[:, 0:3]
+            night_out = torch.argmax(night_out, dim=1)
+
+            weather_out = outputs[:, 4:10]
+            weather_out = torch.argmax(weather_out, dim=1)
+
+            # convert raw logits on binary classifiers to categorical labels
+            glare_out = outputs[:, 3]
+            glare_out = glare_out.squeeze()
+            glare_out = glare_out > 0.5
+
+            fog_out = outputs[:, 10]
+            fog_out = fog_out.squeeze()
+            fog_out = fog_out > 0.5
+
+            night_labels = labels[:, 0].float()
+            glare_labels = labels[:, 1].float()
+            weather_labels = labels[:, 2].float()
+            fog_labels = labels[:, 3].float()
+
             # Calculate accuracy
-            _, night_predicted = night_out.max(1)
-            _, weather_predicted = weather_out.max(1)
             total += (
-                night_labels.size(0) + 
-                weather_labels.size(0) + 
-                glare_labels.size(0) + 
-                fog_labels.size(0)
+                night_labels.size(0)
+                + weather_labels.size(0)
+                + glare_labels.size(0)
+                + fog_labels.size(0)
             )
             correct += (
-                (night_predicted == night_labels).sum().item() +
-                (weather_predicted == weather_labels).sum().item() + 
-                (glare_out.squeeze() > 0.5).eq(glare_labels).sum().item() + 
-                (fog_out.squeeze() > 0.5).eq(fog_labels).sum().item()
+                (night_out == night_labels).sum().item()
+                + (weather_out == weather_labels).sum().item()
+                + (glare_out == glare_labels).sum().item()
+                + (fog_out == fog_labels).sum().item()
             )
     accuracy = (correct / total) * 100
     return accuracy
+
 
 def map_labels(labels, device):
     """
@@ -99,6 +105,7 @@ def map_labels(labels, device):
         weather_labels.to(device=device),
         night_labels.to(device=device),
     )
+
 
 # TODO: generalize this function to work with any model. (or multiple models simultaneously)
 # e.g. model = array of models, each trains using the same trainlaoder/testloader
@@ -131,22 +138,30 @@ def train(model, optimizer, criterion, trainloader, testloader, epochs, device):
             # load inputs and labels to device
             inputs, labels = inputs.to(device=device), labels.to(device=device)
             # Separate labels for each pipeline
-            fog_labels, glare_labels, weather_labels, night_labels = map_labels(labels, device)
+            model_dim = model.get_num_pipelines()
+
+            # truncate labels to match model_dim
+            labels = labels[:, :model_dim]
             # FORWARD PASS: call model and get outputs
             outputs = model(inputs)
-            (night_out, glare_out, weather_out, fog_out) = outputs
 
             # Calculate the loss using loss function
             # loss = criterion(outputs, labels)
             loss = model.compute_loss(
-                (night_out, glare_out, weather_out, fog_out),
-                (night_labels, glare_labels, weather_labels, fog_labels),
+                outputs,
+                labels,
             )
             # BACKWARDS PASS: call backward on loss
             running_loss += loss.item()
             loss.backward()
             # Add optimizer step
             optimizer.step()
+
+            # Print the loss every 10 batches
+            if (batch_idx + 1) % 10 == 0:
+                print(
+                    f"Batch {batch_idx+1}/{num_batches} - Loss: {(running_loss/batch_idx+1):.2f}"
+                )
 
         train_loss = running_loss / len(trainloader)
         train_losses.append(train_loss)
