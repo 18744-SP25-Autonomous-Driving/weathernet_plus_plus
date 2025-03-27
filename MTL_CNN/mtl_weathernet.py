@@ -63,10 +63,18 @@ class MtlWeatherNet(nn.Module):
         # due to the number of classes they predict.
 
         # Fog prediction head
-        self.fog_head = nn.Linear(self.backbone.fc_in_features, 1)
+        self.fog_head = nn.Sequential(
+            nn.Linear(self.backbone.fc_in_features, 512),
+            nn.ReLU(),
+            nn.Linear(512, 1),
+        )
 
         # Glare Prediction Head
-        self.glare_head = nn.Linear(self.backbone.fc_in_features, 1)
+        self.glare_head = nn.Sequential(
+            nn.Linear(self.backbone.fc_in_features, 512),
+            nn.ReLU(),
+            nn.Linear(512, 1),
+        )
 
         # Road prediction
         self.road_head = nn.Sequential(
@@ -97,7 +105,11 @@ class MtlWeatherNet(nn.Module):
         )
 
         # Time of day prediction head
-        self.traffic_head = nn.Linear(self.backbone.fc_in_features, 3)
+        self.traffic_head = nn.Sequential(
+            nn.Linear(self.backbone.fc_in_features, 512),
+            nn.ReLU(),
+            nn.Linear(512, 3),
+        )
 
         # Define loss functions
         # Binary Cross Entropy with Logits Loss for binary classification
@@ -118,7 +130,11 @@ class MtlWeatherNet(nn.Module):
         """
         Forward pass of the model.
         Output prediction will be of dimension (batch_size, num_outputs),
-        where num_outputs is 19 due to the 19 different labels.
+        where num_outputs is 19 due to the 19 different labels. This is because
+        the multiclass loss functions we use expect raw logits, so we serve multiclass 
+        predictions as raw logits. In order to turn these into categorical labels, use array
+        slicing and torch.argmax as necessary. Binary classification problems are returned
+        as a single value (0 or 1) for each class.
 
         Explained:
             - 1 for fog
@@ -175,19 +191,25 @@ class MtlWeatherNet(nn.Module):
             loss: Computed loss
         """
         fog_loss = self.fog_loss(preds[:, 0], labels[:, 0])  # fog is at index 0
+
         glare_loss = self.glare_loss(preds[:, 1], labels[:, 1])  # glare is at index 1
+
         road_loss = self.road_loss(
             preds[:, 2:5], labels[:, 2:5].long()
         )  # road is at index 2-4
+
         traffic_loss = self.traffic_loss(
             preds[:, 5:8], labels[:, 5:8].long()
         )  # traffic is at index 5-7
+
         weather_loss = self.weather_loss(
             preds[:, 8:13], labels[:, 8:13].long()
         )  # weather is at index 8-12
+
         scene_loss = self.scene_loss(
             preds[:, 13:16], labels[:, 13:16].long()
         )  # scene is at index 13-15
+
         tod_loss = self.tod_loss(
             preds[:, 16:], labels[:, 16:].long()
         )  # timeofday is at index 16-18
