@@ -40,12 +40,12 @@ class WeatherNet(nn.Module):
         # the probability of fog.
         self.fog_net = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
         self.fog_net.fc = nn.Linear(self.fog_net.fc.in_features, 1)
+
         # Define loss functions
         # Binary Cross Entropy with Logits Loss for binary classification
         # combines cross entropy with a sigmoid activation function in a single class,
         # making it more numerically stable.
         # For multiclass, we use CrossEntropyLoss (softmax).
-
         self.night_loss = nn.CrossEntropyLoss()
         self.glare_loss = nn.BCEWithLogitsLoss()
         self.weather_loss = nn.CrossEntropyLoss()
