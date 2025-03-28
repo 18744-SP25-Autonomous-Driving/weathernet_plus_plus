@@ -90,7 +90,11 @@ class WeatherNet(nn.Module):
 
     def compute_loss(self, predictions, targets):
         """
-        Compute total loss.
+        Compute total loss. Requires the Predictions generated
+        by the `forward` function, as well as the input labels.
+        The reason these are of different dimension is because the `forward`
+        function returns the raw logits for each multiclass classifier.
+        The loss function expects the labels to be in the categorical format.
         Args:
             predictions: Torch.Tensor (night_pred, glare_pred, weather_pred, fog_pred)
                 1. night_pred: Torch.Tensor (batch_size, 3)
