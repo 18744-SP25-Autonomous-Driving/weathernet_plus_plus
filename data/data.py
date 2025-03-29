@@ -1,6 +1,6 @@
 import torchvision.transforms as T
 from torch.utils.data import DataLoader
-from BDD100K_plus import Bdd100kPlus
+from data.BDD100K_plus import Bdd100kPlus
 
 
 def get_dataloaders(
