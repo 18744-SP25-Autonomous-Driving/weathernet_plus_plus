@@ -1,1001 +1,1001 @@
-filename,glare,road,traffic,weather,scene,timeofday
-cabc30fc-e7726578.jpg,0,0,1,clear,city street,dawn/dusk
-cabc30fc-eb673c5a.jpg,0,0,1,clear,highway,daytime
-cabc30fc-fd79926f.jpg,0,0,1,clear,city street,dawn/dusk
-cabc9045-1b8282ba.jpg,1,0,0,clear,city street,night
-cabc9045-5a50690f.jpg,0,0,1,clear,city street,night
-cabc9045-581f64de.jpg,0,0,0,clear,city street,night
-cabc9045-b3349548.jpg,0,0,1,clear,highway,night
-cabc9045-c6dc9529.jpg,1,0,0,clear,city street,night
-cabc9045-cd422b81.jpg,0,0,0,clear,city street,night
-cabc9045-d91ecb66.jpg,0,0,0,clear,city street,night
-cabddb96-ca0ac856.jpg,0,0,2,clear,residential,daytime
-cabe1040-5f02711e.jpg,0,0,1,rainy,city street,daytime
-cabe1040-c59cb390.jpg,0,0,1,snowy,city street,daytime
-cabea010-6882cf41.jpg,1,1,1,clear,highway,night
-cabf7be1-36a39a28.jpg,0,0,1,partly cloudy,city street,daytime
-cabf7be1-f1a7e00d.jpg,0,0,0,partly cloudy,highway,daytime
-cabf9f3c-d58a6760.jpg,0,0,1,clear,city street,daytime
-cac6a8d8-29780d2d.jpg,0,0,1,clear,highway,daytime
-cac47e88-3227e13a.jpg,0,0,1,snowy,highway,dawn/dusk
-cac07407-0eb1c8bf.jpg,0,0,0,clear,city street,daytime
-cac07407-15b814db.jpg,1,0,0,undefined,city street,daytime
-cac07407-76e4c968.jpg,1,0,0,clear,highway,daytime
-cac07407-196cd6f8.jpg,0,0,1,clear,highway,daytime
-cac07407-0396e053.jpg,0,0,2,clear,city street,daytime
-cac07407-951977c8.jpg,0,0,2,clear,residential,daytime
-cac07407-ba37148a.jpg,0,0,1,undefined,residential,daytime
-cac07407-bc0b048a.jpg,0,0,0,clear,city street,daytime
-cac07407-e969f06a.jpg,1,0,0,clear,highway,daytime
-cac07407-fe32e494.jpg,0,0,0,clear,highway,daytime
-cac32276-2ea56b83.jpg,0,0,1,overcast,residential,daytime
-cac32276-a70feba7.jpg,0,0,1,undefined,city street,daytime
-cac32276-cf233a28.jpg,0,0,1,clear,city street,daytime
-cac75967-8a9c164b.jpg,0,0,0,clear,city street,night
-cace2484-cd478fab.jpg,0,0,1,clear,city street,daytime
-cacfaddc-ce8105be.jpg,0,0,0,partly cloudy,city street,daytime
-cad02f4a-dd2c4b41.jpg,0,0,2,overcast,city street,daytime
-cad4a646-68a8d136.jpg,0,0,0,clear,city street,night
-cad7fdff-d9946f73.jpg,0,0,1,snowy,city street,daytime
-cad54cf7-6779254f.jpg,0,0,0,clear,highway,night
-cad180c4-2edc9315.jpg,0,0,1,rainy,city street,dawn/dusk
-cad180c4-553ceeb1.jpg,0,0,1,rainy,city street,night
-cad180c4-d05b49f1.jpg,0,0,2,rainy,city street,night
-cad03998-075bb24b.jpg,0,0,1,partly cloudy,city street,daytime
-cad03998-b2cc3e61.jpg,0,0,1,partly cloudy,city street,daytime
-cad03998-e6cc2ae6.jpg,0,0,1,partly cloudy,city street,daytime
-cad17389-cb0208f5.jpg,0,0,1,clear,city street,night
-cad17389-f72e5365.jpg,0,0,1,clear,city street,night
-cadb5cf7-31d9a0d7.jpg,0,0,1,snowy,city street,night
-cadb239d-499b1478.jpg,0,0,0,clear,highway,night
-cadb239d-0776327a.jpg,0,0,0,clear,highway,night
-cadb239d-a768df31.jpg,0,0,0,clear,highway,night
-cadbd8df-9efc61fd.jpg,0,1,1,rainy,highway,daytime
-cadc60a4-0834935f.jpg,0,0,1,partly cloudy,city street,daytime
-cadd00a0-4251d603.jpg,1,0,2,overcast,highway,daytime
-cadd00a0-efef6501.jpg,0,0,1,clear,residential,daytime
-cade2aed-db2e9c98.jpg,0,1,1,snowy,city street,daytime
-cade2084-8fb02395.jpg,0,0,1,clear,city street,night
-cade2084-71df1a4e.jpg,0,0,0,clear,city street,night
-cade2084-5714bb13.jpg,0,0,1,clear,city street,night
-cadf77c3-2857db38.jpg,0,0,2,clear,city street,daytime
-cadf297e-457ef8ae.jpg,0,0,1,partly cloudy,highway,daytime
-cadfb2fe-5dd5f809.jpg,1,1,0,rainy,city street,night
-cadfb2fe-708d6e3b.jpg,1,0,0,clear,city street,night
-cadfb2fe-f43878a3.jpg,1,1,1,rainy,highway,night
-cae4f10f-54b690b0.jpg,0,0,2,overcast,highway,daytime
-cae4f10f-e5906613.jpg,0,0,2,overcast,city street,daytime
-cae6c88d-0db9c3ab.jpg,0,0,2,clear,city street,night
-cae8e3d7-13803eef.jpg,0,0,0,clear,undefined,night
-cae29b60-b9d5bdb6.jpg,0,1,1,rainy,city street,night
-cae49ab7-c87d52c4.jpg,0,0,0,clear,residential,daytime
-cae842b9-82d52302.jpg,0,1,2,snowy,city street,daytime
-cae881fa-02da1ae2.jpg,0,0,1,overcast,residential,daytime
-cae913d9-6df0f74b.jpg,0,0,1,clear,city street,night
-cae913d9-e07a8369.jpg,0,0,0,clear,highway,night
-cae23877-a1826db4.jpg,0,0,2,overcast,city street,daytime
-cae28701-5286ae2f.jpg,0,0,2,clear,city street,night
-cae39588-8ea784d1.jpg,0,0,1,partly cloudy,city street,daytime
-cae39588-58dd3092.jpg,0,0,2,partly cloudy,city street,daytime
-cae73656-aeb2944f.jpg,1,0,1,clear,city street,daytime
-cae77018-7bc11357.jpg,1,0,0,clear,city street,night
-caea91fd-e457bf7b.jpg,1,0,1,clear,city street,night
-caeb0fbb-410c10ca.jpg,0,0,1,undefined,city street,daytime
-caeb782d-4a20b7c4.jpg,0,0,1,snowy,residential,dawn/dusk
-caec69a1-75429ccd.jpg,0,0,1,clear,city street,night
-caee33ed-136d6b7c.jpg,0,0,0,undefined,highway,daytime
-caee33ed-bb44010a.jpg,0,1,1,rainy,highway,daytime
-caf6d8fe-7650f811.jpg,1,0,1,clear,highway,night
-caf9b4a2-dbf2a8a7.jpg,1,0,0,clear,city street,night
-caf56f7a-1407df75.jpg,0,0,1,clear,city street,daytime
-caf73e65-16760e37.jpg,1,0,1,clear,residential,night
-caf73e65-99596d6e.jpg,0,0,0,clear,undefined,night
-caf91e5e-fbd7f315.jpg,1,0,0,clear,residential,night
-caf380ad-52f6a603.jpg,0,0,1,clear,city street,daytime
-caf380ad-83f39185.jpg,0,0,1,clear,city street,daytime
-caf380ad-ee9a7699.jpg,0,0,1,partly cloudy,city street,daytime
-caf5502b-8233af1b.jpg,0,0,2,snowy,city street,daytime
-caf6713b-1823e54e.jpg,1,0,2,clear,city street,night
-caf8496d-6ce3dbda.jpg,1,0,0,snowy,city street,daytime
-caf92153-8fdace82.jpg,0,0,1,rainy,highway,daytime
-caf92153-cfcdf92a.jpg,0,0,1,rainy,highway,daytime
-cafa7c32-0d800808.jpg,1,0,1,snowy,city street,night
-cafae648-c3d4e13a.jpg,0,0,2,clear,city street,daytime
-cafb3b52-f34e5454.jpg,1,0,1,clear,city street,night
-cafb3e02-83c800ed.jpg,0,0,1,clear,highway,night
-cafb3e6f-22f2007e.jpg,0,0,1,clear,highway,daytime
-cafbae4e-1d69e770.jpg,0,0,0,clear,residential,night
-cafbb9cb-c8d8b9df.jpg,0,0,1,clear,city street,night
-cafca327-47cae51f.jpg,1,0,0,clear,highway,night
-cafd4970-2592f52f.jpg,1,0,1,clear,city street,night
-cafe3793-42a32ab9.jpg,0,0,2,undefined,undefined,daytime
-cafe3793-f5638516.jpg,0,0,2,undefined,city street,daytime
-cafecee9-ae650f5f.jpg,1,0,0,clear,city street,night
-caff5d9a-35754dcf.jpg,0,0,1,clear,city street,night
-caff5d9a-e71dee8e.jpg,0,0,1,clear,city street,night
-caff2200-238a0388.jpg,1,0,1,clear,city street,night
-cb0ad251-7f86477e.jpg,0,0,1,clear,city street,night
-cb0bdd89-5bdf8abc.jpg,0,0,0,clear,city street,daytime
-cb0bdd89-f1ff3b69.jpg,0,0,0,clear,residential,daytime
-cb0cece8-0bf1974e.jpg,1,0,0,undefined,city street,daytime
-cb0e6066-8c6456bf.jpg,0,0,0,snowy,residential,daytime
-cb1a59af-6df6a7ab.jpg,0,0,0,clear,residential,daytime
-cb1d8d95-283dd8d2.jpg,0,0,1,overcast,residential,daytime
-cb1f05ca-28b96d3e.jpg,0,0,1,undefined,city street,daytime
-cb02bc12-00b2fbbb.jpg,0,0,0,overcast,city street,daytime
-cb2a851d-d0884eb5.jpg,0,0,0,clear,city street,daytime
-cb2c6d0f-d4b068b0.jpg,0,1,1,rainy,city street,dawn/dusk
-cb2c801b-7b6283e5.jpg,0,0,1,undefined,residential,daytime
-cb2c801b-b5274dda.jpg,0,0,1,clear,highway,dawn/dusk
-cb2e3d65-2d64ca0e.jpg,0,0,0,snowy,residential,daytime
-cb2fdf4d-1f6ec0ba.jpg,0,0,1,clear,city street,daytime
-cb2fdf4d-4b15f621.jpg,0,0,1,overcast,city street,daytime
-cb2fdf4d-05fad7c1.jpg,0,0,1,partly cloudy,residential,daytime
-cb2fe290-88aacceb.jpg,0,0,1,partly cloudy,city street,dawn/dusk
-cb2fe290-7246a85f.jpg,0,0,2,overcast,city street,daytime
-cb2fe290-8786cd14.jpg,0,0,2,clear,highway,daytime
-cb3d23f6-7e35e616.jpg,0,0,1,undefined,highway,daytime
-cb3e5d46-784f9106.jpg,1,0,0,clear,city street,night
-cb3f27ee-14753cfb.jpg,1,1,0,rainy,highway,night
-cb3f27ee-b8c0119f.jpg,0,1,1,clear,highway,night
-cb04fee6-31529064.jpg,1,0,1,clear,city street,night
-cb04fee6-a44df902.jpg,1,0,0,clear,city street,night
-cb04fee6-d1f397da.jpg,1,0,1,clear,highway,night
-cb4bc75f-f2933f23.jpg,0,0,1,overcast,residential,dawn/dusk
-cb4bfc16-1a262bbd.jpg,0,0,1,clear,city street,daytime
-cb4bfc16-3b250dbf.jpg,0,0,1,clear,residential,daytime
-cb4bfc16-80e9d4a2.jpg,0,0,1,partly cloudy,city street,daytime
-cb4cb2f3-074beab3.jpg,0,0,1,undefined,highway,daytime
-cb4d070c-20a30e53.jpg,0,0,0,clear,city street,night
-cb4e8a30-20f681d7.jpg,1,0,1,clear,city street,night
-cb05eaa9-f2430836.jpg,0,0,1,clear,city street,night
-cb5e9e9c-317f73c1.jpg,0,0,1,partly cloudy,city street,daytime
-cb5fa573-fa7df890.jpg,0,0,1,overcast,city street,daytime
-cb6b0c57-cf1fc33e.jpg,0,0,0,clear,residential,daytime
-cb6c1298-6194924c.jpg,0,0,0,overcast,highway,daytime
-cb6cb98f-2132e482.jpg,0,0,2,clear,city street,night
-cb6e5ba7-91566c19.jpg,0,0,1,overcast,city street,dawn/dusk
-cb6e5ba7-c6b079ba.jpg,0,0,1,overcast,highway,daytime
-cb6e5ba7-d95d09c9.jpg,1,0,1,clear,city street,night
-cb6e675a-510b8a3d.jpg,0,0,1,overcast,city street,daytime
-cb6feb71-4f2031de.jpg,0,0,1,clear,city street,daytime
-cb6feb71-f9d2abd3.jpg,0,0,1,clear,city street,daytime
-cb7bffcf-5e7c5677.jpg,0,0,1,clear,highway,daytime
-cb7bffcf-17c75571.jpg,0,0,1,overcast,highway,daytime
-cb7bffcf-529af552.jpg,0,0,1,clear,city street,daytime
-cb7bffcf-33713cec.jpg,0,0,1,clear,highway,daytime
-cb7c8bb9-bc2d62ba.jpg,0,0,1,undefined,city street,daytime
-cb7d0bb4-915e0029.jpg,0,0,2,clear,city street,daytime
-cb7d1d90-dd5d115f.jpg,0,0,0,overcast,city street,dawn/dusk
-cb7d10b2-547b3de5.jpg,0,0,2,overcast,city street,daytime
-cb7e1adc-415567c3.jpg,0,0,2,snowy,residential,night
-cb7f4d6f-c83c0fea.jpg,0,0,1,overcast,highway,dawn/dusk
-cb8a7be4-fcfd3acb.jpg,1,0,2,clear,city street,night
-cb8b28d3-ab96a5fc.jpg,1,0,0,clear,city street,night
-cb8e570a-7fdaa35c.jpg,1,1,0,snowy,city street,night
-cb9d6047-6b4e5cb8.jpg,0,0,0,clear,city street,night
-cb9d6047-c6a0397c.jpg,0,0,1,clear,city street,night
-cb9df0a6-8dba1a0a.jpg,0,1,0,rainy,city street,night
-cb9ea2ad-72a382b6.jpg,0,0,0,clear,city street,night
-cb9ea2ad-8394a099.jpg,0,0,1,clear,city street,night
-cb13d27e-aed37c4c.jpg,0,0,0,clear,city street,night
-cb14e978-0d45dc28.jpg,0,0,2,clear,city street,night
-cb14e978-6c4d53f3.jpg,1,0,0,clear,city street,night
-cb14e978-9ac7f029.jpg,0,0,0,clear,city street,night
-cb14e978-a5eb5afb.jpg,0,0,1,clear,city street,night
-cb14e978-d76604ee.jpg,0,0,1,clear,city street,night
-cb15c5ae-b7c3e935.jpg,0,0,0,undefined,residential,daytime
-cb15f3ff-e11f8dac.jpg,0,0,0,clear,residential,night
-cb18ff25-8cccd910.jpg,0,0,1,clear,highway,night
-cb19ca00-7cee58db.jpg,0,0,0,clear,highway,night
-cb19ca00-7fe7ed92.jpg,0,0,1,clear,highway,daytime
-cb19ca00-185e1163.jpg,0,0,2,rainy,city street,night
-cb19ca00-06374256.jpg,0,0,1,clear,city street,night
-cb22c820-f094952f.jpg,0,0,1,clear,city street,daytime
-cb25d8ec-1c06a707.jpg,0,0,1,clear,highway,night
-cb25d8ec-e52ef234.jpg,1,0,1,clear,highway,night
-cb25d527-e041ee3a.jpg,0,0,0,clear,city street,dawn/dusk
-cb25fc78-7ac3b863.jpg,0,0,0,clear,city street,dawn/dusk
-cb25fc78-c89840f6.jpg,0,0,0,clear,city street,daytime
-cb27de55-d8c84ee3.jpg,0,0,1,undefined,city street,daytime
-cb30c05c-cdad343b.jpg,1,0,2,clear,city street,night
-cb031b03-0f3ed476.jpg,0,0,2,undefined,city street,daytime
-cb031b03-cc89642d.jpg,0,0,1,clear,city street,daytime
-cb32ab44-2e476a87.jpg,1,0,1,clear,city street,night
-cb32ab44-9feb37f3.jpg,0,0,0,clear,city street,night
-cb32ab44-776b1f34.jpg,1,0,0,clear,residential,night
-cb32ab44-e8b00418.jpg,0,0,1,clear,highway,night
-cb32ab44-f15d148d.jpg,1,0,0,clear,highway,night
-cb32ec15-6e369f96.jpg,0,0,1,overcast,city street,dawn/dusk
-cb35b452-b1c5276b.jpg,0,0,0,clear,highway,night
-cb37bfff-1b87d685.jpg,0,0,0,clear,city street,daytime
-cb38bda4-6b1da930.jpg,0,0,1,clear,parking lot,night
-cb38bda4-26729b52.jpg,0,0,2,overcast,city street,dawn/dusk
-cb39b649-4620ea32.jpg,0,0,1,overcast,city street,daytime
-cb41fd07-83d4ec04.jpg,0,0,1,overcast,city street,daytime
-cb46b1c1-02909ba2.jpg,0,0,0,overcast,city street,daytime
-cb48db12-9ba44a71.jpg,0,0,1,clear,highway,daytime
-cb48db12-12e08c9c.jpg,0,0,2,clear,city street,daytime
-cb52bac5-9b9156c4.jpg,0,0,1,undefined,city street,daytime
-cb55a21f-cea4eb6a.jpg,0,0,1,clear,city street,night
-cb55a21f-dab8ad35.jpg,0,0,1,clear,highway,night
-cb58f48b-957bfd2c.jpg,0,0,0,clear,residential,daytime
-cb61fa6c-04f20136.jpg,0,0,1,clear,residential,daytime
-cb61fa6c-1104f84c.jpg,0,0,1,overcast,city street,daytime
-cb61fa6c-982289be.jpg,0,0,1,undefined,city street,daytime
-cb61fa6c-39085365.jpg,0,0,2,overcast,city street,daytime
-cb063b6c-158d56f6.jpg,0,0,1,clear,highway,daytime
-cb63ddeb-c7aee033.jpg,0,0,1,clear,highway,daytime
-cb67cd3a-48f5f6ee.jpg,0,0,1,clear,city street,daytime
-cb67cd3a-78c878f6.jpg,0,0,0,clear,city street,night
-cb67cd3a-92cfbc6a.jpg,0,0,0,clear,highway,night
-cb67cd3a-cd0234d8.jpg,0,0,1,undefined,city street,daytime
-cb67d80d-05c1518e.jpg,0,0,1,clear,city street,daytime
-cb69c47a-3adb9d19.jpg,0,0,2,rainy,city street,daytime
-cb71fc1a-20d1c0e3.jpg,1,0,0,clear,city street,night
-cb74a88b-0a39afe8.jpg,0,0,0,clear,city street,dawn/dusk
-cb74a88b-35158084.jpg,0,0,0,overcast,city street,daytime
-cb74a88b-cb621c3a.jpg,0,0,1,overcast,city street,dawn/dusk
-cb77a7d0-70e0a6f7.jpg,0,1,1,rainy,city street,night
-cb79e12f-88a7d960.jpg,0,0,0,undefined,residential,daytime
-cb79e12f-e7189051.jpg,0,0,1,undefined,city street,daytime
-cb79e12f-ea8d023b.jpg,0,0,0,partly cloudy,highway,daytime
-cb84e186-902e8c24.jpg,1,1,1,rainy,highway,night
-cb86b1d9-7735472c.jpg,0,0,0,overcast,highway,daytime
-cb91d5a1-0b3d3373.jpg,0,0,0,clear,city street,night
-cb91d5a1-7d332f2e.jpg,0,0,0,clear,highway,night
-cb91d5a1-018bc367.jpg,0,0,1,clear,highway,night
-cb91d5a1-46a38944.jpg,0,0,0,clear,city street,night
-cb91d5a1-7722b303.jpg,0,0,0,clear,city street,night
-cb91d5a1-579075a1.jpg,0,0,0,clear,city street,night
-cb91d5a1-07962352.jpg,0,0,1,clear,city street,night
-cb91d5a1-b8124b10.jpg,0,0,0,clear,residential,night
-cb94f450-3051698a.jpg,0,0,1,clear,city street,night
-cb97debb-12f48570.jpg,0,0,1,partly cloudy,highway,daytime
-cb104d26-1ba62e91.jpg,0,0,1,clear,city street,night
-cb146e98-0d092e48.jpg,1,0,1,clear,highway,night
-cb146e98-1bb7e9d7.jpg,0,0,1,clear,highway,night
-cb146e98-6ad6acfd.jpg,1,0,0,clear,city street,night
-cb146e98-15a5ad7c.jpg,1,0,0,clear,city street,night
-cb146e98-85b699ad.jpg,0,0,0,clear,city street,night
-cb146e98-21026d6b.jpg,1,0,0,clear,city street,night
-cb146e98-77442601.jpg,1,0,0,clear,highway,night
-cb146e98-a1828594.jpg,1,0,1,clear,city street,night
-cb146e98-becc1d13.jpg,0,0,0,clear,highway,night
-cb146e98-f92b6ddc.jpg,0,0,1,clear,highway,night
-cb253f3b-b54796d8.jpg,0,0,1,clear,residential,night
-cb0287d1-207cdf5c.jpg,0,0,1,clear,highway,night
-cb0287d1-622df962.jpg,0,0,2,rainy,highway,night
-cb319c00-9206979b.jpg,0,0,1,clear,highway,daytime
-cb337f2b-3629c65f.jpg,0,0,1,overcast,highway,daytime
-cb0368de-db7b4f2d.jpg,0,0,1,clear,residential,daytime
-cb407ea1-c710bb54.jpg,0,0,1,overcast,residential,daytime
-cb408cd1-4e5d1a93.jpg,0,1,1,overcast,city street,daytime
-cb408cd1-03899cff.jpg,0,0,1,rainy,residential,daytime
-cb408cd1-7361838c.jpg,0,0,1,rainy,city street,daytime
-cb466c0c-cdcf7586.jpg,0,0,1,clear,city street,dawn/dusk
-cb485e40-041c5db0.jpg,0,0,1,clear,highway,daytime
-cb516cda-08e840e0.jpg,0,0,2,snowy,city street,daytime
-cb540cff-6928e2e0.jpg,0,1,0,overcast,city street,daytime
-cb552c07-1e453e94.jpg,0,0,2,undefined,city street,daytime
-cb552c07-d96caa28.jpg,0,0,2,undefined,highway,daytime
-cb553f74-87d7cd19.jpg,0,0,1,clear,residential,daytime
-cb553f74-a0bbb89a.jpg,0,0,2,undefined,city street,daytime
-cb555b17-2f3df80a.jpg,0,0,1,clear,highway,night
-cb555b17-5fce2544.jpg,0,0,0,clear,city street,night
-cb555b17-47b860f6.jpg,0,0,1,clear,city street,night
-cb555b17-0341b125.jpg,0,0,0,clear,city street,night
-cb555b17-ac237da8.jpg,0,0,1,clear,city street,night
-cb573aeb-d82b66c3.jpg,1,0,0,clear,city street,night
-cb634c79-adae95f2.jpg,0,0,1,clear,city street,daytime
-cb0676bb-98e0e60f.jpg,0,0,0,rainy,residential,night
-cb0676bb-988d6eb5.jpg,0,0,0,clear,residential,night
-cb0676bb-a07ba110.jpg,0,0,0,clear,highway,night
-cb0676bb-b1b073e4.jpg,0,0,0,clear,residential,night
-cb0676bb-c22aecec.jpg,0,0,1,clear,city street,night
-cb0676bb-c375cf69.jpg,0,0,0,clear,city street,night
-cb677fcb-77f2ff92.jpg,0,0,0,clear,highway,night
-cb727cf8-e43b8bcf.jpg,1,0,1,clear,city street,night
-cb770f78-459a3559.jpg,0,0,1,clear,city street,daytime
-cb770f78-01076f85.jpg,0,0,1,clear,city street,daytime
-cb770f78-ae09920d.jpg,0,0,1,clear,city street,daytime
-cb788d32-fcf4487a.jpg,0,0,1,overcast,city street,daytime
-cb816c62-b932176d.jpg,0,0,1,partly cloudy,city street,daytime
-cb816c62-cb006e29.jpg,0,0,0,clear,city street,night
-cb832b24-ee7f9b66.jpg,0,0,1,partly cloudy,city street,dawn/dusk
-cb972e4f-ec73b37b.jpg,0,0,1,clear,highway,night
-cb995f92-89756142.jpg,0,0,0,snowy,city street,night
-cb1294f1-3faf01b9.jpg,0,0,1,clear,city street,daytime
-cb1294f1-fba3ff7d.jpg,0,0,2,undefined,city street,daytime
-cb2382b5-9cc2c304.jpg,0,0,1,partly cloudy,parking lot,daytime
-cb2512c2-c2d1b0f2.jpg,0,0,1,clear,highway,night
-cb3300b5-269086e6.jpg,0,1,1,rainy,highway,daytime
-cb3397f4-ca73c4b8.jpg,0,1,1,rainy,city street,night
-cb3598eb-f9977424.jpg,1,1,1,rainy,city street,night
-cb3689c8-60e38678.jpg,0,0,0,overcast,city street,daytime
-cb4614bc-47577a9a.jpg,0,0,1,overcast,city street,daytime
-cb4706a3-2d18ef4d.jpg,0,0,1,clear,city street,night
-cb4706a3-42990a31.jpg,0,0,1,clear,city street,night
-cb5903ec-ab4d55f9.jpg,0,0,1,undefined,tunnel,daytime
-cb6967ef-09c66b9b.jpg,0,0,1,clear,highway,night
-cb7432e5-5f52a54b.jpg,0,0,1,clear,highway,daytime
-cb7432e5-3350e576.jpg,0,0,1,clear,highway,daytime
-cb07632a-8c57bef7.jpg,0,0,1,snowy,city street,daytime
-cb8887dd-3d1b43e2.jpg,0,1,0,rainy,city street,night
-cb16478b-2c1ed614.jpg,0,0,1,overcast,highway,daytime
-cb16478b-17e02968.jpg,0,0,2,clear,city street,daytime
-cb16478b-def793e8.jpg,0,0,1,clear,city street,daytime
-cb020379-3477f3c4.jpg,1,0,0,clear,highway,night
-cb25355a-3ac85fc1.jpg,0,0,1,clear,highway,daytime
-cb078020-5bfd7122.jpg,0,0,1,partly cloudy,city street,daytime
-cb078020-ab5a89f2.jpg,0,0,1,clear,highway,daytime
-cb078020-b82ebd77.jpg,0,0,1,undefined,city street,daytime
-cb191189-dcfc5543.jpg,0,0,0,rainy,city street,night
-cb325137-259f2a29.jpg,0,0,1,clear,city street,night
-cb356543-f4ae1553.jpg,0,0,0,snowy,residential,daytime
-cb376872-5d6ac015.jpg,0,0,1,partly cloudy,highway,daytime
-cb376872-948ed402.jpg,0,0,1,partly cloudy,highway,daytime
-cb376872-210383e3.jpg,0,1,1,rainy,highway,daytime
-cb421747-f06aec7d.jpg,0,0,2,clear,highway,daytime
-cb547251-ce16ab57.jpg,0,0,1,overcast,residential,daytime
-cb606577-33698fb5.jpg,0,0,1,clear,city street,night
-cb626215-835f3c31.jpg,0,0,1,overcast,highway,daytime
-cb661448-1dde14e9.jpg,0,0,1,clear,residential,night
-cb694310-19547889.jpg,0,0,1,partly cloudy,highway,daytime
-cb713460-c5eecc9d.jpg,0,0,1,clear,city street,night
-cb744436-af4453b8.jpg,0,0,1,undefined,city street,daytime
-cb744436-fc001c01.jpg,0,0,1,clear,city street,daytime
-cb762503-30f8ed32.jpg,1,0,1,clear,city street,night
-cb762503-487cd3ac.jpg,1,0,1,clear,highway,night
-cb762503-923d5224.jpg,1,0,1,clear,city street,night
-cb762503-cc174e8a.jpg,1,0,1,clear,city street,night
-cb842524-5b6a3672.jpg,0,0,1,clear,highway,night
-cb843184-86feb9c0.jpg,0,0,1,clear,residential,night
-cb843184-33700679.jpg,0,0,1,snowy,city street,night
-cb871759-8b3a0c24.jpg,0,0,1,partly cloudy,city street,daytime
-cb879996-ecab29b0.jpg,0,0,1,undefined,city street,daytime
-cb967671-f9e60428.jpg,0,0,1,snowy,city street,daytime
-cba8da87-947f586b.jpg,0,1,1,rainy,city street,dawn/dusk
-cba11a1c-457143bc.jpg,0,0,1,snowy,residential,night
-cba18f1d-005fc338.jpg,0,1,1,rainy,city street,daytime
-cba26bf2-46a33c6e.jpg,0,0,1,clear,highway,daytime
-cba48b33-96ecec2f.jpg,0,0,1,undefined,city street,daytime
-cba301b8-6b51c394.jpg,0,0,2,clear,highway,daytime
-cba301b8-7ef6e928.jpg,0,0,0,clear,highway,daytime
-cba301b8-61b26b7d.jpg,0,0,1,clear,city street,daytime
-cba301b8-469303a6.jpg,0,0,0,clear,city street,daytime
-cba301b8-d0803b49.jpg,0,0,1,clear,highway,daytime
-cba466d2-8a0e070c.jpg,0,0,1,clear,highway,dawn/dusk
-cba826ea-b70f5b1f.jpg,0,0,1,undefined,city street,daytime
-cba879a8-03886aa0.jpg,0,0,1,undefined,city street,daytime
-cba879a8-65058691.jpg,0,0,1,clear,city street,daytime
-cba2440a-3fbdb69b.jpg,0,0,1,clear,highway,night
-cba2440a-ac4e48fe.jpg,1,0,1,clear,city street,night
-cba56421-88f70290.jpg,0,0,0,overcast,residential,daytime
-cba59791-174972fb.jpg,0,0,0,clear,city street,night
-cba70226-3b47f789.jpg,0,0,1,clear,city street,daytime
-cba98987-24ca8e06.jpg,0,0,1,undefined,city street,daytime
-cba98987-b06a3b32.jpg,0,0,1,overcast,city street,daytime
-cba98987-f406c7d3.jpg,0,0,1,overcast,city street,daytime
-cba98987-f4093483.jpg,0,0,0,overcast,residential,daytime
-cbab60f0-6b9c8d54.jpg,0,0,1,clear,highway,daytime
-cbab4776-c4ec1162.jpg,0,0,1,clear,city street,night
-cbabff6d-d41ce15f.jpg,1,0,1,clear,city street,night
-cbadade4-3adcf244.jpg,0,0,1,overcast,city street,daytime
-cbaeb831-758b1ee1.jpg,1,0,1,clear,city street,night
-cbb0df9f-f3f3a196.jpg,0,0,0,overcast,city street,daytime
-cbb0e311-1082d7ff.jpg,1,0,1,rainy,highway,night
-cbb0e311-a9afde90.jpg,0,0,1,clear,city street,night
-cbb1b7fc-b495e982.jpg,1,0,1,clear,city street,night
-cbb3f956-b6ce18c4.jpg,0,0,0,clear,residential,daytime
-cbb8ecf4-caf30270.jpg,0,0,0,clear,highway,daytime
-cbb8ecf4-e17d3540.jpg,1,0,2,undefined,city street,daytime
-cbb8ecf4-ec82c201.jpg,0,0,0,clear,city street,dawn/dusk
-cbb9a48e-4795fc52.jpg,0,0,1,snowy,highway,daytime
-cbb9a48e-f2e4cab3.jpg,0,0,1,snowy,highway,daytime
-cbb25aa5-0b3024d3.jpg,0,0,0,rainy,highway,night
-cbb2743e-776cc8bb.jpg,0,0,1,clear,city street,dawn/dusk
-cbb5610a-80e61a98.jpg,0,0,0,clear,city street,night
-cbbc1915-6292d4cb.jpg,0,0,1,clear,city street,daytime
-cbbd082e-a077f7ab.jpg,0,0,2,undefined,highway,daytime
-cbbfa4d0-9c3f6e67.jpg,0,0,1,clear,highway,daytime
-cbbfa4d0-fe444e30.jpg,0,0,2,clear,residential,daytime
-cbbff8e6-3dc736a7.jpg,0,0,1,partly cloudy,city street,daytime
-cbc00a1f-35b56529.jpg,0,0,1,undefined,city street,daytime
-cbc7cfb1-27c67277.jpg,0,0,1,overcast,city street,daytime
-cbc51f7e-e1e43e79.jpg,0,0,1,clear,highway,night
-cbc58d3f-7dde1998.jpg,0,0,2,snowy,city street,daytime
-cbc58d3f-9ed3a1eb.jpg,0,0,2,snowy,city street,daytime
-cbc58d3f-244e1fa0.jpg,0,0,0,snowy,residential,night
-cbc58d3f-47326099.jpg,0,0,1,snowy,city street,night
-cbc90e87-b7f3f83a.jpg,0,0,1,clear,highway,night
-cbc633dd-cffccd29.jpg,0,0,1,clear,city street,night
-cbc33872-14bdf47a.jpg,0,0,1,clear,highway,night
-cbc67194-07434e2d.jpg,0,0,0,clear,city street,night
-cbca4ff7-a63a4afe.jpg,0,0,0,clear,highway,night
-cbcb3dbf-81834085.jpg,0,0,1,undefined,city street,daytime
-cbcb3dbf-f40f69e4.jpg,0,0,1,clear,city street,night
-cbcb534f-16fa6d31.jpg,0,0,1,clear,city street,night
-cbcd6f5f-564c1627.jpg,0,0,0,clear,residential,night
-cbcef3a5-4666d12d.jpg,1,0,1,clear,city street,night
-cbcf2c53-d73c1732.jpg,0,0,0,clear,city street,night
-cbd23abd-3205ea9e.jpg,0,0,1,overcast,city street,daytime
-cbd35eab-7eacd236.jpg,0,0,1,overcast,highway,daytime
-cbd35eab-62b85b18.jpg,0,0,0,undefined,residential,daytime
-cbd64c44-cdb37ccb.jpg,0,0,0,undefined,residential,daytime
-cbd695ed-0cc7bee1.jpg,0,0,1,undefined,city street,daytime
-cbd695ed-76f1f655.jpg,0,0,1,rainy,city street,daytime
-cbd12311-68a134d8.jpg,0,0,1,clear,residential,daytime
-cbd12311-081bd652.jpg,0,0,1,clear,city street,daytime
-cbd12311-435e80c9.jpg,0,0,1,clear,highway,daytime
-cbdc7b52-0b848407.jpg,0,0,1,overcast,city street,daytime
-cbdc7b52-013f6dd0.jpg,0,0,1,clear,city street,night
-cbdc7b52-87deb9ef.jpg,0,0,0,clear,city street,night
-cbdc7b52-739066ba.jpg,0,0,1,undefined,city street,daytime
-cbdc7b52-f6a10140.jpg,0,0,1,partly cloudy,city street,daytime
-cbe1a98e-59c820bc.jpg,0,0,1,undefined,highway,daytime
-cbe03e14-94acd2c5.jpg,0,0,1,overcast,highway,daytime
-cbe03e14-10934c59.jpg,0,0,1,overcast,highway,daytime
-cbe5d542-c2f39240.jpg,0,0,1,clear,city street,daytime
-cbe5d542-d6126a85.jpg,0,0,2,undefined,city street,daytime
-cbe7b91f-df03c989.jpg,0,0,0,clear,city street,night
-cbe7b91f-fd443161.jpg,0,0,1,clear,highway,night
-cbe8b297-48e4c903.jpg,0,0,1,partly cloudy,city street,daytime
-cbe8cc9b-a5f6ec17.jpg,0,0,1,clear,city street,daytime
-cbe45d27-c13af258.jpg,0,0,1,overcast,city street,dawn/dusk
-cbe45fe8-aac5a5b2.jpg,0,0,1,snowy,highway,daytime
-cbe73da0-11c8b8bb.jpg,0,0,0,clear,city street,dawn/dusk
-cbe73da0-461983da.jpg,0,0,1,clear,highway,daytime
-cbe92e30-aabe2055.jpg,0,0,1,partly cloudy,highway,dawn/dusk
-cbe92e30-aeb0f552.jpg,0,0,1,partly cloudy,highway,daytime
-cbe712c2-553f3086.jpg,0,0,1,clear,city street,daytime
-cbe712c2-958c0873.jpg,0,0,1,overcast,highway,daytime
-cbe712c2-48280ae0.jpg,0,0,1,clear,city street,daytime
-cbe712c2-e12e21b5.jpg,0,0,1,clear,residential,daytime
-cbe3299e-1d927aac.jpg,0,0,1,undefined,city street,daytime
-cbe7477d-e5bf341e.jpg,0,0,1,clear,city street,night
-cbe50013-8a41f894.jpg,0,0,1,overcast,city street,daytime
-cbe50013-a8851836.jpg,0,0,1,undefined,highway,daytime
-cbea6bbf-0cbcfd64.jpg,0,0,2,undefined,city street,daytime
-cbed3fd1-314723c8.jpg,0,0,1,clear,city street,night
-cbedb6a7-449bf85d.jpg,0,0,1,clear,highway,daytime
-cbee1f79-b5b7cfb8.jpg,0,0,1,clear,city street,daytime
-cbee3cf3-347250e8.jpg,0,0,1,clear,city street,night
-cbee9a97-482294d7.jpg,0,0,1,clear,city street,daytime
-cbf0f27b-61947a8c.jpg,1,1,1,snowy,city street,night
-cbf1c1b8-90222583.jpg,1,1,0,rainy,highway,dawn/dusk
-cbf2d780-1c82b953.jpg,0,0,1,overcast,highway,dawn/dusk
-cbf2d780-2cc23940.jpg,0,0,0,clear,city street,daytime
-cbf2d780-5f5946f8.jpg,0,0,1,clear,city street,daytime
-cbf2d780-372a5267.jpg,0,0,1,clear,city street,daytime
-cbf2d780-06947287.jpg,0,0,1,overcast,city street,daytime
-cbf2d780-a6d78b98.jpg,0,0,1,clear,residential,daytime
-cbf2d780-a086e582.jpg,0,0,1,overcast,city street,daytime
-cbf16d34-693e440c.jpg,0,0,2,rainy,city street,daytime
-cbf97c6e-e7ccab29.jpg,0,0,1,clear,city street,daytime
-cbf622f5-06c371dd.jpg,0,0,2,partly cloudy,city street,daytime
-cbf622f5-48bf3236.jpg,0,0,1,undefined,highway,daytime
-cbf622f5-96a1e93f.jpg,0,0,2,partly cloudy,city street,daytime
-cbf622f5-925372ec.jpg,0,0,1,partly cloudy,city street,daytime
-cbf622f5-a1b27f78.jpg,0,0,1,undefined,city street,daytime
-cbf622f5-da7369bc.jpg,0,0,0,clear,city street,daytime
-cbf68658-8001f6d9.jpg,0,0,0,overcast,city street,daytime
-cbf84011-2b35cf8b.jpg,0,0,2,undefined,city street,daytime
-cbfa24be-e8f8ce38.jpg,0,0,1,overcast,highway,daytime
-cbfc4658-7e8729f0.jpg,0,0,1,clear,city street,night
-cbfc4658-8a2b148f.jpg,0,0,1,overcast,city street,daytime
-cbfc4658-50b26510.jpg,0,0,0,clear,residential,night
-cbfc4658-93e25fbf.jpg,0,0,0,overcast,city street,daytime
-cbfce968-1a476840.jpg,0,0,1,undefined,city street,daytime
-cbfd3c55-9e5eab86.jpg,0,0,1,clear,highway,night
-cc00fe72-1938bf2e.jpg,0,0,1,undefined,city street,daytime
-cc0bba5a-303ff57b.jpg,0,0,0,clear,residential,daytime
-cc0be15b-b68b23c2.jpg,0,0,1,overcast,residential,daytime
-cc0be15b-b599ce4f.jpg,0,0,1,overcast,city street,daytime
-cc0d756e-1e5c9739.jpg,0,0,2,undefined,city street,daytime
-cc0e3c45-5fb0e452.jpg,0,0,1,clear,city street,night
-cc0e3c45-8d7ad764.jpg,0,0,1,overcast,highway,dawn/dusk
-cc0e3c45-23803f57.jpg,0,0,2,undefined,city street,daytime
-cc0e3c45-72198e25.jpg,0,0,1,partly cloudy,highway,daytime
-cc0e38f5-72db5b25.jpg,0,0,1,undefined,city street,daytime
-cc0e87d8-915720ff.jpg,0,0,1,clear,highway,night
-cc0f4fd6-3ca94fe9.jpg,0,0,0,clear,highway,night
-cc0ffeed-4110e03a.jpg,0,0,0,clear,residential,daytime
-cc0ffeed-291914b0.jpg,0,0,1,snowy,city street,daytime
-cc1c40bb-d0ce34c5.jpg,0,0,1,snowy,city street,daytime
-cc1cdb32-25fde05a.jpg,0,0,1,undefined,city street,daytime
-cc1d043b-9c028836.jpg,0,0,1,partly cloudy,city street,dawn/dusk
-cc1d3666-fe5994ae.jpg,0,0,1,clear,highway,night
-cc1e3ecf-ac0094c9.jpg,0,0,1,clear,city street,night
-cc1ea55c-ae732ba3.jpg,0,0,1,clear,residential,night
-cc1ea55c-e6f17aa6.jpg,0,0,1,clear,city street,night
-cc1ea55c-f6bbdc7c.jpg,0,0,1,clear,city street,night
-cc1faca6-8edbad92.jpg,1,0,1,clear,highway,night
-cc1faca6-f737ad12.jpg,0,0,1,undefined,city street,dawn/dusk
-cc2d6685-7648e9cc.jpg,0,0,1,overcast,city street,daytime
-cc2e048a-f0318ec1.jpg,0,0,0,clear,city street,night
-cc2f3c35-9366a951.jpg,0,0,1,clear,city street,night
-cc2f94ff-d9c0355d.jpg,0,0,1,overcast,city street,daytime
-cc2fa3e3-3109e987.jpg,0,0,1,clear,residential,daytime
-cc2fa3e3-f8d2cf56.jpg,0,0,1,clear,city street,daytime
-cc2faec4-66fb5691.jpg,1,0,1,partly cloudy,city street,dawn/dusk
-cc2faec4-75465a1c.jpg,1,0,1,clear,highway,dawn/dusk
-cc2fed05-213cc601.jpg,1,0,0,clear,city street,night
-cc2fed05-dc603679.jpg,0,0,0,snowy,city street,night
-cc3bae6a-e9585ae9.jpg,0,0,0,snowy,residential,daytime
-cc3bb4ea-1a99981a.jpg,0,0,0,clear,residential,night
-cc3bb4ea-1cb8b75a.jpg,0,0,1,snowy,city street,night
-cc3bb4ea-7a91107d.jpg,0,0,2,clear,city street,night
-cc3bb4ea-35dcc154.jpg,1,0,0,clear,city street,night
-cc3bb4ea-ae675052.jpg,0,0,0,clear,city street,night
-cc3bb4ea-ba787cf3.jpg,0,0,0,clear,highway,night
-cc3bb4ea-e408aeea.jpg,0,0,2,snowy,city street,night
-cc3d6fb3-431c8af3.jpg,0,0,0,undefined,city street,daytime
-cc3d9a74-332c6b55.jpg,0,0,1,clear,highway,daytime
-cc3d9a74-642b38ec.jpg,0,0,1,clear,city street,daytime
-cc3d9a74-a83db7f7.jpg,0,0,1,clear,city street,daytime
-cc3f1794-4ce46eed.jpg,0,0,1,overcast,city street,daytime
-cc3f1794-4ec2fd26.jpg,0,0,1,undefined,city street,daytime
-cc3f1794-19c031cb.jpg,0,0,1,overcast,city street,daytime
-cc3f1794-11266fc3.jpg,0,0,0,overcast,parking lot,daytime
-cc3f1794-c8f74860.jpg,0,0,1,undefined,city street,daytime
-cc3f1794-f4868199.jpg,0,0,1,undefined,city street,daytime
-cc4b4f0d-52b86754.jpg,0,0,2,clear,highway,night
-cc4b4f0d-c99a86eb.jpg,0,0,1,clear,city street,night
-cc4be2ad-aeba6b9a.jpg,0,0,1,clear,city street,dawn/dusk
-cc4be2ad-d203081d.jpg,0,0,0,clear,city street,dawn/dusk
-cc4be2ad-e9088c2f.jpg,0,0,1,undefined,residential,daytime
-cc4d46b3-254c45bb.jpg,0,0,1,clear,city street,daytime
-cc4d46b3-c3fd6c9a.jpg,0,0,1,clear,highway,daytime
-cc4d418c-6070d7f8.jpg,0,0,1,clear,city street,daytime
-cc4d418c-d4f1e754.jpg,0,0,0,clear,highway,daytime
-cc4dbb2d-b515e77d.jpg,0,0,1,partly cloudy,highway,daytime
-cc4f9db8-0a70a66e.jpg,1,0,1,clear,city street,night
-cc4f30bc-03fb64ac.jpg,1,1,1,rainy,city street,night
-cc4f41af-2a4b5403.jpg,0,0,1,clear,highway,night
-cc4f1367-2282746e.jpg,0,0,1,clear,highway,night
-cc5a9059-19f3c4b1.jpg,1,1,1,rainy,highway,night
-cc5a9059-b5e4a048.jpg,0,0,1,snowy,highway,night
-cc5b4bad-03534d70.jpg,0,0,1,clear,highway,night
-cc5cd07b-1fb23b2e.jpg,0,0,1,clear,city street,daytime
-cc5ebf55-7c5fc7e5.jpg,0,0,1,clear,city street,daytime
-cc5ebf55-16173e3a.jpg,0,0,1,clear,highway,daytime
-cc5ebf55-ae19944e.jpg,0,0,1,clear,city street,daytime
-cc5efb6b-928ecd99.jpg,0,0,1,snowy,city street,daytime
-cc5efb6b-d84de28e.jpg,0,0,1,snowy,city street,daytime
-cc5f60e4-104ec4fa.jpg,0,0,0,clear,undefined,night
-cc5fb87e-22bcbb3b.jpg,0,0,1,clear,city street,night
-cc5fb87e-59402df7.jpg,0,0,1,clear,city street,night
-cc6aa586-a2f572ff.jpg,0,0,1,clear,highway,daytime
-cc6aa586-bbb2192a.jpg,0,0,1,clear,city street,daytime
-cc6aa586-d96a6c8d.jpg,0,0,1,clear,highway,daytime
-cc6c2e77-23d39545.jpg,0,0,1,overcast,highway,daytime
-cc6ce470-fbe4fa91.jpg,0,0,0,clear,city street,night
-cc6d6caa-053d87dc.jpg,0,0,0,partly cloudy,city street,daytime
-cc6ddc67-2dd13c80.jpg,0,0,1,clear,city street,night
-cc6ddc67-bbac8843.jpg,0,0,0,clear,city street,night
-cc6ed4c9-ffb94309.jpg,1,0,2,clear,city street,night
-cc7b0a4d-e8dfd84a.jpg,0,0,2,rainy,highway,daytime
-cc7fb6f4-239c72ea.jpg,0,0,1,clear,highway,daytime
-cc7ffc6e-44a5025e.jpg,0,0,2,clear,highway,daytime
-cc7ffc6e-f529b6b6.jpg,0,0,1,undefined,city street,daytime
-cc8a7401-5a949d74.jpg,0,0,2,clear,city street,daytime
-cc8a7401-bfe6868e.jpg,0,0,1,clear,city street,daytime
-cc8b48fe-c926e3c2.jpg,0,0,0,clear,city street,night
-cc8c34bc-16142937.jpg,0,0,1,clear,city street,daytime
-cc8c34bc-fbe81d94.jpg,0,0,0,clear,city street,daytime
-cc8c89a9-3ce5a26a.jpg,0,0,0,clear,city street,dawn/dusk
-cc8c89a9-58404e79.jpg,0,0,0,clear,residential,daytime
-cc8c89a9-df9712d8.jpg,0,0,1,clear,city street,daytime
-cc8ca86f-59a7afb1.jpg,0,0,1,clear,city street,night
-cc8cbbe1-a8cc3a71.jpg,0,0,1,overcast,city street,daytime
-cc8d5a50-92a79d46.jpg,0,0,1,undefined,residential,daytime
-cc8dc586-d68d3111.jpg,0,0,1,clear,city street,night
-cc8e6958-31d716a7.jpg,0,0,1,clear,residential,daytime
-cc8ec5a4-ef3927b2.jpg,0,0,1,partly cloudy,city street,daytime
-cc8f48fd-58f196f5.jpg,0,0,1,undefined,city street,daytime
-cc8f48fd-bf92d5f8.jpg,0,0,2,partly cloudy,city street,daytime
-cc09dc1a-d106929d.jpg,1,0,1,undefined,highway,daytime
-cc9b85b6-23139590.jpg,0,0,1,undefined,city street,daytime
-cc9cb3d5-1c1cdf87.jpg,0,0,2,undefined,city street,daytime
-cc9d2250-aa5268b6.jpg,0,0,1,clear,city street,daytime
-cc9d2250-d877b975.jpg,0,0,2,undefined,city street,daytime
-cc9d2250-dd836442.jpg,0,0,2,undefined,city street,daytime
-cc9d2250-fba65525.jpg,0,0,1,partly cloudy,highway,daytime
-cc10f864-08d74bc0.jpg,0,0,0,clear,highway,night
-cc12c648-50282a58.jpg,0,0,0,snowy,city street,night
-cc12dd7f-15268c57.jpg,0,0,0,clear,residential,dawn/dusk
-cc14b1c2-30c89f92.jpg,0,0,2,undefined,city street,night
-cc14b1c2-6748454d.jpg,0,0,0,undefined,residential,daytime
-cc17fb55-0d4b4694.jpg,0,0,1,clear,city street,daytime
-cc21dbd8-bdc6e678.jpg,0,0,1,clear,city street,daytime
-cc24b908-5ec35400.jpg,0,0,1,clear,city street,night
-cc24b908-8b85acdc.jpg,0,0,1,clear,city street,night
-cc24b908-71ca827f.jpg,0,0,0,clear,residential,night
-cc24b908-463a7f6f.jpg,0,0,0,clear,residential,night
-cc24b908-818acd24.jpg,1,0,0,clear,city street,night
-cc24b908-85865c46.jpg,0,0,0,clear,residential,night
-cc24b908-97885fbf.jpg,0,0,0,clear,residential,night
-cc24b908-8858731d.jpg,1,0,1,rainy,highway,night
-cc24b908-a7e58e8e.jpg,0,0,1,clear,city street,night
-cc24b908-e4aab9d5.jpg,0,0,1,clear,highway,night
-cc24b908-eb6a3282.jpg,0,0,0,rainy,residential,night
-cc24b908-ec720dca.jpg,0,0,0,clear,residential,night
-cc24b908-eee7dda1.jpg,0,0,0,clear,residential,night
-cc26dee3-78664fbd.jpg,0,0,1,undefined,city street,daytime
-cc26dee3-c063b9cc.jpg,0,0,1,clear,city street,daytime
-cc27a12a-692adf76.jpg,0,0,1,clear,highway,daytime
-cc27a12a-28769998.jpg,0,0,1,clear,highway,daytime
-cc27db0f-c30bd65c.jpg,0,0,1,partly cloudy,residential,daytime
-cc32aa15-894fde3b.jpg,0,0,0,clear,city street,night
-cc32aa15-c9fc611a.jpg,0,0,0,clear,city street,night
-cc33fde0-04ef8142.jpg,0,0,1,clear,city street,night
-cc33fde0-23ac8ded.jpg,0,0,1,clear,highway,night
-cc33fde0-38caf4b9.jpg,0,0,0,clear,city street,night
-cc33fde0-093a1899.jpg,0,0,0,clear,city street,night
-cc33fde0-be19b701.jpg,0,0,1,clear,city street,night
-cc33fde0-d9ec566f.jpg,0,0,1,overcast,highway,daytime
-cc33fde0-ffa8ba7d.jpg,0,0,1,clear,highway,night
-cc34a2b1-2a2d4b50.jpg,0,0,0,clear,highway,night
-cc34a2b1-cf58e5ad.jpg,0,0,1,clear,highway,night
-cc34dfb8-99a9b9c4.jpg,0,0,1,clear,city street,night
-cc47d208-fd47ee1b.jpg,0,0,1,clear,city street,daytime
-cc48d81f-f56870dd.jpg,0,1,1,rainy,city street,daytime
-cc54e2ee-7b38aef6.jpg,0,0,0,clear,highway,night
-cc54e2ee-61c5c680.jpg,0,0,1,clear,city street,night
-cc54e2ee-c9c737b5.jpg,0,0,0,clear,residential,night
-cc54e2ee-feffc8ee.jpg,0,0,0,clear,city street,night
-cc55cc0b-e3bd032c.jpg,0,0,0,clear,city street,daytime
-cc57b79e-613f2fab.jpg,0,0,1,overcast,city street,daytime
-cc58b45f-04590ff8.jpg,0,0,1,clear,highway,daytime
-cc58cb36-add14e69.jpg,0,0,1,overcast,highway,daytime
-cc59b570-fa6f8d84.jpg,0,0,1,overcast,highway,daytime
-cc59e8f0-048cf243.jpg,0,0,1,clear,city street,daytime
-cc60cabd-14f662a1.jpg,0,0,1,clear,highway,daytime
-cc70e239-27dc9f54.jpg,0,0,2,clear,highway,daytime
-cc71e83a-8c02c549.jpg,0,0,1,partly cloudy,highway,daytime
-cc73b69d-b31c28dc.jpg,0,0,1,partly cloudy,highway,daytime
-cc74ba60-c11c4ada.jpg,0,0,1,undefined,city street,daytime
-cc74d7f5-09a31f94.jpg,0,0,0,snowy,highway,daytime
-cc74d7f5-d4159d3b.jpg,0,0,1,snowy,highway,daytime
-cc74e071-e232182f.jpg,0,0,2,overcast,city street,dawn/dusk
-cc77e273-54107a94.jpg,0,0,1,clear,city street,daytime
-cc79b8aa-8c3854fa.jpg,0,0,0,clear,city street,night
-cc79b8aa-106e8ded.jpg,0,0,1,clear,city street,night
-cc79b8aa-a7414848.jpg,0,0,1,clear,city street,night
-cc79b8aa-ad37895b.jpg,0,0,1,clear,city street,night
-cc79b8aa-fd81fd8f.jpg,0,0,1,clear,highway,night
-cc79bd30-027662c7.jpg,0,0,1,overcast,city street,daytime
-cc87a3d2-8fad3530.jpg,0,0,2,clear,city street,night
-cc89ab6f-f9ae03a5.jpg,0,0,1,overcast,residential,daytime
-cc89dfe4-257a237d.jpg,0,0,1,partly cloudy,highway,night
-cc090db9-d319cbb3.jpg,0,0,1,clear,highway,daytime
-cc94e589-66a7b77b.jpg,0,0,0,rainy,city street,daytime
-cc94e589-72ae579f.jpg,0,0,0,undefined,residential,daytime
-cc94e589-96be5e99.jpg,0,0,1,rainy,residential,daytime
-cc94e589-256d2c8e.jpg,0,0,1,rainy,city street,daytime
-cc94e589-765ece7e.jpg,0,0,1,rainy,city street,daytime
-cc94e589-8344f31e.jpg,0,0,0,rainy,residential,daytime
-cc94e589-a2f1083d.jpg,0,0,1,rainy,city street,daytime
-cc95d29e-265c7365.jpg,0,0,1,clear,highway,night
-cc97f4b5-1168ca4d.jpg,0,0,1,clear,highway,daytime
-cc97fab0-a355c8b2.jpg,0,0,0,clear,highway,daytime
-cc97fab0-f9a08d07.jpg,0,0,1,clear,highway,daytime
-cc99ac9c-f1e964b0.jpg,1,0,1,rainy,city street,night
-cc128cf6-6cf3c17c.jpg,0,0,0,rainy,highway,night
-cc128cf6-75b8eb97.jpg,0,0,0,rainy,highway,night
-cc143f30-8124f9ce.jpg,0,0,1,clear,city street,daytime
-cc143f30-b3d2cf65.jpg,0,0,2,clear,city street,daytime
-cc154f56-27f7d6f2.jpg,0,0,1,clear,highway,night
-cc162a30-0c73ff6a.jpg,0,0,1,clear,residential,daytime
-cc223b4a-5c5245c4.jpg,0,0,2,undefined,city street,daytime
-cc223b4a-106da3a1.jpg,0,0,1,overcast,city street,daytime
-cc223b4a-cef96d47.jpg,0,0,1,undefined,city street,daytime
-cc236fd9-9f8f27dd.jpg,0,0,1,clear,highway,night
-cc236fd9-90d374e4.jpg,0,0,1,clear,highway,night
-cc250c68-3000506f.jpg,0,2,0,snowy,residential,night
-cc262c76-11c3c6b4.jpg,0,0,1,clear,city street,night
-cc289a8f-2bfa8b70.jpg,0,0,1,clear,city street,dawn/dusk
-cc331f16-9d87594e.jpg,0,0,1,overcast,city street,daytime
-cc331f16-32f04288.jpg,0,0,1,overcast,city street,daytime
-cc388c9e-2a036fae.jpg,0,0,2,clear,city street,night
-cc388c9e-b41eace6.jpg,0,0,2,clear,city street,night
-cc420b48-6d2c57c9.jpg,0,0,0,clear,residential,night
-cc420b48-783d8d83.jpg,0,0,0,clear,residential,dawn/dusk
-cc420b48-2516d9c7.jpg,0,0,0,clear,city street,night
-cc420b48-05897b20.jpg,0,0,1,clear,city street,night
-cc420b48-a89b074c.jpg,0,0,1,clear,city street,night
-cc420b48-cefb43bf.jpg,0,0,0,clear,highway,night
-cc479b69-37d1a516.jpg,0,0,1,clear,city street,daytime
-cc524f08-88e99cc8.jpg,0,0,1,partly cloudy,city street,daytime
-cc524f08-981f4d50.jpg,0,0,1,partly cloudy,highway,daytime
-cc564bbe-6ceefab5.jpg,0,0,1,clear,highway,night
-cc564bbe-444390ff.jpg,0,0,1,clear,highway,night
-cc569fa0-5fa15756.jpg,0,0,1,clear,city street,night
-cc596e29-57af6633.jpg,0,0,1,undefined,city street,dawn/dusk
-cc599c2f-631d986b.jpg,0,0,1,overcast,city street,daytime
-cc599c2f-daa3587e.jpg,0,0,0,clear,highway,dawn/dusk
-cc599c2f-f05862b7.jpg,0,0,1,partly cloudy,residential,daytime
-cc0635d6-45630353.jpg,0,0,1,clear,city street,night
-cc687f04-e30ea0b9.jpg,0,0,1,clear,city street,daytime
-cc725d1b-8c132d23.jpg,0,0,1,undefined,residential,daytime
-cc725d1b-17871dd6.jpg,0,0,1,clear,highway,daytime
-cc754ceb-fa70fb92.jpg,0,0,1,clear,city street,daytime
-cc780a3c-2e78aee1.jpg,0,0,0,undefined,city street,daytime
-cc788c3e-72fda23c.jpg,0,0,1,snowy,residential,daytime
-cc788c3e-517cc65a.jpg,0,0,1,snowy,city street,daytime
-cc858ca6-3b08aad7.jpg,0,0,1,snowy,city street,dawn/dusk
-cc872b53-2fa985fc.jpg,0,0,1,undefined,city street,daytime
-cc881b78-5fef2a5d.jpg,0,0,0,clear,city street,night
-cc881b78-b5061513.jpg,0,0,1,clear,city street,night
-cc882e05-6fc56933.jpg,0,0,1,snowy,city street,night
-cc882e05-8b03e2b7.jpg,0,0,0,snowy,city street,daytime
-cc892afa-0b55cf6e.jpg,0,0,1,clear,residential,dawn/dusk
-cc930b11-0c563693.jpg,0,0,2,clear,city street,daytime
-cc930b11-0d293816.jpg,0,0,2,undefined,city street,daytime
-cc957b71-83ab8b02.jpg,0,0,1,clear,highway,night
-cc1581ef-0d797091.jpg,0,0,1,partly cloudy,parking lot,daytime
-cc1581ef-20c07d11.jpg,0,0,1,undefined,residential,daytime
-cc1675ce-5a4d7295.jpg,0,1,1,rainy,highway,daytime
-cc1905aa-cae4a558.jpg,0,0,0,undefined,city street,daytime
-cc2393fc-b35cf107.jpg,0,0,1,clear,city street,daytime
-cc3294d1-348ad004.jpg,0,0,0,undefined,city street,daytime
-cc3294d1-94693662.jpg,0,0,1,undefined,highway,daytime
-cc4212b2-89e9a9c9.jpg,0,0,0,clear,city street,night
-cc4748fc-9fc4a6b4.jpg,0,0,1,clear,highway,daytime
-cc4754c0-a8e8b745.jpg,0,0,1,partly cloudy,city street,daytime
-cc5826db-6cae4d5a.jpg,0,0,0,overcast,highway,dawn/dusk
-cc5826db-ea40cd3a.jpg,0,0,0,overcast,residential,daytime
-cc6530e7-4fb1baf4.jpg,0,0,1,clear,city street,night
-cc7060d5-6fdc2078.jpg,0,0,0,clear,highway,daytime
-cc7610dc-25dc7a65.jpg,0,0,1,clear,city street,night
-cc8306ac-3a8b8e14.jpg,0,0,1,undefined,city street,daytime
-cc8829be-ce53b8f1.jpg,0,0,0,clear,city street,daytime
-cc9972d3-0f9d8264.jpg,0,0,1,partly cloudy,highway,daytime
-cc9972d3-9f8c6c91.jpg,0,0,1,undefined,tunnel,undefined
-cc24636f-32057058.jpg,0,0,1,clear,city street,daytime
-cc29749e-c7e0930f.jpg,0,0,2,snowy,city street,night
-cc30362b-8893afcc.jpg,0,0,1,overcast,city street,daytime
-cc30362b-cac19bd9.jpg,0,0,2,undefined,city street,daytime
-cc53563d-e7bf8bbb.jpg,0,0,2,clear,city street,daytime
-cc062302-09d7906d.jpg,0,0,1,clear,city street,night
-cc062302-b944ef68.jpg,0,0,1,clear,city street,daytime
-cc062302-f0e81d2a.jpg,0,0,1,clear,city street,night
-cc70121d-228f0554.jpg,0,0,1,clear,city street,night
-cc76858a-5b920ae6.jpg,0,0,2,overcast,city street,daytime
-cc76858a-df4452a2.jpg,0,0,0,partly cloudy,highway,daytime
-cc90315c-816a3ed6.jpg,0,0,1,rainy,city street,night
-cc112114-4137cd19.jpg,0,0,0,clear,highway,night
-cc115808-d5ba85e8.jpg,0,0,0,clear,highway,night
-cc188009-c910d3c1.jpg,0,0,0,overcast,city street,dawn/dusk
-cc272644-ec36abae.jpg,0,0,1,clear,city street,daytime
-cc350056-47e6f468.jpg,0,0,1,clear,city street,night
-cc420104-c11e86c8.jpg,0,0,0,clear,city street,night
-cc538879-a465ada4.jpg,1,1,1,rainy,highway,night
-cc538879-d348877a.jpg,1,1,1,rainy,city street,night
-cc618930-bb9fd79f.jpg,0,0,1,undefined,city street,daytime
-cc694474-0e0f6570.jpg,0,1,1,rainy,city street,daytime
-cc700364-1988f276.jpg,0,0,0,rainy,residential,daytime
-cc700364-86687937.jpg,0,0,1,undefined,city street,daytime
-cc700364-e427d41c.jpg,0,0,1,overcast,city street,daytime
-cca3adac-1fc0a20f.jpg,0,0,0,overcast,city street,daytime
-cca05f55-51ce8fe1.jpg,0,0,1,clear,city street,night
-cca6a110-32801987.jpg,0,0,1,undefined,city street,daytime
-cca17b98-1639bb7c.jpg,0,0,1,snowy,city street,daytime
-cca96d47-9ea3e639.jpg,0,0,0,clear,residential,daytime
-cca96d47-c214cf4d.jpg,0,0,0,clear,city street,daytime
-cca96d47-d34b171f.jpg,0,0,0,clear,city street,daytime
-cca0186b-d661a474.jpg,0,0,1,partly cloudy,city street,dawn/dusk
-cca366ff-0a475353.jpg,0,0,1,overcast,highway,dawn/dusk
-cca366ff-7c8d24d3.jpg,0,0,1,overcast,residential,daytime
-cca366ff-17bc0463.jpg,0,0,1,clear,highway,daytime
-cca366ff-997f0af2.jpg,0,0,1,rainy,highway,daytime
-cca366ff-c10bb637.jpg,0,0,1,rainy,undefined,daytime
-cca0838d-dde10c3a.jpg,0,0,1,overcast,city street,daytime
-cca7894c-d2bb0f59.jpg,0,0,1,clear,city street,daytime
-cca22951-b79a6c1c.jpg,1,0,0,snowy,city street,night
-cca33354-a7713e9f.jpg,0,0,1,overcast,highway,daytime
-ccaa1ebb-8a16f19d.jpg,0,0,1,undefined,city street,daytime
-ccaa1ebb-6428aee3.jpg,0,0,1,undefined,city street,daytime
-ccaa1ebb-bed7458f.jpg,0,0,1,partly cloudy,city street,daytime
-ccab00d6-1cd55fc3.jpg,0,0,2,clear,city street,night
-ccab51fd-590c910d.jpg,0,0,0,clear,city street,night
-ccab51fd-b3f9dde5.jpg,0,0,0,clear,city street,night
-ccab51fd-b366d929.jpg,0,0,0,clear,city street,night
-ccabd6af-5db3a906.jpg,0,0,0,clear,city street,night
-ccac73ed-b41e4cbf.jpg,0,0,0,undefined,undefined,undefined
-ccad4f69-ebc3f954.jpg,0,0,1,clear,city street,daytime
-ccadd139-ffcbeb8e.jpg,0,0,1,partly cloudy,city street,daytime
-ccb1d4ea-5c2150b8.jpg,0,0,1,snowy,city street,night
-ccb1d4ea-753d8015.jpg,0,0,2,snowy,city street,night
-ccb2ba45-2e7143dd.jpg,0,0,2,clear,highway,daytime
-ccb3c14c-8112317d.jpg,0,0,0,clear,residential,daytime
-ccb3ce82-7aa67fb6.jpg,0,0,0,undefined,city street,daytime
-ccb3da66-2e920bc4.jpg,0,0,1,clear,city street,night
-ccb3da66-7288e775.jpg,0,1,1,rainy,city street,night
-ccb3ee5b-29358ba2.jpg,0,0,0,clear,highway,daytime
-ccb3ee5b-bcee0539.jpg,0,0,1,clear,highway,daytime
-ccb3ee5b-bf300c5f.jpg,0,0,1,undefined,city street,daytime
-ccb3ee5b-de132545.jpg,0,0,1,partly cloudy,residential,daytime
-ccb3fa02-acd38edd.jpg,0,0,0,clear,city street,night
-ccb9e408-acf2f3e6.jpg,0,0,0,clear,city street,night
-ccb9e408-e2281189.jpg,0,0,0,clear,city street,night
-ccb40a04-8d7025f3.jpg,0,0,1,clear,city street,daytime
-ccb40a04-df6c433f.jpg,0,0,0,overcast,residential,daytime
-ccb252e0-23351b09.jpg,0,0,1,clear,city street,night
-ccb252e0-b3af3445.jpg,0,0,0,clear,residential,night
-ccb252e0-fa286140.jpg,0,0,0,clear,parking lot,night
-ccb961b6-1aa1996a.jpg,0,0,1,overcast,highway,daytime
-ccb961b6-66bd00c0.jpg,0,0,1,rainy,highway,daytime
-ccb961b6-569b44d1.jpg,0,0,0,overcast,highway,daytime
-ccb961b6-c9504b72.jpg,0,0,1,overcast,city street,dawn/dusk
-ccb961b6-f26df9a9.jpg,0,0,1,overcast,highway,daytime
-ccb9687d-08d9dec0.jpg,0,0,2,partly cloudy,parking lot,daytime
-ccb9687d-8ffcb52e.jpg,0,0,1,clear,highway,daytime
-ccb9687d-792f69b6.jpg,0,0,1,undefined,residential,daytime
-ccb18836-5d969031.jpg,0,0,0,clear,residential,night
-ccbceb65-e3746758.jpg,0,0,1,rainy,highway,daytime
-ccbe1b69-5b02ca90.jpg,0,0,1,clear,city street,night
-ccbf4f9d-0eea23e0.jpg,0,0,1,clear,city street,daytime
-ccbf4f9d-42ba2848.jpg,0,0,1,clear,highway,daytime
-ccc4c724-b342609b.jpg,0,0,1,clear,highway,dawn/dusk
-ccc160fa-0ec6e31d.jpg,0,0,1,partly cloudy,residential,daytime
-ccc8749b-a4e80baa.jpg,1,0,1,clear,highway,night
-ccc32235-8ab1ccec.jpg,0,0,1,clear,highway,daytime
-ccc36751-8dddd41e.jpg,0,0,1,clear,residential,daytime
-ccc36751-62211331.jpg,0,0,0,clear,residential,daytime
-ccc36751-a9e2d72c.jpg,0,0,1,clear,city street,daytime
-ccc36751-dbf33a54.jpg,0,0,1,clear,residential,daytime
-ccc43019-54a0931a.jpg,0,0,1,rainy,city street,daytime
-ccc43019-95edc80e.jpg,0,0,1,rainy,residential,daytime
-ccc90113-09d039f6.jpg,1,0,0,clear,highway,night
-ccc90113-89c333d4.jpg,1,0,0,clear,city street,night
-ccc92796-97feaba2.jpg,0,1,2,rainy,city street,daytime
-cccaed40-0d88edc4.jpg,0,0,1,clear,city street,daytime
-cccaed40-4b785c57.jpg,0,0,1,clear,city street,daytime
-cccaed40-8fe01de0.jpg,0,0,1,clear,city street,daytime
-cccaed40-7356496c.jpg,0,0,0,overcast,residential,daytime
-cccaed40-cba50cc4.jpg,0,0,0,clear,city street,daytime
-cccaed40-e442395b.jpg,0,0,1,clear,city street,daytime
-cccaf025-82765572.jpg,0,0,1,undefined,city street,night
-cccb7618-458d7f07.jpg,0,0,1,rainy,city street,night
-cccb7618-ce7f3e16.jpg,0,0,1,clear,city street,night
-cccc8c24-37bfa226.jpg,0,0,1,clear,highway,dawn/dusk
-cccc8c24-833a48fb.jpg,0,0,1,clear,highway,daytime
-cccd0ee8-de8ef249.jpg,0,0,0,overcast,residential,daytime
-cccd33dc-92c9af13.jpg,0,0,1,partly cloudy,residential,daytime
-cccd206b-5272e069.jpg,0,0,1,clear,city street,daytime
-ccce6496-3c7cf270.jpg,0,0,2,clear,highway,daytime
-ccce6496-f07014cf.jpg,0,0,1,overcast,city street,daytime
-cccf3116-0ac0313a.jpg,0,0,0,clear,highway,night
-ccd0ba6d-55950103.jpg,0,0,1,overcast,highway,dawn/dusk
-ccd0ec33-2be0fb05.jpg,0,0,1,clear,city street,daytime
-ccd0ec33-3386cee5.jpg,0,0,1,clear,highway,daytime
-ccd1de30-9bbcfb5c.jpg,0,0,0,clear,city street,night
-ccd1de30-9decb021.jpg,0,0,1,clear,highway,daytime
-ccd3f91e-213a8639.jpg,0,0,1,clear,city street,night
-ccd5a1ee-19a92a50.jpg,0,0,1,overcast,city street,daytime
-ccd6bfe5-4ad49eca.jpg,0,0,0,clear,city street,night
-ccd6bfe5-f9f0b33a.jpg,1,0,0,clear,city street,night
-ccd6e95c-49c52562.jpg,0,0,1,overcast,city street,daytime
-ccd6e95c-833fa38f.jpg,0,0,1,overcast,city street,daytime
-ccd6e95c-00551249.jpg,0,0,1,overcast,highway,daytime
-ccd6e95c-c391e2e8.jpg,0,0,0,overcast,city street,daytime
-ccd007e9-bded7ebd.jpg,0,0,1,clear,city street,daytime
-ccd8e852-2c390271.jpg,0,0,0,clear,highway,night
-ccd14c41-e5c3edf1.jpg,0,0,0,clear,residential,night
-ccd21ac5-d0ac19fb.jpg,0,0,0,clear,highway,night
-ccd541ca-c2f9f694.jpg,0,0,1,clear,residential,daytime
-ccd901f5-b3a0c9af.jpg,0,0,1,clear,highway,daytime
-ccd901f5-bfabffd7.jpg,0,0,1,clear,residential,daytime
-ccd901f5-e45892d1.jpg,0,0,1,clear,city street,daytime
-ccd2771c-5fceb25b.jpg,0,0,0,clear,city street,night
-ccd6430a-17c143af.jpg,0,0,1,snowy,city street,night
-ccda57ee-93d4db21.jpg,0,0,1,snowy,highway,daytime
-ccdb5d6f-865957bd.jpg,0,0,1,overcast,highway,dawn/dusk
-ccdd0ee8-c5f57be9.jpg,0,0,1,clear,highway,daytime
-ccdd1f41-0f1ce509.jpg,0,0,0,snowy,city street,dawn/dusk
-ccde2c9d-f33c2cb9.jpg,0,0,1,clear,highway,night
-ccdf7884-e382c064.jpg,0,1,1,rainy,highway,night
-ccdfec32-77664bf4.jpg,0,0,1,overcast,highway,daytime
-ccdfec32-b738be17.jpg,0,0,0,undefined,residential,daytime
-ccdfec32-b04774ea.jpg,0,0,1,undefined,city street,daytime
-cce8ee4f-ed9bff06.jpg,0,0,1,clear,highway,night
-cce96cee-e92d6e05.jpg,0,0,1,clear,city street,daytime
-cce124cb-c135d3ca.jpg,0,0,1,overcast,city street,daytime
-cce124cb-eaa1877e.jpg,0,0,1,clear,city street,daytime
-cce887ff-443c174c.jpg,0,0,1,overcast,city street,daytime
-ccea6dde-45f9979a.jpg,0,0,1,clear,highway,dawn/dusk
-ccea6dde-e46f1791.jpg,0,0,1,clear,highway,daytime
-ccece5b4-960bf7a9.jpg,0,0,2,clear,city street,daytime
-ccece5b4-22291259.jpg,0,0,0,snowy,city street,daytime
-ccee7a4a-df59e251.jpg,0,0,0,overcast,highway,daytime
-ccf0acaf-d26abd61.jpg,0,0,1,snowy,city street,night
-ccf3d44e-064c2bac.jpg,0,0,1,clear,city street,night
-ccf5ec4a-b9f225d9.jpg,0,0,0,clear,city street,night
-ccf5ec4a-b115d9e1.jpg,0,0,0,clear,city street,night
-ccf7c50e-0774df81.jpg,0,0,1,rainy,highway,daytime
-ccf8b874-6fc8732d.jpg,0,1,1,rainy,city street,night
-ccf8b874-ed852530.jpg,0,0,1,clear,city street,night
-ccf8b874-edac4a87.jpg,0,0,0,clear,residential,night
-ccf31dca-f07960e0.jpg,0,0,1,snowy,city street,daytime
-ccf1794e-5a932d98.jpg,0,0,1,undefined,city street,daytime
-ccf1794e-031d988a.jpg,0,0,0,clear,city street,daytime
-ccf4919e-5bc19cb2.jpg,0,0,1,undefined,city street,daytime
-ccf4919e-068e3d14.jpg,0,0,1,overcast,highway,daytime
-ccfbcfb0-ab7af164.jpg,0,0,0,undefined,residential,daytime
-ccff470c-2f82a8e0.jpg,0,0,1,undefined,city street,daytime
-cd0c8cf0-d78ca88f.jpg,0,0,2,overcast,city street,daytime
-cd0e10b9-7b1998ac.jpg,0,0,1,snowy,city street,night
-cd0e10b9-29533e32.jpg,0,0,1,snowy,city street,night
-cd0fe667-af311e0b.jpg,0,0,1,snowy,city street,daytime
-cd1ac421-0d131625.jpg,0,0,2,rainy,city street,night
-cd1accc2-3a3cd9ad.jpg,0,0,2,undefined,city street,daytime
-cd1c820b-19325036.jpg,0,0,1,undefined,city street,dawn/dusk
-cd1d185f-b74ff497.jpg,0,0,0,clear,residential,night
-cd1eb221-ee728403.jpg,0,0,0,clear,city street,night
-cd2a3d7d-31eb2785.jpg,0,0,1,snowy,city street,daytime
-cd2adc2d-6e04e046.jpg,0,0,1,clear,city street,night
-cd2af7d8-a65bb530.jpg,0,0,1,clear,residential,daytime
-cd2bfb1a-910eac20.jpg,1,0,2,clear,city street,night
-cd2cf58c-9dc686c6.jpg,0,0,1,clear,city street,night
-cd2dbf3d-78c22773.jpg,0,0,2,clear,city street,dawn/dusk
-cd2dbf3d-f26f3a48.jpg,0,0,0,undefined,residential,daytime
-cd2dc4e7-083751d5.jpg,0,0,0,clear,residential,night
-cd2fde0b-a0a95dc3.jpg,0,0,1,clear,highway,daytime
-cd03d364-0851845d.jpg,0,0,1,clear,undefined,night
-cd03d364-a7259c1c.jpg,0,0,0,clear,city street,night
-cd03d364-f0a54638.jpg,0,0,0,clear,city street,night
-cd03f445-b41994d3.jpg,0,0,1,clear,highway,night
-cd03f445-d8bd3693.jpg,0,0,0,clear,residential,night
-cd03f445-d61956af.jpg,1,0,1,clear,city street,night
-cd3b1173-63cb9e2e.jpg,0,0,0,clear,city street,night
-cd3d4054-34038427.jpg,0,0,0,clear,city street,night
-cd3dab20-1b3e564e.jpg,0,0,1,partly cloudy,highway,daytime
-cd3dab20-4ea3d971.jpg,0,0,1,partly cloudy,highway,daytime
-cd3df92f-d04e142c.jpg,0,0,1,clear,highway,daytime
-cd4ac25c-61a9eb11.jpg,0,0,0,clear,city street,night
-cd4bf816-2abb75c9.jpg,0,0,0,clear,residential,dawn/dusk
-cd4bf816-c2f9bf78.jpg,0,0,0,clear,residential,daytime
-cd4ce4e5-6994fd2d.jpg,0,0,0,undefined,city street,daytime
-cd4ce4e5-d0968ec0.jpg,0,0,2,clear,highway,daytime
-cd4da443-da4fe8c7.jpg,0,0,0,clear,residential,night
-cd4deee2-1d9539bd.jpg,0,0,0,rainy,city street,daytime
-cd4deee2-2b14753a.jpg,0,0,1,overcast,city street,daytime
-cd4deee2-3feadd6e.jpg,0,0,1,undefined,city street,daytime
-cd4deee2-8e12e5b5.jpg,0,0,1,overcast,city street,daytime
-cd4deee2-9c9f6da1.jpg,0,0,1,rainy,highway,daytime
-cd4deee2-37c8b95c.jpg,0,0,2,overcast,city street,daytime
-cd4deee2-0563d8e1.jpg,0,0,1,undefined,city street,daytime
-cd4deee2-688c8bba.jpg,0,1,1,rainy,city street,daytime
-cd4deee2-0703d1c7.jpg,0,0,1,rainy,city street,daytime
-cd4deee2-9670ca86.jpg,0,0,1,rainy,city street,daytime
-cd4deee2-60291439.jpg,0,0,1,overcast,highway,daytime
-cd4deee2-adc7e92a.jpg,0,0,1,undefined,city street,daytime
-cd4deee2-ce4f69f5.jpg,0,0,2,clear,city street,dawn/dusk
-cd4deee2-d54ea0fd.jpg,0,1,0,rainy,city street,daytime
-cd4deee2-d078d54a.jpg,0,0,1,overcast,city street,daytime
-cd4deee2-d527839e.jpg,0,0,1,overcast,city street,daytime
-cd4deee2-db496410.jpg,0,0,2,rainy,city street,daytime
-cd005e95-51793982.jpg,0,0,0,clear,residential,daytime
-cd05c0e9-453acc2a.jpg,0,0,1,clear,city street,daytime
-cd5a9e1b-5fb9ca11.jpg,0,0,0,clear,residential,night
-cd5a9e1b-86faac85.jpg,0,0,1,clear,highway,night
-cd5a94cf-345f214a.jpg,0,0,1,clear,highway,dawn/dusk
-cd5b2540-465c9328.jpg,0,0,1,overcast,city street,daytime
-cd5b2540-913cb8f7.jpg,0,0,0,overcast,city street,daytime
-cd5bee17-bef4f177.jpg,0,0,1,clear,highway,daytime
-cd5db4e0-1189ff83.jpg,0,0,2,undefined,city street,dawn/dusk
-cd6ac46a-eba084bb.jpg,1,0,1,snowy,city street,night
-cd6af452-e54a1e36.jpg,0,0,0,rainy,city street,daytime
-cd6c087e-03ca2127.jpg,0,0,1,clear,highway,night
-cd6cc4f9-54312104.jpg,0,0,0,clear,city street,night
-cd6fdcc0-de044f01.jpg,0,0,1,undefined,city street,daytime
-cd6fdd33-ac9cb2db.jpg,0,0,1,clear,city street,daytime
-cd7b6690-c0a426fc.jpg,0,0,1,clear,city street,night
-cd7c12c7-9b46c2a8.jpg,0,0,0,undefined,city street,daytime
-cd7c12c7-7029da5d.jpg,0,0,1,clear,city street,daytime
-cd7c92a7-3b20257f.jpg,0,0,1,overcast,city street,daytime
-cd7c92a7-89b23268.jpg,0,0,1,partly cloudy,residential,daytime
-cd7c92a7-9222ee19.jpg,0,0,2,undefined,city street,daytime
-cd7c92a7-ed0d3926.jpg,0,0,0,partly cloudy,residential,daytime
+filename,timeofday,glare,weather,fog,road,traffic,scene
+cabc30fc-e7726578.jpg,0,0,0,0,0,1,2
+cabc30fc-eb673c5a.jpg,1,0,0,0,0,1,1
+cabc30fc-fd79926f.jpg,0,0,0,0,0,1,2
+cabc9045-1b8282ba.jpg,2,1,0,0,0,0,2
+cabc9045-5a50690f.jpg,2,0,0,0,0,1,2
+cabc9045-581f64de.jpg,2,0,0,0,0,0,2
+cabc9045-b3349548.jpg,2,0,0,0,0,1,1
+cabc9045-c6dc9529.jpg,2,1,0,0,0,0,2
+cabc9045-cd422b81.jpg,2,0,0,0,0,0,2
+cabc9045-d91ecb66.jpg,2,0,0,0,0,0,2
+cabddb96-ca0ac856.jpg,1,0,0,0,0,2,0
+cabe1040-5f02711e.jpg,1,0,3,0,0,1,2
+cabe1040-c59cb390.jpg,1,0,4,0,0,1,2
+cabea010-6882cf41.jpg,2,1,0,0,1,1,1
+cabf7be1-36a39a28.jpg,1,0,1,0,0,1,2
+cabf7be1-f1a7e00d.jpg,1,0,1,0,0,0,1
+cabf9f3c-d58a6760.jpg,1,0,0,0,0,1,2
+cac6a8d8-29780d2d.jpg,1,0,0,0,0,1,1
+cac47e88-3227e13a.jpg,0,0,4,0,0,1,1
+cac07407-0eb1c8bf.jpg,1,0,0,0,0,0,2
+cac07407-15b814db.jpg,1,1,5,0,0,0,2
+cac07407-76e4c968.jpg,1,1,0,0,0,0,1
+cac07407-196cd6f8.jpg,1,0,0,0,0,1,1
+cac07407-0396e053.jpg,1,0,0,0,0,2,2
+cac07407-951977c8.jpg,1,0,0,0,0,2,0
+cac07407-ba37148a.jpg,1,0,5,0,0,1,0
+cac07407-bc0b048a.jpg,1,0,0,0,0,0,2
+cac07407-e969f06a.jpg,1,1,0,0,0,0,1
+cac07407-fe32e494.jpg,1,0,0,0,0,0,1
+cac32276-2ea56b83.jpg,1,0,2,0,0,1,0
+cac32276-a70feba7.jpg,1,0,5,0,0,1,2
+cac32276-cf233a28.jpg,1,0,0,0,0,1,2
+cac75967-8a9c164b.jpg,2,0,0,0,0,0,2
+cace2484-cd478fab.jpg,1,0,0,0,0,1,2
+cacfaddc-ce8105be.jpg,1,0,1,0,0,0,2
+cad02f4a-dd2c4b41.jpg,1,0,2,0,0,2,2
+cad4a646-68a8d136.jpg,2,0,0,0,0,0,2
+cad7fdff-d9946f73.jpg,1,0,4,0,0,1,2
+cad54cf7-6779254f.jpg,2,0,0,0,0,0,1
+cad180c4-2edc9315.jpg,0,0,3,0,0,1,2
+cad180c4-553ceeb1.jpg,2,0,3,0,0,1,2
+cad180c4-d05b49f1.jpg,2,0,3,0,0,2,2
+cad03998-075bb24b.jpg,1,0,1,0,0,1,2
+cad03998-b2cc3e61.jpg,1,0,1,0,0,1,2
+cad03998-e6cc2ae6.jpg,1,0,1,0,0,1,2
+cad17389-cb0208f5.jpg,2,0,0,0,0,1,2
+cad17389-f72e5365.jpg,2,0,0,0,0,1,2
+cadb5cf7-31d9a0d7.jpg,2,0,4,0,0,1,2
+cadb239d-499b1478.jpg,2,0,0,0,0,0,1
+cadb239d-0776327a.jpg,2,0,0,0,0,0,1
+cadb239d-a768df31.jpg,2,0,0,0,0,0,1
+cadbd8df-9efc61fd.jpg,1,0,3,0,1,1,1
+cadc60a4-0834935f.jpg,1,0,1,0,0,1,2
+cadd00a0-4251d603.jpg,1,1,2,0,0,2,1
+cadd00a0-efef6501.jpg,1,0,0,0,0,1,0
+cade2aed-db2e9c98.jpg,1,0,4,0,1,1,2
+cade2084-8fb02395.jpg,2,0,0,0,0,1,2
+cade2084-71df1a4e.jpg,2,0,0,0,0,0,2
+cade2084-5714bb13.jpg,2,0,0,0,0,1,2
+cadf77c3-2857db38.jpg,1,0,0,0,0,2,2
+cadf297e-457ef8ae.jpg,1,0,1,0,0,1,1
+cadfb2fe-5dd5f809.jpg,2,1,3,0,1,0,2
+cadfb2fe-708d6e3b.jpg,2,1,0,0,0,0,2
+cadfb2fe-f43878a3.jpg,2,1,3,0,1,1,1
+cae4f10f-54b690b0.jpg,1,0,2,0,0,2,1
+cae4f10f-e5906613.jpg,1,0,2,0,0,2,2
+cae6c88d-0db9c3ab.jpg,2,0,0,0,0,2,2
+cae8e3d7-13803eef.jpg,2,0,0,0,0,0,3
+cae29b60-b9d5bdb6.jpg,2,0,3,0,1,1,2
+cae49ab7-c87d52c4.jpg,1,0,0,0,0,0,0
+cae842b9-82d52302.jpg,1,0,4,0,1,2,2
+cae881fa-02da1ae2.jpg,1,0,2,0,0,1,0
+cae913d9-6df0f74b.jpg,2,0,0,0,0,1,2
+cae913d9-e07a8369.jpg,2,0,0,0,0,0,1
+cae23877-a1826db4.jpg,1,0,2,0,0,2,2
+cae28701-5286ae2f.jpg,2,0,0,0,0,2,2
+cae39588-8ea784d1.jpg,1,0,1,0,0,1,2
+cae39588-58dd3092.jpg,1,0,1,0,0,2,2
+cae73656-aeb2944f.jpg,1,1,0,0,0,1,2
+cae77018-7bc11357.jpg,2,1,0,0,0,0,2
+caea91fd-e457bf7b.jpg,2,1,0,0,0,1,2
+caeb0fbb-410c10ca.jpg,1,0,5,0,0,1,2
+caeb782d-4a20b7c4.jpg,0,0,4,0,0,1,0
+caec69a1-75429ccd.jpg,2,0,0,0,0,1,2
+caee33ed-136d6b7c.jpg,1,0,5,0,0,0,1
+caee33ed-bb44010a.jpg,1,0,3,0,1,1,1
+caf6d8fe-7650f811.jpg,2,1,0,0,0,1,1
+caf9b4a2-dbf2a8a7.jpg,2,1,0,0,0,0,2
+caf56f7a-1407df75.jpg,1,0,0,0,0,1,2
+caf73e65-16760e37.jpg,2,1,0,0,0,1,0
+caf73e65-99596d6e.jpg,2,0,0,0,0,0,3
+caf91e5e-fbd7f315.jpg,2,1,0,0,0,0,0
+caf380ad-52f6a603.jpg,1,0,0,0,0,1,2
+caf380ad-83f39185.jpg,1,0,0,0,0,1,2
+caf380ad-ee9a7699.jpg,1,0,1,0,0,1,2
+caf5502b-8233af1b.jpg,1,0,4,0,0,2,2
+caf6713b-1823e54e.jpg,2,1,0,0,0,2,2
+caf8496d-6ce3dbda.jpg,1,1,4,0,0,0,2
+caf92153-8fdace82.jpg,1,0,3,0,0,1,1
+caf92153-cfcdf92a.jpg,1,0,3,0,0,1,1
+cafa7c32-0d800808.jpg,2,1,4,0,0,1,2
+cafae648-c3d4e13a.jpg,1,0,0,0,0,2,2
+cafb3b52-f34e5454.jpg,2,1,0,0,0,1,2
+cafb3e02-83c800ed.jpg,2,0,0,0,0,1,1
+cafb3e6f-22f2007e.jpg,1,0,0,0,0,1,1
+cafbae4e-1d69e770.jpg,2,0,0,0,0,0,0
+cafbb9cb-c8d8b9df.jpg,2,0,0,0,0,1,2
+cafca327-47cae51f.jpg,2,1,0,0,0,0,1
+cafd4970-2592f52f.jpg,2,1,0,0,0,1,2
+cafe3793-42a32ab9.jpg,1,0,5,0,0,2,3
+cafe3793-f5638516.jpg,1,0,5,0,0,2,2
+cafecee9-ae650f5f.jpg,2,1,0,0,0,0,2
+caff5d9a-35754dcf.jpg,2,0,0,0,0,1,2
+caff5d9a-e71dee8e.jpg,2,0,0,0,0,1,2
+caff2200-238a0388.jpg,2,1,0,0,0,1,2
+cb0ad251-7f86477e.jpg,2,0,0,0,0,1,2
+cb0bdd89-5bdf8abc.jpg,1,0,0,0,0,0,2
+cb0bdd89-f1ff3b69.jpg,1,0,0,0,0,0,0
+cb0cece8-0bf1974e.jpg,1,1,5,0,0,0,2
+cb0e6066-8c6456bf.jpg,1,0,4,0,0,0,0
+cb1a59af-6df6a7ab.jpg,1,0,0,0,0,0,0
+cb1d8d95-283dd8d2.jpg,1,0,2,0,0,1,0
+cb1f05ca-28b96d3e.jpg,1,0,5,0,0,1,2
+cb02bc12-00b2fbbb.jpg,1,0,2,0,0,0,2
+cb2a851d-d0884eb5.jpg,1,0,0,0,0,0,2
+cb2c6d0f-d4b068b0.jpg,0,0,3,1,1,1,2
+cb2c801b-7b6283e5.jpg,1,0,5,0,0,1,0
+cb2c801b-b5274dda.jpg,0,0,0,0,0,1,1
+cb2e3d65-2d64ca0e.jpg,1,0,4,0,0,0,0
+cb2fdf4d-1f6ec0ba.jpg,1,0,0,0,0,1,2
+cb2fdf4d-4b15f621.jpg,1,0,2,0,0,1,2
+cb2fdf4d-05fad7c1.jpg,1,0,1,0,0,1,0
+cb2fe290-88aacceb.jpg,0,0,1,0,0,1,2
+cb2fe290-7246a85f.jpg,1,0,2,0,0,2,2
+cb2fe290-8786cd14.jpg,1,0,0,0,0,2,1
+cb3d23f6-7e35e616.jpg,1,0,5,0,0,1,1
+cb3e5d46-784f9106.jpg,2,1,0,0,0,0,2
+cb3f27ee-14753cfb.jpg,2,1,3,0,1,0,1
+cb3f27ee-b8c0119f.jpg,2,0,0,0,1,1,1
+cb04fee6-31529064.jpg,2,1,0,0,0,1,2
+cb04fee6-a44df902.jpg,2,1,0,0,0,0,2
+cb04fee6-d1f397da.jpg,2,1,0,0,0,1,1
+cb4bc75f-f2933f23.jpg,0,0,2,0,0,1,0
+cb4bfc16-1a262bbd.jpg,1,0,0,0,0,1,2
+cb4bfc16-3b250dbf.jpg,1,0,0,0,0,1,0
+cb4bfc16-80e9d4a2.jpg,1,0,1,0,0,1,2
+cb4cb2f3-074beab3.jpg,1,0,5,0,0,1,1
+cb4d070c-20a30e53.jpg,2,0,0,0,0,0,2
+cb4e8a30-20f681d7.jpg,2,1,0,0,0,1,2
+cb05eaa9-f2430836.jpg,2,0,0,0,0,1,2
+cb5e9e9c-317f73c1.jpg,1,0,1,0,0,1,2
+cb5fa573-fa7df890.jpg,1,0,2,0,0,1,2
+cb6b0c57-cf1fc33e.jpg,1,0,0,0,0,0,0
+cb6c1298-6194924c.jpg,1,0,2,0,0,0,1
+cb6cb98f-2132e482.jpg,2,0,0,0,0,2,2
+cb6e5ba7-91566c19.jpg,0,0,2,0,0,1,2
+cb6e5ba7-c6b079ba.jpg,1,0,2,0,0,1,1
+cb6e5ba7-d95d09c9.jpg,2,1,0,0,0,1,2
+cb6e675a-510b8a3d.jpg,1,0,2,0,0,1,2
+cb6feb71-4f2031de.jpg,1,0,0,0,0,1,2
+cb6feb71-f9d2abd3.jpg,1,0,0,0,0,1,2
+cb7bffcf-5e7c5677.jpg,1,0,0,0,0,1,1
+cb7bffcf-17c75571.jpg,1,0,2,0,0,1,1
+cb7bffcf-529af552.jpg,1,0,0,0,0,1,2
+cb7bffcf-33713cec.jpg,1,0,0,0,0,1,1
+cb7c8bb9-bc2d62ba.jpg,1,0,5,0,0,1,2
+cb7d0bb4-915e0029.jpg,1,0,0,0,0,2,2
+cb7d1d90-dd5d115f.jpg,0,0,2,0,0,0,2
+cb7d10b2-547b3de5.jpg,1,0,2,0,0,2,2
+cb7e1adc-415567c3.jpg,2,0,4,0,0,2,0
+cb7f4d6f-c83c0fea.jpg,0,0,2,0,0,1,1
+cb8a7be4-fcfd3acb.jpg,2,1,0,0,0,2,2
+cb8b28d3-ab96a5fc.jpg,2,1,0,0,0,0,2
+cb8e570a-7fdaa35c.jpg,2,1,4,0,1,0,2
+cb9d6047-6b4e5cb8.jpg,2,0,0,0,0,0,2
+cb9d6047-c6a0397c.jpg,2,0,0,0,0,1,2
+cb9df0a6-8dba1a0a.jpg,2,0,3,0,1,0,2
+cb9ea2ad-72a382b6.jpg,2,0,0,0,0,0,2
+cb9ea2ad-8394a099.jpg,2,0,0,0,0,1,2
+cb13d27e-aed37c4c.jpg,2,0,0,0,0,0,2
+cb14e978-0d45dc28.jpg,2,0,0,0,0,2,2
+cb14e978-6c4d53f3.jpg,2,1,0,0,0,0,2
+cb14e978-9ac7f029.jpg,2,0,0,0,0,0,2
+cb14e978-a5eb5afb.jpg,2,0,0,0,0,1,2
+cb14e978-d76604ee.jpg,2,0,0,0,0,1,2
+cb15c5ae-b7c3e935.jpg,1,0,5,0,0,0,0
+cb15f3ff-e11f8dac.jpg,2,0,0,0,0,0,0
+cb18ff25-8cccd910.jpg,2,0,0,0,0,1,1
+cb19ca00-7cee58db.jpg,2,0,0,0,0,0,1
+cb19ca00-7fe7ed92.jpg,1,0,0,0,0,1,1
+cb19ca00-185e1163.jpg,2,0,3,0,0,2,2
+cb19ca00-06374256.jpg,2,0,0,0,0,1,2
+cb22c820-f094952f.jpg,1,0,0,0,0,1,2
+cb25d8ec-1c06a707.jpg,2,0,0,0,0,1,1
+cb25d8ec-e52ef234.jpg,2,1,0,0,0,1,1
+cb25d527-e041ee3a.jpg,0,0,0,0,0,0,2
+cb25fc78-7ac3b863.jpg,0,0,0,0,0,0,2
+cb25fc78-c89840f6.jpg,1,0,0,0,0,0,2
+cb27de55-d8c84ee3.jpg,1,0,5,0,0,1,2
+cb30c05c-cdad343b.jpg,2,1,0,0,0,2,2
+cb031b03-0f3ed476.jpg,1,0,5,0,0,2,2
+cb031b03-cc89642d.jpg,1,0,0,0,0,1,2
+cb32ab44-2e476a87.jpg,2,1,0,0,0,1,2
+cb32ab44-9feb37f3.jpg,2,0,0,0,0,0,2
+cb32ab44-776b1f34.jpg,2,1,0,0,0,0,0
+cb32ab44-e8b00418.jpg,2,0,0,0,0,1,1
+cb32ab44-f15d148d.jpg,2,1,0,0,0,0,1
+cb32ec15-6e369f96.jpg,0,0,2,0,0,1,2
+cb35b452-b1c5276b.jpg,2,0,0,0,0,0,1
+cb37bfff-1b87d685.jpg,1,0,0,0,0,0,2
+cb38bda4-6b1da930.jpg,2,0,0,0,0,1,3
+cb38bda4-26729b52.jpg,0,0,2,0,0,2,2
+cb39b649-4620ea32.jpg,1,0,2,0,0,1,2
+cb41fd07-83d4ec04.jpg,1,0,2,0,0,1,2
+cb46b1c1-02909ba2.jpg,1,0,2,0,0,0,2
+cb48db12-9ba44a71.jpg,1,0,0,0,0,1,1
+cb48db12-12e08c9c.jpg,1,0,0,0,0,2,2
+cb52bac5-9b9156c4.jpg,1,0,5,0,0,1,2
+cb55a21f-cea4eb6a.jpg,2,0,0,0,0,1,2
+cb55a21f-dab8ad35.jpg,2,0,0,0,0,1,1
+cb58f48b-957bfd2c.jpg,1,0,0,0,0,0,0
+cb61fa6c-04f20136.jpg,1,0,0,0,0,1,0
+cb61fa6c-1104f84c.jpg,1,0,2,0,0,1,2
+cb61fa6c-982289be.jpg,1,0,5,0,0,1,2
+cb61fa6c-39085365.jpg,1,0,2,0,0,2,2
+cb063b6c-158d56f6.jpg,1,0,0,0,0,1,1
+cb63ddeb-c7aee033.jpg,1,0,0,0,0,1,1
+cb67cd3a-48f5f6ee.jpg,1,0,0,0,0,1,2
+cb67cd3a-78c878f6.jpg,2,0,0,0,0,0,2
+cb67cd3a-92cfbc6a.jpg,2,0,0,0,0,0,1
+cb67cd3a-cd0234d8.jpg,1,0,5,0,0,1,2
+cb67d80d-05c1518e.jpg,1,0,0,0,0,1,2
+cb69c47a-3adb9d19.jpg,1,0,3,1,0,2,2
+cb71fc1a-20d1c0e3.jpg,2,1,0,0,0,0,2
+cb74a88b-0a39afe8.jpg,0,0,0,0,0,0,2
+cb74a88b-35158084.jpg,1,0,2,0,0,0,2
+cb74a88b-cb621c3a.jpg,0,0,2,0,0,1,2
+cb77a7d0-70e0a6f7.jpg,2,0,3,0,1,1,2
+cb79e12f-88a7d960.jpg,1,0,5,0,0,0,0
+cb79e12f-e7189051.jpg,1,0,5,0,0,1,2
+cb79e12f-ea8d023b.jpg,1,0,1,0,0,0,1
+cb84e186-902e8c24.jpg,2,1,3,0,1,1,1
+cb86b1d9-7735472c.jpg,1,0,2,0,0,0,1
+cb91d5a1-0b3d3373.jpg,2,0,0,0,0,0,2
+cb91d5a1-7d332f2e.jpg,2,0,0,0,0,0,1
+cb91d5a1-018bc367.jpg,2,0,0,0,0,1,1
+cb91d5a1-46a38944.jpg,2,0,0,0,0,0,2
+cb91d5a1-7722b303.jpg,2,0,0,0,0,0,2
+cb91d5a1-579075a1.jpg,2,0,0,0,0,0,2
+cb91d5a1-07962352.jpg,2,0,0,0,0,1,2
+cb91d5a1-b8124b10.jpg,2,0,0,0,0,0,0
+cb94f450-3051698a.jpg,2,0,0,0,0,1,2
+cb97debb-12f48570.jpg,1,0,1,0,0,1,1
+cb104d26-1ba62e91.jpg,2,0,0,0,0,1,2
+cb146e98-0d092e48.jpg,2,1,0,0,0,1,1
+cb146e98-1bb7e9d7.jpg,2,0,0,0,0,1,1
+cb146e98-6ad6acfd.jpg,2,1,0,0,0,0,2
+cb146e98-15a5ad7c.jpg,2,1,0,0,0,0,2
+cb146e98-85b699ad.jpg,2,0,0,0,0,0,2
+cb146e98-21026d6b.jpg,2,1,0,0,0,0,2
+cb146e98-77442601.jpg,2,1,0,0,0,0,1
+cb146e98-a1828594.jpg,2,1,0,0,0,1,2
+cb146e98-becc1d13.jpg,2,0,0,0,0,0,1
+cb146e98-f92b6ddc.jpg,2,0,0,0,0,1,1
+cb253f3b-b54796d8.jpg,2,0,0,0,0,1,0
+cb0287d1-207cdf5c.jpg,2,0,0,0,0,1,1
+cb0287d1-622df962.jpg,2,0,3,0,0,2,1
+cb319c00-9206979b.jpg,1,0,0,0,0,1,1
+cb337f2b-3629c65f.jpg,1,0,2,0,0,1,1
+cb0368de-db7b4f2d.jpg,1,0,0,0,0,1,0
+cb407ea1-c710bb54.jpg,1,0,2,0,0,1,0
+cb408cd1-4e5d1a93.jpg,1,0,2,1,1,1,2
+cb408cd1-03899cff.jpg,1,0,3,1,0,1,0
+cb408cd1-7361838c.jpg,1,0,3,1,0,1,2
+cb466c0c-cdcf7586.jpg,0,0,0,0,0,1,2
+cb485e40-041c5db0.jpg,1,0,0,0,0,1,1
+cb516cda-08e840e0.jpg,1,0,4,0,0,2,2
+cb540cff-6928e2e0.jpg,1,0,2,0,1,0,2
+cb552c07-1e453e94.jpg,1,0,5,0,0,2,2
+cb552c07-d96caa28.jpg,1,0,5,0,0,2,1
+cb553f74-87d7cd19.jpg,1,0,0,0,0,1,0
+cb553f74-a0bbb89a.jpg,1,0,5,0,0,2,2
+cb555b17-2f3df80a.jpg,2,0,0,0,0,1,1
+cb555b17-5fce2544.jpg,2,0,0,0,0,0,2
+cb555b17-47b860f6.jpg,2,0,0,0,0,1,2
+cb555b17-0341b125.jpg,2,0,0,0,0,0,2
+cb555b17-ac237da8.jpg,2,0,0,0,0,1,2
+cb573aeb-d82b66c3.jpg,2,1,0,0,0,0,2
+cb634c79-adae95f2.jpg,1,0,0,0,0,1,2
+cb0676bb-98e0e60f.jpg,2,0,3,0,0,0,0
+cb0676bb-988d6eb5.jpg,2,0,0,0,0,0,0
+cb0676bb-a07ba110.jpg,2,0,0,0,0,0,1
+cb0676bb-b1b073e4.jpg,2,0,0,0,0,0,0
+cb0676bb-c22aecec.jpg,2,0,0,0,0,1,2
+cb0676bb-c375cf69.jpg,2,0,0,0,0,0,2
+cb677fcb-77f2ff92.jpg,2,0,0,0,0,0,1
+cb727cf8-e43b8bcf.jpg,2,1,0,0,0,1,2
+cb770f78-459a3559.jpg,1,0,0,0,0,1,2
+cb770f78-01076f85.jpg,1,0,0,0,0,1,2
+cb770f78-ae09920d.jpg,1,0,0,0,0,1,2
+cb788d32-fcf4487a.jpg,1,0,2,0,0,1,2
+cb816c62-b932176d.jpg,1,0,1,0,0,1,2
+cb816c62-cb006e29.jpg,2,0,0,0,0,0,2
+cb832b24-ee7f9b66.jpg,0,0,1,0,0,1,2
+cb972e4f-ec73b37b.jpg,2,0,0,0,0,1,1
+cb995f92-89756142.jpg,2,0,4,0,0,0,2
+cb1294f1-3faf01b9.jpg,1,0,0,0,0,1,2
+cb1294f1-fba3ff7d.jpg,1,0,5,0,0,2,2
+cb2382b5-9cc2c304.jpg,1,0,1,0,0,1,3
+cb2512c2-c2d1b0f2.jpg,2,0,0,0,0,1,1
+cb3300b5-269086e6.jpg,1,0,3,1,1,1,1
+cb3397f4-ca73c4b8.jpg,2,0,3,0,1,1,2
+cb3598eb-f9977424.jpg,2,1,3,0,1,1,2
+cb3689c8-60e38678.jpg,1,0,2,0,0,0,2
+cb4614bc-47577a9a.jpg,1,0,2,0,0,1,2
+cb4706a3-2d18ef4d.jpg,2,0,0,0,0,1,2
+cb4706a3-42990a31.jpg,2,0,0,0,0,1,2
+cb5903ec-ab4d55f9.jpg,1,0,5,0,0,1,3
+cb6967ef-09c66b9b.jpg,2,0,0,0,0,1,1
+cb7432e5-5f52a54b.jpg,1,0,0,0,0,1,1
+cb7432e5-3350e576.jpg,1,0,0,0,0,1,1
+cb07632a-8c57bef7.jpg,1,0,4,0,0,1,2
+cb8887dd-3d1b43e2.jpg,2,0,3,0,1,0,2
+cb16478b-2c1ed614.jpg,1,0,2,0,0,1,1
+cb16478b-17e02968.jpg,1,0,0,0,0,2,2
+cb16478b-def793e8.jpg,1,0,0,0,0,1,2
+cb020379-3477f3c4.jpg,2,1,0,0,0,0,1
+cb25355a-3ac85fc1.jpg,1,0,0,0,0,1,1
+cb078020-5bfd7122.jpg,1,0,1,0,0,1,2
+cb078020-ab5a89f2.jpg,1,0,0,0,0,1,1
+cb078020-b82ebd77.jpg,1,0,5,0,0,1,2
+cb191189-dcfc5543.jpg,2,0,3,0,0,0,2
+cb325137-259f2a29.jpg,2,0,0,0,0,1,2
+cb356543-f4ae1553.jpg,1,0,4,0,0,0,0
+cb376872-5d6ac015.jpg,1,0,1,0,0,1,1
+cb376872-948ed402.jpg,1,0,1,0,0,1,1
+cb376872-210383e3.jpg,1,0,3,0,1,1,1
+cb421747-f06aec7d.jpg,1,0,0,0,0,2,1
+cb547251-ce16ab57.jpg,1,0,2,0,0,1,0
+cb606577-33698fb5.jpg,2,0,0,0,0,1,2
+cb626215-835f3c31.jpg,1,0,2,0,0,1,1
+cb661448-1dde14e9.jpg,2,0,0,0,0,1,0
+cb694310-19547889.jpg,1,0,1,0,0,1,1
+cb713460-c5eecc9d.jpg,2,0,0,0,0,1,2
+cb744436-af4453b8.jpg,1,0,5,0,0,1,2
+cb744436-fc001c01.jpg,1,0,0,0,0,1,2
+cb762503-30f8ed32.jpg,2,1,0,0,0,1,2
+cb762503-487cd3ac.jpg,2,1,0,0,0,1,1
+cb762503-923d5224.jpg,2,1,0,0,0,1,2
+cb762503-cc174e8a.jpg,2,1,0,0,0,1,2
+cb842524-5b6a3672.jpg,2,0,0,0,0,1,1
+cb843184-86feb9c0.jpg,2,0,0,0,0,1,0
+cb843184-33700679.jpg,2,0,4,0,0,1,2
+cb871759-8b3a0c24.jpg,1,0,1,0,0,1,2
+cb879996-ecab29b0.jpg,1,0,5,0,0,1,2
+cb967671-f9e60428.jpg,1,0,4,0,0,1,2
+cba8da87-947f586b.jpg,0,0,3,1,1,1,2
+cba11a1c-457143bc.jpg,2,0,4,0,0,1,0
+cba18f1d-005fc338.jpg,1,0,3,1,1,1,2
+cba26bf2-46a33c6e.jpg,1,0,0,0,0,1,1
+cba48b33-96ecec2f.jpg,1,0,5,0,0,1,2
+cba301b8-6b51c394.jpg,1,0,0,0,0,2,1
+cba301b8-7ef6e928.jpg,1,0,0,0,0,0,1
+cba301b8-61b26b7d.jpg,1,0,0,0,0,1,2
+cba301b8-469303a6.jpg,1,0,0,0,0,0,2
+cba301b8-d0803b49.jpg,1,0,0,0,0,1,1
+cba466d2-8a0e070c.jpg,0,0,0,0,0,1,1
+cba826ea-b70f5b1f.jpg,1,0,5,0,0,1,2
+cba879a8-03886aa0.jpg,1,0,5,0,0,1,2
+cba879a8-65058691.jpg,1,0,0,0,0,1,2
+cba2440a-3fbdb69b.jpg,2,0,0,0,0,1,1
+cba2440a-ac4e48fe.jpg,2,1,0,0,0,1,2
+cba56421-88f70290.jpg,1,0,2,0,0,0,0
+cba59791-174972fb.jpg,2,0,0,0,0,0,2
+cba70226-3b47f789.jpg,1,0,0,0,0,1,2
+cba98987-24ca8e06.jpg,1,0,5,0,0,1,2
+cba98987-b06a3b32.jpg,1,0,2,0,0,1,2
+cba98987-f406c7d3.jpg,1,0,2,0,0,1,2
+cba98987-f4093483.jpg,1,0,2,0,0,0,0
+cbab60f0-6b9c8d54.jpg,1,0,0,0,0,1,1
+cbab4776-c4ec1162.jpg,2,0,0,0,0,1,2
+cbabff6d-d41ce15f.jpg,2,1,0,0,0,1,2
+cbadade4-3adcf244.jpg,1,0,2,0,0,1,2
+cbaeb831-758b1ee1.jpg,2,1,0,0,0,1,2
+cbb0df9f-f3f3a196.jpg,1,0,2,0,0,0,2
+cbb0e311-1082d7ff.jpg,2,1,3,0,0,1,1
+cbb0e311-a9afde90.jpg,2,0,0,0,0,1,2
+cbb1b7fc-b495e982.jpg,2,1,0,0,0,1,2
+cbb3f956-b6ce18c4.jpg,1,0,0,0,0,0,0
+cbb8ecf4-caf30270.jpg,1,0,0,0,0,0,1
+cbb8ecf4-e17d3540.jpg,1,1,5,0,0,2,2
+cbb8ecf4-ec82c201.jpg,0,0,0,0,0,0,2
+cbb9a48e-4795fc52.jpg,1,0,4,0,0,1,1
+cbb9a48e-f2e4cab3.jpg,1,0,4,0,0,1,1
+cbb25aa5-0b3024d3.jpg,2,0,3,0,0,0,1
+cbb2743e-776cc8bb.jpg,0,0,0,0,0,1,2
+cbb5610a-80e61a98.jpg,2,0,0,0,0,0,2
+cbbc1915-6292d4cb.jpg,1,0,0,0,0,1,2
+cbbd082e-a077f7ab.jpg,1,0,5,0,0,2,1
+cbbfa4d0-9c3f6e67.jpg,1,0,0,0,0,1,1
+cbbfa4d0-fe444e30.jpg,1,0,0,0,0,2,0
+cbbff8e6-3dc736a7.jpg,1,0,1,0,0,1,2
+cbc00a1f-35b56529.jpg,1,0,5,0,0,1,2
+cbc7cfb1-27c67277.jpg,1,0,2,0,0,1,2
+cbc51f7e-e1e43e79.jpg,2,0,0,0,0,1,1
+cbc58d3f-7dde1998.jpg,1,0,4,0,0,2,2
+cbc58d3f-9ed3a1eb.jpg,1,0,4,0,0,2,2
+cbc58d3f-244e1fa0.jpg,2,0,4,0,0,0,0
+cbc58d3f-47326099.jpg,2,0,4,0,0,1,2
+cbc90e87-b7f3f83a.jpg,2,0,0,0,0,1,1
+cbc633dd-cffccd29.jpg,2,0,0,0,0,1,2
+cbc33872-14bdf47a.jpg,2,0,0,0,0,1,1
+cbc67194-07434e2d.jpg,2,0,0,0,0,0,2
+cbca4ff7-a63a4afe.jpg,2,0,0,0,0,0,1
+cbcb3dbf-81834085.jpg,1,0,5,0,0,1,2
+cbcb3dbf-f40f69e4.jpg,2,0,0,0,0,1,2
+cbcb534f-16fa6d31.jpg,2,0,0,0,0,1,2
+cbcd6f5f-564c1627.jpg,2,0,0,0,0,0,0
+cbcef3a5-4666d12d.jpg,2,1,0,0,0,1,2
+cbcf2c53-d73c1732.jpg,2,0,0,0,0,0,2
+cbd23abd-3205ea9e.jpg,1,0,2,0,0,1,2
+cbd35eab-7eacd236.jpg,1,0,2,0,0,1,1
+cbd35eab-62b85b18.jpg,1,0,5,0,0,0,0
+cbd64c44-cdb37ccb.jpg,1,0,5,0,0,0,0
+cbd695ed-0cc7bee1.jpg,1,0,5,0,0,1,2
+cbd695ed-76f1f655.jpg,1,0,3,0,0,1,2
+cbd12311-68a134d8.jpg,1,0,0,0,0,1,0
+cbd12311-081bd652.jpg,1,0,0,0,0,1,2
+cbd12311-435e80c9.jpg,1,0,0,0,0,1,1
+cbdc7b52-0b848407.jpg,1,0,2,0,0,1,2
+cbdc7b52-013f6dd0.jpg,2,0,0,0,0,1,2
+cbdc7b52-87deb9ef.jpg,2,0,0,0,0,0,2
+cbdc7b52-739066ba.jpg,1,0,5,0,0,1,2
+cbdc7b52-f6a10140.jpg,1,0,1,0,0,1,2
+cbe1a98e-59c820bc.jpg,1,0,5,0,0,1,1
+cbe03e14-94acd2c5.jpg,1,0,2,0,0,1,1
+cbe03e14-10934c59.jpg,1,0,2,0,0,1,1
+cbe5d542-c2f39240.jpg,1,0,0,0,0,1,2
+cbe5d542-d6126a85.jpg,1,0,5,0,0,2,2
+cbe7b91f-df03c989.jpg,2,0,0,0,0,0,2
+cbe7b91f-fd443161.jpg,2,0,0,0,0,1,1
+cbe8b297-48e4c903.jpg,1,0,1,0,0,1,2
+cbe8cc9b-a5f6ec17.jpg,1,0,0,0,0,1,2
+cbe45d27-c13af258.jpg,0,0,2,0,0,1,2
+cbe45fe8-aac5a5b2.jpg,1,0,4,0,0,1,1
+cbe73da0-11c8b8bb.jpg,0,0,0,0,0,0,2
+cbe73da0-461983da.jpg,1,0,0,0,0,1,1
+cbe92e30-aabe2055.jpg,0,0,1,0,0,1,1
+cbe92e30-aeb0f552.jpg,1,0,1,0,0,1,1
+cbe712c2-553f3086.jpg,1,0,0,0,0,1,2
+cbe712c2-958c0873.jpg,1,0,2,0,0,1,1
+cbe712c2-48280ae0.jpg,1,0,0,0,0,1,2
+cbe712c2-e12e21b5.jpg,1,0,0,0,0,1,0
+cbe3299e-1d927aac.jpg,1,0,5,0,0,1,2
+cbe7477d-e5bf341e.jpg,2,0,0,0,0,1,2
+cbe50013-8a41f894.jpg,1,0,2,0,0,1,2
+cbe50013-a8851836.jpg,1,0,5,0,0,1,1
+cbea6bbf-0cbcfd64.jpg,1,0,5,0,0,2,2
+cbed3fd1-314723c8.jpg,2,0,0,0,0,1,2
+cbedb6a7-449bf85d.jpg,1,0,0,0,0,1,1
+cbee1f79-b5b7cfb8.jpg,1,0,0,0,0,1,2
+cbee3cf3-347250e8.jpg,2,0,0,0,0,1,2
+cbee9a97-482294d7.jpg,1,0,0,0,0,1,2
+cbf0f27b-61947a8c.jpg,2,1,4,0,1,1,2
+cbf1c1b8-90222583.jpg,0,1,3,0,1,0,1
+cbf2d780-1c82b953.jpg,0,0,2,0,0,1,1
+cbf2d780-2cc23940.jpg,1,0,0,0,0,0,2
+cbf2d780-5f5946f8.jpg,1,0,0,0,0,1,2
+cbf2d780-372a5267.jpg,1,0,0,0,0,1,2
+cbf2d780-06947287.jpg,1,0,2,0,0,1,2
+cbf2d780-a6d78b98.jpg,1,0,0,0,0,1,0
+cbf2d780-a086e582.jpg,1,0,2,0,0,1,2
+cbf16d34-693e440c.jpg,1,0,3,0,0,2,2
+cbf97c6e-e7ccab29.jpg,1,0,0,0,0,1,2
+cbf622f5-06c371dd.jpg,1,0,1,0,0,2,2
+cbf622f5-48bf3236.jpg,1,0,5,0,0,1,1
+cbf622f5-96a1e93f.jpg,1,0,1,0,0,2,2
+cbf622f5-925372ec.jpg,1,0,1,0,0,1,2
+cbf622f5-a1b27f78.jpg,1,0,5,0,0,1,2
+cbf622f5-da7369bc.jpg,1,0,0,0,0,0,2
+cbf68658-8001f6d9.jpg,1,0,2,0,0,0,2
+cbf84011-2b35cf8b.jpg,1,0,5,0,0,2,2
+cbfa24be-e8f8ce38.jpg,1,0,2,0,0,1,1
+cbfc4658-7e8729f0.jpg,2,0,0,0,0,1,2
+cbfc4658-8a2b148f.jpg,1,0,2,0,0,1,2
+cbfc4658-50b26510.jpg,2,0,0,0,0,0,0
+cbfc4658-93e25fbf.jpg,1,0,2,0,0,0,2
+cbfce968-1a476840.jpg,1,0,5,0,0,1,2
+cbfd3c55-9e5eab86.jpg,2,0,0,0,0,1,1
+cc00fe72-1938bf2e.jpg,1,0,5,0,0,1,2
+cc0bba5a-303ff57b.jpg,1,0,0,0,0,0,0
+cc0be15b-b68b23c2.jpg,1,0,2,0,0,1,0
+cc0be15b-b599ce4f.jpg,1,0,2,0,0,1,2
+cc0d756e-1e5c9739.jpg,1,0,5,0,0,2,2
+cc0e3c45-5fb0e452.jpg,2,0,0,0,0,1,2
+cc0e3c45-8d7ad764.jpg,0,0,2,0,0,1,1
+cc0e3c45-23803f57.jpg,1,0,5,0,0,2,2
+cc0e3c45-72198e25.jpg,1,0,1,0,0,1,1
+cc0e38f5-72db5b25.jpg,1,0,5,0,0,1,2
+cc0e87d8-915720ff.jpg,2,0,0,0,0,1,1
+cc0f4fd6-3ca94fe9.jpg,2,0,0,0,0,0,1
+cc0ffeed-4110e03a.jpg,1,0,0,0,0,0,0
+cc0ffeed-291914b0.jpg,1,0,4,0,0,1,2
+cc1c40bb-d0ce34c5.jpg,1,0,4,0,0,1,2
+cc1cdb32-25fde05a.jpg,1,0,5,0,0,1,2
+cc1d043b-9c028836.jpg,0,0,1,0,0,1,2
+cc1d3666-fe5994ae.jpg,2,0,0,0,0,1,1
+cc1e3ecf-ac0094c9.jpg,2,0,0,0,0,1,2
+cc1ea55c-ae732ba3.jpg,2,0,0,0,0,1,0
+cc1ea55c-e6f17aa6.jpg,2,0,0,0,0,1,2
+cc1ea55c-f6bbdc7c.jpg,2,0,0,0,0,1,2
+cc1faca6-8edbad92.jpg,2,1,0,0,0,1,1
+cc1faca6-f737ad12.jpg,0,0,5,0,0,1,2
+cc2d6685-7648e9cc.jpg,1,0,2,0,0,1,2
+cc2e048a-f0318ec1.jpg,2,0,0,0,0,0,2
+cc2f3c35-9366a951.jpg,2,0,0,0,0,1,2
+cc2f94ff-d9c0355d.jpg,1,0,2,0,0,1,2
+cc2fa3e3-3109e987.jpg,1,0,0,0,0,1,0
+cc2fa3e3-f8d2cf56.jpg,1,0,0,0,0,1,2
+cc2faec4-66fb5691.jpg,0,1,1,0,0,1,2
+cc2faec4-75465a1c.jpg,0,1,0,0,0,1,1
+cc2fed05-213cc601.jpg,2,1,0,0,0,0,2
+cc2fed05-dc603679.jpg,2,0,4,0,0,0,2
+cc3bae6a-e9585ae9.jpg,1,0,4,0,0,0,0
+cc3bb4ea-1a99981a.jpg,2,0,0,0,0,0,0
+cc3bb4ea-1cb8b75a.jpg,2,0,4,0,0,1,2
+cc3bb4ea-7a91107d.jpg,2,0,0,0,0,2,2
+cc3bb4ea-35dcc154.jpg,2,1,0,0,0,0,2
+cc3bb4ea-ae675052.jpg,2,0,0,0,0,0,2
+cc3bb4ea-ba787cf3.jpg,2,0,0,0,0,0,1
+cc3bb4ea-e408aeea.jpg,2,0,4,0,0,2,2
+cc3d6fb3-431c8af3.jpg,1,0,5,0,0,0,2
+cc3d9a74-332c6b55.jpg,1,0,0,0,0,1,1
+cc3d9a74-642b38ec.jpg,1,0,0,0,0,1,2
+cc3d9a74-a83db7f7.jpg,1,0,0,0,0,1,2
+cc3f1794-4ce46eed.jpg,1,0,2,1,0,1,2
+cc3f1794-4ec2fd26.jpg,1,0,5,0,0,1,2
+cc3f1794-19c031cb.jpg,1,0,2,1,0,1,2
+cc3f1794-11266fc3.jpg,1,0,2,0,0,0,3
+cc3f1794-c8f74860.jpg,1,0,5,0,0,1,2
+cc3f1794-f4868199.jpg,1,0,5,0,0,1,2
+cc4b4f0d-52b86754.jpg,2,0,0,0,0,2,1
+cc4b4f0d-c99a86eb.jpg,2,0,0,0,0,1,2
+cc4be2ad-aeba6b9a.jpg,0,0,0,0,0,1,2
+cc4be2ad-d203081d.jpg,0,0,0,0,0,0,2
+cc4be2ad-e9088c2f.jpg,1,0,5,0,0,1,0
+cc4d46b3-254c45bb.jpg,1,0,0,0,0,1,2
+cc4d46b3-c3fd6c9a.jpg,1,0,0,0,0,1,1
+cc4d418c-6070d7f8.jpg,1,0,0,0,0,1,2
+cc4d418c-d4f1e754.jpg,1,0,0,0,0,0,1
+cc4dbb2d-b515e77d.jpg,1,0,1,0,0,1,1
+cc4f9db8-0a70a66e.jpg,2,1,0,0,0,1,2
+cc4f30bc-03fb64ac.jpg,2,1,3,0,1,1,2
+cc4f41af-2a4b5403.jpg,2,0,0,0,0,1,1
+cc4f1367-2282746e.jpg,2,0,0,0,0,1,1
+cc5a9059-19f3c4b1.jpg,2,1,3,0,1,1,1
+cc5a9059-b5e4a048.jpg,2,0,4,0,0,1,1
+cc5b4bad-03534d70.jpg,2,0,0,0,0,1,1
+cc5cd07b-1fb23b2e.jpg,1,0,0,0,0,1,2
+cc5ebf55-7c5fc7e5.jpg,1,0,0,0,0,1,2
+cc5ebf55-16173e3a.jpg,1,0,0,0,0,1,1
+cc5ebf55-ae19944e.jpg,1,0,0,0,0,1,2
+cc5efb6b-928ecd99.jpg,1,0,4,0,0,1,2
+cc5efb6b-d84de28e.jpg,1,0,4,0,0,1,2
+cc5f60e4-104ec4fa.jpg,2,0,0,0,0,0,3
+cc5fb87e-22bcbb3b.jpg,2,0,0,0,0,1,2
+cc5fb87e-59402df7.jpg,2,0,0,0,0,1,2
+cc6aa586-a2f572ff.jpg,1,0,0,0,0,1,1
+cc6aa586-bbb2192a.jpg,1,0,0,0,0,1,2
+cc6aa586-d96a6c8d.jpg,1,0,0,0,0,1,1
+cc6c2e77-23d39545.jpg,1,0,2,0,0,1,1
+cc6ce470-fbe4fa91.jpg,2,0,0,0,0,0,2
+cc6d6caa-053d87dc.jpg,1,0,1,0,0,0,2
+cc6ddc67-2dd13c80.jpg,2,0,0,0,0,1,2
+cc6ddc67-bbac8843.jpg,2,0,0,0,0,0,2
+cc6ed4c9-ffb94309.jpg,2,1,0,0,0,2,2
+cc7b0a4d-e8dfd84a.jpg,1,0,3,0,0,2,1
+cc7fb6f4-239c72ea.jpg,1,0,0,0,0,1,1
+cc7ffc6e-44a5025e.jpg,1,0,0,0,0,2,1
+cc7ffc6e-f529b6b6.jpg,1,0,5,0,0,1,2
+cc8a7401-5a949d74.jpg,1,0,0,0,0,2,2
+cc8a7401-bfe6868e.jpg,1,0,0,0,0,1,2
+cc8b48fe-c926e3c2.jpg,2,0,0,0,0,0,2
+cc8c34bc-16142937.jpg,1,0,0,0,0,1,2
+cc8c34bc-fbe81d94.jpg,1,0,0,0,0,0,2
+cc8c89a9-3ce5a26a.jpg,0,0,0,0,0,0,2
+cc8c89a9-58404e79.jpg,1,0,0,0,0,0,0
+cc8c89a9-df9712d8.jpg,1,0,0,0,0,1,2
+cc8ca86f-59a7afb1.jpg,2,0,0,0,0,1,2
+cc8cbbe1-a8cc3a71.jpg,1,0,2,0,0,1,2
+cc8d5a50-92a79d46.jpg,1,0,5,0,0,1,0
+cc8dc586-d68d3111.jpg,2,0,0,0,0,1,2
+cc8e6958-31d716a7.jpg,1,0,0,0,0,1,0
+cc8ec5a4-ef3927b2.jpg,1,0,1,0,0,1,2
+cc8f48fd-58f196f5.jpg,1,0,5,0,0,1,2
+cc8f48fd-bf92d5f8.jpg,1,0,1,0,0,2,2
+cc09dc1a-d106929d.jpg,1,1,5,0,0,1,1
+cc9b85b6-23139590.jpg,1,0,5,0,0,1,2
+cc9cb3d5-1c1cdf87.jpg,1,0,5,0,0,2,2
+cc9d2250-aa5268b6.jpg,1,0,0,0,0,1,2
+cc9d2250-d877b975.jpg,1,0,5,0,0,2,2
+cc9d2250-dd836442.jpg,1,0,5,0,0,2,2
+cc9d2250-fba65525.jpg,1,0,1,0,0,1,1
+cc10f864-08d74bc0.jpg,2,0,0,0,0,0,1
+cc12c648-50282a58.jpg,2,0,4,0,0,0,2
+cc12dd7f-15268c57.jpg,0,0,0,0,0,0,0
+cc14b1c2-30c89f92.jpg,2,0,5,0,0,2,2
+cc14b1c2-6748454d.jpg,1,0,5,0,0,0,0
+cc17fb55-0d4b4694.jpg,1,0,0,0,0,1,2
+cc21dbd8-bdc6e678.jpg,1,0,0,0,0,1,2
+cc24b908-5ec35400.jpg,2,0,0,0,0,1,2
+cc24b908-8b85acdc.jpg,2,0,0,0,0,1,2
+cc24b908-71ca827f.jpg,2,0,0,0,0,0,0
+cc24b908-463a7f6f.jpg,2,0,0,0,0,0,0
+cc24b908-818acd24.jpg,2,1,0,0,0,0,2
+cc24b908-85865c46.jpg,2,0,0,0,0,0,0
+cc24b908-97885fbf.jpg,2,0,0,0,0,0,0
+cc24b908-8858731d.jpg,2,1,3,0,0,1,1
+cc24b908-a7e58e8e.jpg,2,0,0,0,0,1,2
+cc24b908-e4aab9d5.jpg,2,0,0,0,0,1,1
+cc24b908-eb6a3282.jpg,2,0,3,0,0,0,0
+cc24b908-ec720dca.jpg,2,0,0,0,0,0,0
+cc24b908-eee7dda1.jpg,2,0,0,0,0,0,0
+cc26dee3-78664fbd.jpg,1,0,5,0,0,1,2
+cc26dee3-c063b9cc.jpg,1,0,0,0,0,1,2
+cc27a12a-692adf76.jpg,1,0,0,0,0,1,1
+cc27a12a-28769998.jpg,1,0,0,0,0,1,1
+cc27db0f-c30bd65c.jpg,1,0,1,0,0,1,0
+cc32aa15-894fde3b.jpg,2,0,0,0,0,0,2
+cc32aa15-c9fc611a.jpg,2,0,0,0,0,0,2
+cc33fde0-04ef8142.jpg,2,0,0,0,0,1,2
+cc33fde0-23ac8ded.jpg,2,0,0,0,0,1,1
+cc33fde0-38caf4b9.jpg,2,0,0,0,0,0,2
+cc33fde0-093a1899.jpg,2,0,0,0,0,0,2
+cc33fde0-be19b701.jpg,2,0,0,0,0,1,2
+cc33fde0-d9ec566f.jpg,1,0,2,0,0,1,1
+cc33fde0-ffa8ba7d.jpg,2,0,0,0,0,1,1
+cc34a2b1-2a2d4b50.jpg,2,0,0,0,0,0,1
+cc34a2b1-cf58e5ad.jpg,2,0,0,0,0,1,1
+cc34dfb8-99a9b9c4.jpg,2,0,0,0,0,1,2
+cc47d208-fd47ee1b.jpg,1,0,0,0,0,1,2
+cc48d81f-f56870dd.jpg,1,0,3,0,1,1,2
+cc54e2ee-7b38aef6.jpg,2,0,0,0,0,0,1
+cc54e2ee-61c5c680.jpg,2,0,0,0,0,1,2
+cc54e2ee-c9c737b5.jpg,2,0,0,0,0,0,0
+cc54e2ee-feffc8ee.jpg,2,0,0,0,0,0,2
+cc55cc0b-e3bd032c.jpg,1,0,0,0,0,0,2
+cc57b79e-613f2fab.jpg,1,0,2,0,0,1,2
+cc58b45f-04590ff8.jpg,1,0,0,0,0,1,1
+cc58cb36-add14e69.jpg,1,0,2,0,0,1,1
+cc59b570-fa6f8d84.jpg,1,0,2,0,0,1,1
+cc59e8f0-048cf243.jpg,1,0,0,0,0,1,2
+cc60cabd-14f662a1.jpg,1,0,0,0,0,1,1
+cc70e239-27dc9f54.jpg,1,0,0,0,0,2,1
+cc71e83a-8c02c549.jpg,1,0,1,0,0,1,1
+cc73b69d-b31c28dc.jpg,1,0,1,0,0,1,1
+cc74ba60-c11c4ada.jpg,1,0,5,0,0,1,2
+cc74d7f5-09a31f94.jpg,1,0,4,0,0,0,1
+cc74d7f5-d4159d3b.jpg,1,0,4,0,0,1,1
+cc74e071-e232182f.jpg,0,0,2,0,0,2,2
+cc77e273-54107a94.jpg,1,0,0,0,0,1,2
+cc79b8aa-8c3854fa.jpg,2,0,0,0,0,0,2
+cc79b8aa-106e8ded.jpg,2,0,0,0,0,1,2
+cc79b8aa-a7414848.jpg,2,0,0,0,0,1,2
+cc79b8aa-ad37895b.jpg,2,0,0,0,0,1,2
+cc79b8aa-fd81fd8f.jpg,2,0,0,0,0,1,1
+cc79bd30-027662c7.jpg,1,0,2,0,0,1,2
+cc87a3d2-8fad3530.jpg,2,0,0,0,0,2,2
+cc89ab6f-f9ae03a5.jpg,1,0,2,0,0,1,0
+cc89dfe4-257a237d.jpg,2,0,1,0,0,1,1
+cc090db9-d319cbb3.jpg,1,0,0,0,0,1,1
+cc94e589-66a7b77b.jpg,1,0,3,0,0,0,2
+cc94e589-72ae579f.jpg,1,0,5,0,0,0,0
+cc94e589-96be5e99.jpg,1,0,3,0,0,1,0
+cc94e589-256d2c8e.jpg,1,0,3,0,0,1,2
+cc94e589-765ece7e.jpg,1,0,3,0,0,1,2
+cc94e589-8344f31e.jpg,1,0,3,0,0,0,0
+cc94e589-a2f1083d.jpg,1,0,3,0,0,1,2
+cc95d29e-265c7365.jpg,2,0,0,0,0,1,1
+cc97f4b5-1168ca4d.jpg,1,0,0,0,0,1,1
+cc97fab0-a355c8b2.jpg,1,0,0,0,0,0,1
+cc97fab0-f9a08d07.jpg,1,0,0,0,0,1,1
+cc99ac9c-f1e964b0.jpg,2,1,3,0,0,1,2
+cc128cf6-6cf3c17c.jpg,2,0,3,0,0,0,1
+cc128cf6-75b8eb97.jpg,2,0,3,0,0,0,1
+cc143f30-8124f9ce.jpg,1,0,0,0,0,1,2
+cc143f30-b3d2cf65.jpg,1,0,0,0,0,2,2
+cc154f56-27f7d6f2.jpg,2,0,0,0,0,1,1
+cc162a30-0c73ff6a.jpg,1,0,0,0,0,1,0
+cc223b4a-5c5245c4.jpg,1,0,5,0,0,2,2
+cc223b4a-106da3a1.jpg,1,0,2,0,0,1,2
+cc223b4a-cef96d47.jpg,1,0,5,0,0,1,2
+cc236fd9-9f8f27dd.jpg,2,0,0,0,0,1,1
+cc236fd9-90d374e4.jpg,2,0,0,0,0,1,1
+cc250c68-3000506f.jpg,2,0,4,0,2,0,0
+cc262c76-11c3c6b4.jpg,2,0,0,0,0,1,2
+cc289a8f-2bfa8b70.jpg,0,0,0,0,0,1,2
+cc331f16-9d87594e.jpg,1,0,2,0,0,1,2
+cc331f16-32f04288.jpg,1,0,2,0,0,1,2
+cc388c9e-2a036fae.jpg,2,0,0,0,0,2,2
+cc388c9e-b41eace6.jpg,2,0,0,0,0,2,2
+cc420b48-6d2c57c9.jpg,2,0,0,0,0,0,0
+cc420b48-783d8d83.jpg,0,0,0,0,0,0,0
+cc420b48-2516d9c7.jpg,2,0,0,0,0,0,2
+cc420b48-05897b20.jpg,2,0,0,0,0,1,2
+cc420b48-a89b074c.jpg,2,0,0,0,0,1,2
+cc420b48-cefb43bf.jpg,2,0,0,0,0,0,1
+cc479b69-37d1a516.jpg,1,0,0,0,0,1,2
+cc524f08-88e99cc8.jpg,1,0,1,0,0,1,2
+cc524f08-981f4d50.jpg,1,0,1,0,0,1,1
+cc564bbe-6ceefab5.jpg,2,0,0,0,0,1,1
+cc564bbe-444390ff.jpg,2,0,0,0,0,1,1
+cc569fa0-5fa15756.jpg,2,0,0,0,0,1,2
+cc596e29-57af6633.jpg,0,0,5,0,0,1,2
+cc599c2f-631d986b.jpg,1,0,2,0,0,1,2
+cc599c2f-daa3587e.jpg,0,0,0,0,0,0,1
+cc599c2f-f05862b7.jpg,1,0,1,0,0,1,0
+cc0635d6-45630353.jpg,2,0,0,0,0,1,2
+cc687f04-e30ea0b9.jpg,1,0,0,0,0,1,2
+cc725d1b-8c132d23.jpg,1,0,5,0,0,1,0
+cc725d1b-17871dd6.jpg,1,0,0,0,0,1,1
+cc754ceb-fa70fb92.jpg,1,0,0,0,0,1,2
+cc780a3c-2e78aee1.jpg,1,0,5,0,0,0,2
+cc788c3e-72fda23c.jpg,1,0,4,0,0,1,0
+cc788c3e-517cc65a.jpg,1,0,4,0,0,1,2
+cc858ca6-3b08aad7.jpg,0,0,4,0,0,1,2
+cc872b53-2fa985fc.jpg,1,0,5,0,0,1,2
+cc881b78-5fef2a5d.jpg,2,0,0,0,0,0,2
+cc881b78-b5061513.jpg,2,0,0,0,0,1,2
+cc882e05-6fc56933.jpg,2,0,4,0,0,1,2
+cc882e05-8b03e2b7.jpg,1,0,4,0,0,0,2
+cc892afa-0b55cf6e.jpg,0,0,0,0,0,1,0
+cc930b11-0c563693.jpg,1,0,0,0,0,2,2
+cc930b11-0d293816.jpg,1,0,5,0,0,2,2
+cc957b71-83ab8b02.jpg,2,0,0,0,0,1,1
+cc1581ef-0d797091.jpg,1,0,1,0,0,1,3
+cc1581ef-20c07d11.jpg,1,0,5,0,0,1,0
+cc1675ce-5a4d7295.jpg,1,0,3,1,1,1,1
+cc1905aa-cae4a558.jpg,1,0,5,0,0,0,2
+cc2393fc-b35cf107.jpg,1,0,0,0,0,1,2
+cc3294d1-348ad004.jpg,1,0,5,0,0,0,2
+cc3294d1-94693662.jpg,1,0,5,0,0,1,1
+cc4212b2-89e9a9c9.jpg,2,0,0,0,0,0,2
+cc4748fc-9fc4a6b4.jpg,1,0,0,0,0,1,1
+cc4754c0-a8e8b745.jpg,1,0,1,0,0,1,2
+cc5826db-6cae4d5a.jpg,0,0,2,0,0,0,1
+cc5826db-ea40cd3a.jpg,1,0,2,0,0,0,0
+cc6530e7-4fb1baf4.jpg,2,0,0,0,0,1,2
+cc7060d5-6fdc2078.jpg,1,0,0,0,0,0,1
+cc7610dc-25dc7a65.jpg,2,0,0,0,0,1,2
+cc8306ac-3a8b8e14.jpg,1,0,5,0,0,1,2
+cc8829be-ce53b8f1.jpg,1,0,0,0,0,0,2
+cc9972d3-0f9d8264.jpg,1,0,1,0,0,1,1
+cc9972d3-9f8c6c91.jpg,3,0,5,0,0,1,3
+cc24636f-32057058.jpg,1,0,0,0,0,1,2
+cc29749e-c7e0930f.jpg,2,0,4,0,0,2,2
+cc30362b-8893afcc.jpg,1,0,2,0,0,1,2
+cc30362b-cac19bd9.jpg,1,0,5,0,0,2,2
+cc53563d-e7bf8bbb.jpg,1,0,0,0,0,2,2
+cc062302-09d7906d.jpg,2,0,0,0,0,1,2
+cc062302-b944ef68.jpg,1,0,0,0,0,1,2
+cc062302-f0e81d2a.jpg,2,0,0,0,0,1,2
+cc70121d-228f0554.jpg,2,0,0,0,0,1,2
+cc76858a-5b920ae6.jpg,1,0,2,0,0,2,2
+cc76858a-df4452a2.jpg,1,0,1,0,0,0,1
+cc90315c-816a3ed6.jpg,2,0,3,0,0,1,2
+cc112114-4137cd19.jpg,2,0,0,0,0,0,1
+cc115808-d5ba85e8.jpg,2,0,0,0,0,0,1
+cc188009-c910d3c1.jpg,0,0,2,0,0,0,2
+cc272644-ec36abae.jpg,1,0,0,0,0,1,2
+cc350056-47e6f468.jpg,2,0,0,0,0,1,2
+cc420104-c11e86c8.jpg,2,0,0,0,0,0,2
+cc538879-a465ada4.jpg,2,1,3,0,1,1,1
+cc538879-d348877a.jpg,2,1,3,0,1,1,2
+cc618930-bb9fd79f.jpg,1,0,5,0,0,1,2
+cc694474-0e0f6570.jpg,1,0,3,0,1,1,2
+cc700364-1988f276.jpg,1,0,3,0,0,0,0
+cc700364-86687937.jpg,1,0,5,0,0,1,2
+cc700364-e427d41c.jpg,1,0,2,0,0,1,2
+cca3adac-1fc0a20f.jpg,1,0,2,0,0,0,2
+cca05f55-51ce8fe1.jpg,2,0,0,0,0,1,2
+cca6a110-32801987.jpg,1,0,5,0,0,1,2
+cca17b98-1639bb7c.jpg,1,0,4,0,0,1,2
+cca96d47-9ea3e639.jpg,1,0,0,0,0,0,0
+cca96d47-c214cf4d.jpg,1,0,0,0,0,0,2
+cca96d47-d34b171f.jpg,1,0,0,0,0,0,2
+cca0186b-d661a474.jpg,0,0,1,0,0,1,2
+cca366ff-0a475353.jpg,0,0,2,0,0,1,1
+cca366ff-7c8d24d3.jpg,1,0,2,0,0,1,0
+cca366ff-17bc0463.jpg,1,0,0,0,0,1,1
+cca366ff-997f0af2.jpg,1,0,3,0,0,1,1
+cca366ff-c10bb637.jpg,1,0,3,0,0,1,3
+cca0838d-dde10c3a.jpg,1,0,2,0,0,1,2
+cca7894c-d2bb0f59.jpg,1,0,0,0,0,1,2
+cca22951-b79a6c1c.jpg,2,1,4,0,0,0,2
+cca33354-a7713e9f.jpg,1,0,2,0,0,1,1
+ccaa1ebb-8a16f19d.jpg,1,0,5,0,0,1,2
+ccaa1ebb-6428aee3.jpg,1,0,5,0,0,1,2
+ccaa1ebb-bed7458f.jpg,1,0,1,0,0,1,2
+ccab00d6-1cd55fc3.jpg,2,0,0,0,0,2,2
+ccab51fd-590c910d.jpg,2,0,0,0,0,0,2
+ccab51fd-b3f9dde5.jpg,2,0,0,0,0,0,2
+ccab51fd-b366d929.jpg,2,0,0,0,0,0,2
+ccabd6af-5db3a906.jpg,2,0,0,0,0,0,2
+ccac73ed-b41e4cbf.jpg,3,0,5,0,0,0,3
+ccad4f69-ebc3f954.jpg,1,0,0,0,0,1,2
+ccadd139-ffcbeb8e.jpg,1,0,1,0,0,1,2
+ccb1d4ea-5c2150b8.jpg,2,0,4,0,0,1,2
+ccb1d4ea-753d8015.jpg,2,0,4,0,0,2,2
+ccb2ba45-2e7143dd.jpg,1,0,0,0,0,2,1
+ccb3c14c-8112317d.jpg,1,0,0,0,0,0,0
+ccb3ce82-7aa67fb6.jpg,1,0,5,0,0,0,2
+ccb3da66-2e920bc4.jpg,2,0,0,0,0,1,2
+ccb3da66-7288e775.jpg,2,0,3,0,1,1,2
+ccb3ee5b-29358ba2.jpg,1,0,0,0,0,0,1
+ccb3ee5b-bcee0539.jpg,1,0,0,0,0,1,1
+ccb3ee5b-bf300c5f.jpg,1,0,5,0,0,1,2
+ccb3ee5b-de132545.jpg,1,0,1,0,0,1,0
+ccb3fa02-acd38edd.jpg,2,0,0,0,0,0,2
+ccb9e408-acf2f3e6.jpg,2,0,0,0,0,0,2
+ccb9e408-e2281189.jpg,2,0,0,0,0,0,2
+ccb40a04-8d7025f3.jpg,1,0,0,0,0,1,2
+ccb40a04-df6c433f.jpg,1,0,2,0,0,0,0
+ccb252e0-23351b09.jpg,2,0,0,0,0,1,2
+ccb252e0-b3af3445.jpg,2,0,0,0,0,0,0
+ccb252e0-fa286140.jpg,2,0,0,0,0,0,3
+ccb961b6-1aa1996a.jpg,1,0,2,0,0,1,1
+ccb961b6-66bd00c0.jpg,1,0,3,0,0,1,1
+ccb961b6-569b44d1.jpg,1,0,2,0,0,0,1
+ccb961b6-c9504b72.jpg,0,0,2,0,0,1,2
+ccb961b6-f26df9a9.jpg,1,0,2,0,0,1,1
+ccb9687d-08d9dec0.jpg,1,0,1,0,0,2,3
+ccb9687d-8ffcb52e.jpg,1,0,0,0,0,1,1
+ccb9687d-792f69b6.jpg,1,0,5,0,0,1,0
+ccb18836-5d969031.jpg,2,0,0,0,0,0,0
+ccbceb65-e3746758.jpg,1,0,3,0,0,1,1
+ccbe1b69-5b02ca90.jpg,2,0,0,0,0,1,2
+ccbf4f9d-0eea23e0.jpg,1,0,0,0,0,1,2
+ccbf4f9d-42ba2848.jpg,1,0,0,0,0,1,1
+ccc4c724-b342609b.jpg,0,0,0,0,0,1,1
+ccc160fa-0ec6e31d.jpg,1,0,1,0,0,1,0
+ccc8749b-a4e80baa.jpg,2,1,0,0,0,1,1
+ccc32235-8ab1ccec.jpg,1,0,0,0,0,1,1
+ccc36751-8dddd41e.jpg,1,0,0,0,0,1,0
+ccc36751-62211331.jpg,1,0,0,0,0,0,0
+ccc36751-a9e2d72c.jpg,1,0,0,0,0,1,2
+ccc36751-dbf33a54.jpg,1,0,0,0,0,1,0
+ccc43019-54a0931a.jpg,1,0,3,0,0,1,2
+ccc43019-95edc80e.jpg,1,0,3,0,0,1,0
+ccc90113-09d039f6.jpg,2,1,0,0,0,0,1
+ccc90113-89c333d4.jpg,2,1,0,0,0,0,2
+ccc92796-97feaba2.jpg,1,0,3,1,1,2,2
+cccaed40-0d88edc4.jpg,1,0,0,0,0,1,2
+cccaed40-4b785c57.jpg,1,0,0,0,0,1,2
+cccaed40-8fe01de0.jpg,1,0,0,0,0,1,2
+cccaed40-7356496c.jpg,1,0,2,0,0,0,0
+cccaed40-cba50cc4.jpg,1,0,0,0,0,0,2
+cccaed40-e442395b.jpg,1,0,0,0,0,1,2
+cccaf025-82765572.jpg,2,0,5,0,0,1,2
+cccb7618-458d7f07.jpg,2,0,3,0,0,1,2
+cccb7618-ce7f3e16.jpg,2,0,0,0,0,1,2
+cccc8c24-37bfa226.jpg,0,0,0,0,0,1,1
+cccc8c24-833a48fb.jpg,1,0,0,0,0,1,1
+cccd0ee8-de8ef249.jpg,1,0,2,0,0,0,0
+cccd33dc-92c9af13.jpg,1,0,1,0,0,1,0
+cccd206b-5272e069.jpg,1,0,0,0,0,1,2
+ccce6496-3c7cf270.jpg,1,0,0,0,0,2,1
+ccce6496-f07014cf.jpg,1,0,2,0,0,1,2
+cccf3116-0ac0313a.jpg,2,0,0,0,0,0,1
+ccd0ba6d-55950103.jpg,0,0,2,0,0,1,1
+ccd0ec33-2be0fb05.jpg,1,0,0,0,0,1,2
+ccd0ec33-3386cee5.jpg,1,0,0,0,0,1,1
+ccd1de30-9bbcfb5c.jpg,2,0,0,0,0,0,2
+ccd1de30-9decb021.jpg,1,0,0,0,0,1,1
+ccd3f91e-213a8639.jpg,2,0,0,0,0,1,2
+ccd5a1ee-19a92a50.jpg,1,0,2,0,0,1,2
+ccd6bfe5-4ad49eca.jpg,2,0,0,0,0,0,2
+ccd6bfe5-f9f0b33a.jpg,2,1,0,0,0,0,2
+ccd6e95c-49c52562.jpg,1,0,2,0,0,1,2
+ccd6e95c-833fa38f.jpg,1,0,2,0,0,1,2
+ccd6e95c-00551249.jpg,1,0,2,0,0,1,1
+ccd6e95c-c391e2e8.jpg,1,0,2,0,0,0,2
+ccd007e9-bded7ebd.jpg,1,0,0,0,0,1,2
+ccd8e852-2c390271.jpg,2,0,0,0,0,0,1
+ccd14c41-e5c3edf1.jpg,2,0,0,0,0,0,0
+ccd21ac5-d0ac19fb.jpg,2,0,0,0,0,0,1
+ccd541ca-c2f9f694.jpg,1,0,0,0,0,1,0
+ccd901f5-b3a0c9af.jpg,1,0,0,0,0,1,1
+ccd901f5-bfabffd7.jpg,1,0,0,0,0,1,0
+ccd901f5-e45892d1.jpg,1,0,0,0,0,1,2
+ccd2771c-5fceb25b.jpg,2,0,0,0,0,0,2
+ccd6430a-17c143af.jpg,2,0,4,0,0,1,2
+ccda57ee-93d4db21.jpg,1,0,4,0,0,1,1
+ccdb5d6f-865957bd.jpg,0,0,2,0,0,1,1
+ccdd0ee8-c5f57be9.jpg,1,0,0,0,0,1,1
+ccdd1f41-0f1ce509.jpg,0,0,4,0,0,0,2
+ccde2c9d-f33c2cb9.jpg,2,0,0,0,0,1,1
+ccdf7884-e382c064.jpg,2,0,3,1,1,1,1
+ccdfec32-77664bf4.jpg,1,0,2,0,0,1,1
+ccdfec32-b738be17.jpg,1,0,5,0,0,0,0
+ccdfec32-b04774ea.jpg,1,0,5,0,0,1,2
+cce8ee4f-ed9bff06.jpg,2,0,0,0,0,1,1
+cce96cee-e92d6e05.jpg,1,0,0,0,0,1,2
+cce124cb-c135d3ca.jpg,1,0,2,0,0,1,2
+cce124cb-eaa1877e.jpg,1,0,0,0,0,1,2
+cce887ff-443c174c.jpg,1,0,2,0,0,1,2
+ccea6dde-45f9979a.jpg,0,0,0,0,0,1,1
+ccea6dde-e46f1791.jpg,1,0,0,0,0,1,1
+ccece5b4-960bf7a9.jpg,1,0,0,0,0,2,2
+ccece5b4-22291259.jpg,1,0,4,0,0,0,2
+ccee7a4a-df59e251.jpg,1,0,2,0,0,0,1
+ccf0acaf-d26abd61.jpg,2,0,4,0,0,1,2
+ccf3d44e-064c2bac.jpg,2,0,0,0,0,1,2
+ccf5ec4a-b9f225d9.jpg,2,0,0,0,0,0,2
+ccf5ec4a-b115d9e1.jpg,2,0,0,0,0,0,2
+ccf7c50e-0774df81.jpg,1,0,3,0,0,1,1
+ccf8b874-6fc8732d.jpg,2,0,3,0,1,1,2
+ccf8b874-ed852530.jpg,2,0,0,0,0,1,2
+ccf8b874-edac4a87.jpg,2,0,0,0,0,0,0
+ccf31dca-f07960e0.jpg,1,0,4,0,0,1,2
+ccf1794e-5a932d98.jpg,1,0,5,0,0,1,2
+ccf1794e-031d988a.jpg,1,0,0,0,0,0,2
+ccf4919e-5bc19cb2.jpg,1,0,5,0,0,1,2
+ccf4919e-068e3d14.jpg,1,0,2,0,0,1,1
+ccfbcfb0-ab7af164.jpg,1,0,5,0,0,0,0
+ccff470c-2f82a8e0.jpg,1,0,5,0,0,1,2
+cd0c8cf0-d78ca88f.jpg,1,0,2,0,0,2,2
+cd0e10b9-7b1998ac.jpg,2,0,4,0,0,1,2
+cd0e10b9-29533e32.jpg,2,0,4,0,0,1,2
+cd0fe667-af311e0b.jpg,1,0,4,0,0,1,2
+cd1ac421-0d131625.jpg,2,0,3,0,0,2,2
+cd1accc2-3a3cd9ad.jpg,1,0,5,0,0,2,2
+cd1c820b-19325036.jpg,0,0,5,0,0,1,2
+cd1d185f-b74ff497.jpg,2,0,0,0,0,0,0
+cd1eb221-ee728403.jpg,2,0,0,0,0,0,2
+cd2a3d7d-31eb2785.jpg,1,0,4,0,0,1,2
+cd2adc2d-6e04e046.jpg,2,0,0,0,0,1,2
+cd2af7d8-a65bb530.jpg,1,0,0,0,0,1,0
+cd2bfb1a-910eac20.jpg,2,1,0,0,0,2,2
+cd2cf58c-9dc686c6.jpg,2,0,0,0,0,1,2
+cd2dbf3d-78c22773.jpg,0,0,0,0,0,2,2
+cd2dbf3d-f26f3a48.jpg,1,0,5,0,0,0,0
+cd2dc4e7-083751d5.jpg,2,0,0,0,0,0,0
+cd2fde0b-a0a95dc3.jpg,1,0,0,0,0,1,1
+cd03d364-0851845d.jpg,2,0,0,0,0,1,3
+cd03d364-a7259c1c.jpg,2,0,0,0,0,0,2
+cd03d364-f0a54638.jpg,2,0,0,0,0,0,2
+cd03f445-b41994d3.jpg,2,0,0,0,0,1,1
+cd03f445-d8bd3693.jpg,2,0,0,0,0,0,0
+cd03f445-d61956af.jpg,2,1,0,0,0,1,2
+cd3b1173-63cb9e2e.jpg,2,0,0,0,0,0,2
+cd3d4054-34038427.jpg,2,0,0,0,0,0,2
+cd3dab20-1b3e564e.jpg,1,0,1,0,0,1,1
+cd3dab20-4ea3d971.jpg,1,0,1,0,0,1,1
+cd3df92f-d04e142c.jpg,1,0,0,0,0,1,1
+cd4ac25c-61a9eb11.jpg,2,0,0,0,0,0,2
+cd4bf816-2abb75c9.jpg,0,0,0,0,0,0,0
+cd4bf816-c2f9bf78.jpg,1,0,0,0,0,0,0
+cd4ce4e5-6994fd2d.jpg,1,0,5,0,0,0,2
+cd4ce4e5-d0968ec0.jpg,1,0,0,0,0,2,1
+cd4da443-da4fe8c7.jpg,2,0,0,0,0,0,0
+cd4deee2-1d9539bd.jpg,1,0,3,0,0,0,2
+cd4deee2-2b14753a.jpg,1,0,2,0,0,1,2
+cd4deee2-3feadd6e.jpg,1,0,5,0,0,1,2
+cd4deee2-8e12e5b5.jpg,1,0,2,0,0,1,2
+cd4deee2-9c9f6da1.jpg,1,0,3,0,0,1,1
+cd4deee2-37c8b95c.jpg,1,0,2,0,0,2,2
+cd4deee2-0563d8e1.jpg,1,0,5,0,0,1,2
+cd4deee2-688c8bba.jpg,1,0,3,0,1,1,2
+cd4deee2-0703d1c7.jpg,1,0,3,0,0,1,2
+cd4deee2-9670ca86.jpg,1,0,3,0,0,1,2
+cd4deee2-60291439.jpg,1,0,2,0,0,1,1
+cd4deee2-adc7e92a.jpg,1,0,5,0,0,1,2
+cd4deee2-ce4f69f5.jpg,0,0,0,0,0,2,2
+cd4deee2-d54ea0fd.jpg,1,0,3,0,1,0,2
+cd4deee2-d078d54a.jpg,1,0,2,0,0,1,2
+cd4deee2-d527839e.jpg,1,0,2,0,0,1,2
+cd4deee2-db496410.jpg,1,0,3,0,0,2,2
+cd005e95-51793982.jpg,1,0,0,0,0,0,0
+cd05c0e9-453acc2a.jpg,1,0,0,0,0,1,2
+cd5a9e1b-5fb9ca11.jpg,2,0,0,0,0,0,0
+cd5a9e1b-86faac85.jpg,2,0,0,0,0,1,1
+cd5a94cf-345f214a.jpg,0,0,0,0,0,1,1
+cd5b2540-465c9328.jpg,1,0,2,0,0,1,2
+cd5b2540-913cb8f7.jpg,1,0,2,0,0,0,2
+cd5bee17-bef4f177.jpg,1,0,0,0,0,1,1
+cd5db4e0-1189ff83.jpg,0,0,5,0,0,2,2
+cd6ac46a-eba084bb.jpg,2,1,4,0,0,1,2
+cd6af452-e54a1e36.jpg,1,0,3,1,0,0,2
+cd6c087e-03ca2127.jpg,2,0,0,0,0,1,1
+cd6cc4f9-54312104.jpg,2,0,0,0,0,0,2
+cd6fdcc0-de044f01.jpg,1,0,5,0,0,1,2
+cd6fdd33-ac9cb2db.jpg,1,0,0,0,0,1,2
+cd7b6690-c0a426fc.jpg,2,0,0,0,0,1,2
+cd7c12c7-9b46c2a8.jpg,1,0,5,0,0,0,2
+cd7c12c7-7029da5d.jpg,1,0,0,0,0,1,2
+cd7c92a7-3b20257f.jpg,1,0,2,0,0,1,2
+cd7c92a7-89b23268.jpg,1,0,1,0,0,1,0
+cd7c92a7-9222ee19.jpg,1,0,5,0,0,2,2
+cd7c92a7-ed0d3926.jpg,1,0,1,0,0,0,0
