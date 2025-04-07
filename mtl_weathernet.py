@@ -105,10 +105,10 @@ class MtlWeatherNet(nn.Module):
         )
 
         # Time of day prediction head
-        self.traffic_head = nn.Sequential(
+        self.tod_head = nn.Sequential(
             nn.Linear(self.backbone.fc_in_features, 512),
             nn.ReLU(),
-            nn.Linear(512, 3),
+            nn.Linear(512, 4),
         )
 
         # Define loss functions
@@ -133,7 +133,7 @@ class MtlWeatherNet(nn.Module):
         """
         Forward pass of the model.
         Output prediction will be of dimension (batch_size, num_outputs),
-        where num_outputs is 19 due to the 19 different labels. This is because
+        where num_outputs is 20 due to the 20 different labels. This is because
         the multiclass loss functions we use expect raw logits, so we serve multiclass 
         predictions as raw logits. In order to turn these into categorical labels, use array
         slicing and torch.argmax as necessary. Binary classification problems are returned
@@ -146,8 +146,8 @@ class MtlWeatherNet(nn.Module):
             - 3 for traffic (3 classes)
             - 5 for weather (5 classes)
             - 3 for scene (4 classes)
-            - 3 for time of day (3 classes)
-        The total is 1 + 1 + 3 + 3 + 5 + 3 + 3 = 19.
+            - 4 for time of day (4 classes)
+        The total is 1 + 1 + 3 + 3 + 5 + 3 + 4 = 20.
 
         Args:
             x: Input tensor of shape (batch_size, channels, height, width).
@@ -215,7 +215,7 @@ class MtlWeatherNet(nn.Module):
 
         tod_loss = self.tod_loss(
             preds[:, 16:], labels[:, 16:].long()
-        )  # timeofday is at index 16-18
+        )  # timeofday is at index 16-19
 
         # for now, assume all losses
         # are equally weighted
