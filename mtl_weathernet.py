@@ -126,6 +126,9 @@ class MtlWeatherNet(nn.Module):
         self.scene_loss = nn.CrossEntropyLoss()
         self.tod_loss = nn.CrossEntropyLoss()
 
+        # model pipelines
+        self.pipelines = ["fog", "glare", "road", "traffic", "weather", "scene", "night"]
+
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """
         Forward pass of the model.

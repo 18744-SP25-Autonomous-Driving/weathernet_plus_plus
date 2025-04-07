@@ -88,6 +88,9 @@ class WeatherNetPlusPlus(nn.Module):
         self.scene_loss = nn.CrossEntropyLoss()
         self.night_loss = nn.CrossEntropyLoss()
 
+        # model pipelines
+        self.pipelines = ["fog", "glare", "road", "traffic", "weather", "scene", "night"]
+
     def forward(self, x):
         """
         forward pass
