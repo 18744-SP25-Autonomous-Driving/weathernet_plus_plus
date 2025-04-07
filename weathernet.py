@@ -52,7 +52,7 @@ class WeatherNet(nn.Module):
         self.fog_loss = nn.BCEWithLogitsLoss()
 
         # model pipelines
-        self.pipelines = ["night", "glare", "weather", "fog"]
+        self.num_pipelines = 4
 
     # TODO: make this an interface thing if possible and use it in all models?
     def get_num_pipelines(self) -> int:
@@ -62,7 +62,7 @@ class WeatherNet(nn.Module):
         Returns:
             int: number of pipelines
         """
-        return len(self.pipelines)
+        return self.num_pipelines
 
     def forward(self, x) -> torch.Tensor:
         """

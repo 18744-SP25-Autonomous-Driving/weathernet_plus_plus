@@ -51,27 +51,23 @@ def evaluate_accuracy(model, dataloader, device):
             outputs = model(inputs)
 
             # TODO: Make this generic to support any of our models (ie. 7 pipelines and 4 pipelines)
+            night_out = outputs[:, 0:4]
+            glare_out = outputs[:, 4]
+            weather_out = outputs[:, 5:11]
+            fog_out = outputs[:, 11]
 
             # convert raw logits on multiclass to categorical labels
-            night_out = outputs[:, 0:4]
-            night_out = outputs[:, 0:4]
             night_out = torch.argmax(night_out, dim=1)
-
-            weather_out = outputs[:, 5:11]
             weather_out = torch.argmax(weather_out, dim=1)
 
             # convert raw logits on binary classifiers to categorical labels
-            glare_out = outputs[:, 4]
-            glare_out = glare_out.squeeze()
-            glare_out = glare_out > 0.5
+            glare_out = glare_out.squeeze() > 0.5
+            fog_out = fog_out.squeeze() > 0.5
 
-            fog_out = outputs[:, 11]
-            fog_out = fog_out.squeeze()
-            fog_out = fog_out > 0.5
-
-            night_labels = labels[:, 0].float()
-            glare_labels = labels[:, 1].float()
-            weather_labels = labels[:, 2].float()
+            # Parse labels
+            night_labels = labels[:, 0]
+            glare_labels = labels[:, 1].float() # float for binary classification tasks
+            weather_labels = labels[:, 2]
             fog_labels = labels[:, 3].float()
 
             night_eval = (night_out == night_labels).sum().item()
@@ -79,23 +75,62 @@ def evaluate_accuracy(model, dataloader, device):
             weather_eval = (weather_out == weather_labels).sum().item()
             fog_eval = (fog_out == fog_labels).sum().item()
 
-            evals = torch.tensor([night_eval, glare_eval, weather_eval, fog_eval]).to(device=device)
-            corrects += evals # element-wise sum individual pipelines
-
             # Calculate accuracy
-            # TODO: clean this up. e.g. num_pipelines * len(dataloader.dataset)?
-            total += (
-                night_labels.size(0)
-                + weather_labels.size(0)
-                + glare_labels.size(0)
-                + fog_labels.size(0)
-            )
-            correct += (
-                (night_out == night_labels).sum().item()
-                + (weather_out == weather_labels).sum().item()
-                + (glare_out == glare_labels).sum().item()
-                + (fog_out == fog_labels).sum().item()
-            )
+            if model.get_num_pipelines() == 4:
+                evals = torch.tensor([night_eval, glare_eval, weather_eval, fog_eval]).to(device=device)
+                corrects += evals # element-wise sum individual pipelines
+                # TODO: clean this up. e.g. num_pipelines * len(dataloader.dataset)?
+                total += (
+                    night_labels.size(0)
+                    + weather_labels.size(0)
+                    + glare_labels.size(0)
+                    + fog_labels.size(0)
+                )
+                correct += (
+                    (night_out == night_labels).sum().item()
+                    + (weather_out == weather_labels).sum().item()
+                    + (glare_out == glare_labels).sum().item()
+                    + (fog_out == fog_labels).sum().item()
+                )
+            elif model.get_num_pipelines() == 7:
+                road_out = outputs[:, 12:15]
+                traffic_out = outputs[:, 15:18]
+                scene_out = outputs[:, 18:22]
+
+                road_labels = labels[:, 4]
+                traffic_labels = labels[:, 5]
+                scene_labels = labels[:, 6]
+
+                # convert raw logits on multiclass to categorical labels
+                road_out = torch.argmax(road_out, dim=1)
+                traffic_out = torch.argmax(traffic_out, dim=1)
+                scene_out = torch.argmax(scene_out, dim=1)
+
+                road_eval = (road_out == road_labels).sum().item()
+                traffic_eval = (traffic_out == traffic_labels).sum().item()
+                scene_eval = (scene_out == scene_labels).sum().item()
+
+                evals = torch.tensor([night_eval, glare_eval, weather_eval, fog_eval, road_eval, traffic_eval, scene_eval]).to(device=device)
+                corrects += evals # element-wise sum individual pipelines
+                total += (
+                    night_labels.size(0)
+                    + glare_labels.size(0)
+                    + weather_labels.size(0)
+                    + fog_labels.size(0)
+                    + road_labels.size(0)
+                    + traffic_labels.size(0)
+                    + scene_labels.size(0)
+                )
+                correct += (
+                    (night_out == night_labels).sum().item()
+                    + (weather_out == weather_labels).sum().item()
+                    + (glare_out == glare_labels).sum().item()
+                    + (fog_out == fog_labels).sum().item()
+                    + (road_out == road_labels).sum().item()
+                    + (traffic_out == traffic_labels).sum().item()
+                    + (scene_out == scene_labels).sum().item()
+                )
+
     accuracy = (correct / total) * 100
     accuracies = (corrects / len(dataloader.dataset)) * 100 # element-wise accuracy for each pipeline
     return accuracy, accuracies
@@ -133,6 +168,11 @@ def train(model, optimizer, criterion, trainloader, testloader, epochs, device):
 
     # set up running losses for logging
     running_losses = torch.zeros(model.get_num_pipelines()).to(device=device)
+
+    # first four: base WeatherNet
+    # all seven: WeatherNet++, MTL, Transformer models
+    all_pipelines = ["night", "glare", "weather", "fog", "road", "traffic", "scene"]
+    pipelines = all_pipelines[:model.get_num_pipelines()]
 
     # move model to device
     model.to(device=device)
@@ -178,7 +218,7 @@ def train(model, optimizer, criterion, trainloader, testloader, epochs, device):
             optimizer.step()
 
             # LOG MESSAGE: individual pipeline losses
-            losses_msg = " | ".join(f"{pl} loss: {loss:.2f}" for pl, loss in zip(model.pipelines, losses))
+            losses_msg = " | ".join(f"{pl} loss: {loss:.2f}" for pl, loss in zip(pipelines, losses))
 
             # Print the loss every 10 batches
             if (batch_idx + 1) % 10 == 0:
@@ -187,16 +227,16 @@ def train(model, optimizer, criterion, trainloader, testloader, epochs, device):
         train_loss = running_loss / len(trainloader)
         train_losses = running_losses / len(trainloader)
         train_loss_log.append(train_loss)
-        losses_msg = " | ".join(f"{pl} loss: {loss:.2f}" for pl, loss in zip(model.pipelines, train_losses))
-        print(f"Epoch {epoch+1}/{epochs} - [TRAIN] -{losses_msg}")
+        losses_msg = " | ".join(f"{pl} loss: {loss:.2f}" for pl, loss in zip(pipelines, train_losses))
+        print(f"Epoch {epoch+1}/{epochs} - [TRAIN] - {losses_msg}")
 
         test_loss, test_losses = evaluate_loss(model, criterion, testloader, device)
         test_loss_log.append(test_loss)
-        losses_msg = " | ".join(f"{pl} loss: {loss:.2f}" for pl, loss in zip(model.pipelines, test_losses))
+        losses_msg = " | ".join(f"{pl} loss: {loss:.2f}" for pl, loss in zip(pipelines, test_losses))
         print(f"Epoch {epoch+1}/{epochs} - [TEST] - {losses_msg}")
 
         test_accuracy, test_accuracies = evaluate_accuracy(model, testloader, device)
-        accs_msg = " | ".join(f"{pl} accuracy: {acc:.2f}%" for pl, acc in zip(model.pipelines, test_accuracies))
-        print(f"Epoch {epoch+1}/{epochs} - [TEST] -{accs_msg}")
+        accs_msg = " | ".join(f"{pl} accuracy: {acc:.2f}%" for pl, acc in zip(pipelines, test_accuracies))
+        print(f"Epoch {epoch+1}/{epochs} - [TEST] - {accs_msg}")
 
     return train_loss_log, test_loss_log
