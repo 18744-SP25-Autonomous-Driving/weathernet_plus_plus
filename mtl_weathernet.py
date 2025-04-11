@@ -43,17 +43,19 @@ class MtlWeatherNet(nn.Module):
         # Shared backbone
         self.backbone_type = backbone
         if backbone == MtlBackbone.ResNet50:
-            self.backbone = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
+            self.backbone_model = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
+            self.head_in_features = self.backbone_model.fc.in_features
             self.backbone = nn.Sequential(
-                *list(self.backbone.children())[:-1]
+                *list(self.backbone_model.children())[:-1]
             )  # Remove the classification layer
         elif backbone == MtlBackbone.EfficientNetB4:
-            self.backbone = efficientnet_b4(
-                weights=EfficientNet_B4_Weights.IMAGENET1K_V1
-            )
-            self.backbone = nn.Sequential(
-                *list(self.backbone.children())[:-1]
-            )  # Remove the classification layer
+            raise ValueError("EfficientNet Backbone not yet implemented")
+            # self.backbone = efficientnet_b4(
+            #     weights=EfficientNet_B4_Weights.IMAGENET1K_V1
+            # )
+            # self.backbone = nn.Sequential(
+            #     *list(self.backbone.children())[:-1]
+            # )  # Remove the classification layer
         elif backbone == MtlBackbone.Vgg16:
             raise ValueError("VGG16 Backbone not yet implemented")
         else:
@@ -64,49 +66,49 @@ class MtlWeatherNet(nn.Module):
 
         # Fog prediction head
         self.fog_head = nn.Sequential(
-            nn.Linear(self.backbone.fc_in_features, 512),
+            nn.Linear(self.head_in_features, 512),
             nn.ReLU(),
             nn.Linear(512, 1),
         )
 
         # Glare Prediction Head
         self.glare_head = nn.Sequential(
-            nn.Linear(self.backbone.fc_in_features, 512),
+            nn.Linear(self.head_in_features, 512),
             nn.ReLU(),
             nn.Linear(512, 1),
         )
 
         # Road prediction
         self.road_head = nn.Sequential(
-            nn.Linear(self.backbone.fc_in_features, 512),
+            nn.Linear(self.head_in_features, 512),
             nn.ReLU(),
             nn.Linear(512, 3),
         )
 
         # Traffic prediction head
         self.traffic_head = nn.Sequential(
-            nn.Linear(self.backbone.fc_in_features, 512),
+            nn.Linear(self.head_in_features, 512),
             nn.ReLU(),
             nn.Linear(512, 3),
         )
 
         # Weather prediction head
         self.weather_head = nn.Sequential(
-            nn.Linear(self.backbone.fc_in_features, 512),
+            nn.Linear(self.head_in_features, 512),
             nn.ReLU(),
             nn.Linear(512, 6),
         )
 
         # Scene prediction head
         self.scene_head = nn.Sequential(
-            nn.Linear(self.backbone.fc_in_features, 512),
+            nn.Linear(self.head_in_features, 512),
             nn.ReLU(),
             nn.Linear(512, 4),
         )
 
         # Time of day prediction head
         self.tod_head = nn.Sequential(
-            nn.Linear(self.backbone.fc_in_features, 512),
+            nn.Linear(self.head_in_features, 512),
             nn.ReLU(),
             nn.Linear(512, 4),
         )
@@ -127,7 +129,7 @@ class MtlWeatherNet(nn.Module):
         self.tod_loss = nn.CrossEntropyLoss()
 
         # model pipelines
-        self.num_pipelines = 4
+        self.num_pipelines = 7
 
     # TODO: make this an interface thing if possible and use it in all models?
     def get_num_pipelines(self) -> int:
@@ -144,7 +146,7 @@ class MtlWeatherNet(nn.Module):
         Forward pass of the model.
         Output prediction will be of dimension (batch_size, num_outputs),
         where num_outputs is 22 due to the 22 different labels. This is because
-        the multiclass loss functions we use expect raw logits, so we serve multiclass 
+        the multiclass loss functions we use expect raw logits, so we serve multiclass
         predictions as raw logits. In order to turn these into categorical labels, use array
         slicing and torch.argmax as necessary. Binary classification problems are returned
         as a single value (0 or 1) for each class.
@@ -194,48 +196,84 @@ class MtlWeatherNet(nn.Module):
         )
         return predictions
 
-    def compute_loss(self, preds: torch.Tensor, labels: torch.Tensor) -> torch.Tensor:
+    def compute_loss(
+        self, predictions: torch.Tensor, targets: torch.Tensor
+    ) -> tuple[torch.Tensor]:
         """
-        Compute the loss for the model.
+        Compute total loss.
         Args:
-            preds: Predictions from the model. Shape (batch_size, num_outputs).
-            labels: Ground truth labels. Shape (batch_size, num_outputs).
+            predictions:
+            Tuple (fog_pred, glare_pred, road_pred, traffic_pred, weather_pred, scene_pred, night_pred)
+            targets:
+            Tuple (fog_target, glare_target, road_target, traffic_target, weather_target, scene_target, night_target)
         Returns:
-            loss: Computed loss
+            Total loss (scalar)
         """
-        fog_loss = self.fog_loss(preds[:, 0], labels[:, 0])  # fog is at index 0
+        # Parse predictions
+        night_pred = predictions[:, 0:4]
+        glare_pred = predictions[:, 4]
+        weather_pred = predictions[:, 5:11]
+        fog_pred = predictions[:, 11]
+        road_pred = predictions[:, 12:15]
+        traffic_pred = predictions[:, 15:18]
+        scene_pred = predictions[:, 18:22]
 
-        glare_loss = self.glare_loss(preds[:, 1], labels[:, 1])  # glare is at index 1
+        # Parse targets
+        night_target = targets[:, 0]
+        glare_target = targets[:, 1].float()  # float for binary classification tasks
+        weather_target = targets[:, 2]
+        fog_target = targets[:, 3].float()
+        road_target = targets[:, 4]
+        traffic_target = targets[:, 5]
+        scene_target = targets[:, 6]
 
-        road_loss = self.road_loss(
-            preds[:, 2:5], labels[:, 2:5].long()
-        )  # road is at index 2-4
+        # Compute individual losses
 
-        traffic_loss = self.traffic_loss(
-            preds[:, 5:8], labels[:, 5:8].long()
-        )  # traffic is at index 5-7
+        # CrossEntropyLoss expects (batch, 4) logits and (batch,) labels
+        loss_night = self.tod_loss(night_pred, night_target)
 
-        weather_loss = self.weather_loss(
-            preds[:, 8:13], labels[:, 8:13].long()
-        )  # weather is at index 8-12
+        # BCEWithLogitsLoss expects (batch,) logits and (batch,) labels
+        loss_glare = self.glare_loss(glare_pred.squeeze(), glare_target.float())
 
-        scene_loss = self.scene_loss(
-            preds[:, 13:16], labels[:, 13:16].long()
-        )  # scene is at index 13-15
+        # CrossEntropyLoss expects (batch, 6) logits and (batch,) labels
+        loss_weather = self.weather_loss(weather_pred, weather_target)
 
-        tod_loss = self.tod_loss(
-            preds[:, 16:], labels[:, 16:].long()
-        )  # timeofday is at index 16-19
+        # BCEWithLogitsLoss expects (batch,) logits and (batch,) labels
+        loss_fog = self.fog_loss(fog_pred.squeeze(), fog_target.float())
 
-        # for now, assume all losses
-        # are equally weighted
+        # CrossEntropyLoss expects (batch, 3) logits and (batch,) labels
+        loss_road = self.road_loss(road_pred, road_target)
+
+        # CrossEntropyLoss expects (batch, 3) logits and (batch,) labels
+        loss_traffic = self.traffic_loss(traffic_pred, traffic_target)
+
+        # CrossEntropyLoss expects (batch, 4) logits and (batch,) labels
+        loss_scene = self.scene_loss(scene_pred, scene_target)
+
+        # Total loss (weighted sum if needed)
         total_loss = (
-            fog_loss
-            + glare_loss
-            + road_loss
-            + traffic_loss
-            + weather_loss
-            + scene_loss
-            + tod_loss
+            loss_night
+            + loss_glare
+            + loss_weather
+            + loss_fog
+            + loss_road
+            + loss_traffic
+            + loss_scene
         )
-        return total_loss
+
+        # individual loss elements are SCALAR tensors. These are different from floats.
+        # return in order seen in labels file
+        losses = torch.stack(
+            [
+                loss_night,
+                loss_glare,
+                loss_weather,
+                loss_fog,
+                loss_road,
+                loss_traffic,
+                loss_scene,
+            ]
+        )
+
+        # return both summed loss and individual losses
+        return total_loss, losses
