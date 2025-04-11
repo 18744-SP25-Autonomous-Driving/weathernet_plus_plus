@@ -88,6 +88,19 @@ class WeatherNetPlusPlus(nn.Module):
         self.scene_loss = nn.CrossEntropyLoss()
         self.night_loss = nn.CrossEntropyLoss()
 
+        # model pipelines
+        self.num_pipelines = 7
+
+    # TODO: make this an interface thing if possible and use it in all models?
+    def get_num_pipelines(self) -> int:
+        """
+        Get number of pipelines in the model.
+        Standard function across all of our custom models.
+        Returns:
+            int: number of pipelines
+        """
+        return self.num_pipelines
+    
     def forward(self, x):
         """
         forward pass
@@ -95,11 +108,17 @@ class WeatherNetPlusPlus(nn.Module):
         returns a Tuple:
         (fog_pred, glare_pred, road_pred, traffic_pred, weather_pred, scene_pred, night_pred)
         """
-        # fog-net prediction, 1 class
-        fog = self.fog_net(x)
+        # night-net prediction, 4 classes
+        night = self.night_net(x)
 
         # glare-net prediction, 1 class
         glare = self.glare_net(x)
+
+        # weather-net prediction, 6 classes
+        weather = self.weather_net(x)
+
+        # fog-net prediction, 1 class
+        fog = self.fog_net(x)
 
         # road-net prediction, 3 classes
         road = self.road_net(x)
@@ -107,20 +126,15 @@ class WeatherNetPlusPlus(nn.Module):
         # traffic-net prediction, 3 class
         traffic = self.traffic_net(x)
 
-        # weather-net prediction, 6 classes
-        weather = self.weather_net(x)
-
         # scene-net prediction, 4 classes
         scene = self.scene_net(x)
 
-        # night-net prediction, 4 classes
-        night = self.night_net(x)
+        # return predictions in order seen in labels file
+        return torch.cat((night, glare, weather, fog, road, traffic, scene), dim=1)
+    
+        # return WeatherNetPlusPlus.WeatherNetPlusPlusOutput(fog, glare, road, traffic, weather, scene, night)
 
-        return WeatherNetPlusPlus.WeatherNetPlusPlusOutput(
-            fog, glare, road, traffic, weather, scene, night
-        )
-
-    def compute_loss(self, predictions, targets):
+    def compute_loss(self, predictions: torch.Tensor, targets: torch.Tensor) -> tuple[torch.Tensor]:
         """
         Compute total loss.
         Args:
@@ -131,33 +145,37 @@ class WeatherNetPlusPlus(nn.Module):
         Returns:
             Total loss (scalar)
         """
-        (
-            fog_pred,
-            glare_pred,
-            road_pred,
-            traffic_pred,
-            weather_pred,
-            scene_pred,
-            night_pred,
-        ) = predictions
+        # Parse predictions
+        night_pred = predictions[:, 0:4]
+        glare_pred = predictions[:, 4]
+        weather_pred = predictions[:, 5:11]
+        fog_pred = predictions[:, 11]
+        road_pred = predictions[:, 12:15]
+        traffic_pred = predictions[:, 15:18]
+        scene_pred = predictions[:, 18:22]
 
-        (
-            fog_target,
-            glare_target,
-            road_target,
-            traffic_target,
-            weather_target,
-            scene_target,
-            night_target,
-        ) = targets
+        # Parse targets
+        night_target = targets[:, 0]
+        glare_target = targets[:, 1].float() # float for binary classification tasks
+        weather_target = targets[:, 2]
+        fog_target = targets[:, 3].float()
+        road_target = targets[:, 4]
+        traffic_target = targets[:, 5]
+        scene_target = targets[:, 6]
 
         # Compute individual losses
 
-        # BCEWithLogitsLoss expects (batch,) logits and (batch,) labels
-        loss_fog = self.fog_loss(fog_pred.squeeze(), fog_target.float())
-
+        # CrossEntropyLoss expects (batch, 4) logits and (batch,) labels
+        loss_night = self.night_loss(night_pred, night_target)
+        
         # BCEWithLogitsLoss expects (batch,) logits and (batch,) labels
         loss_glare = self.glare_loss(glare_pred.squeeze(), glare_target.float())
+
+        # CrossEntropyLoss expects (batch, 6) logits and (batch,) labels
+        loss_weather = self.weather_loss(weather_pred, weather_target)
+
+        # BCEWithLogitsLoss expects (batch,) logits and (batch,) labels
+        loss_fog = self.fog_loss(fog_pred.squeeze(), fog_target.float())
 
         # CrossEntropyLoss expects (batch, 3) logits and (batch,) labels
         loss_road = self.road_loss(road_pred, road_target)
@@ -165,23 +183,23 @@ class WeatherNetPlusPlus(nn.Module):
         # CrossEntropyLoss expects (batch, 3) logits and (batch,) labels
         loss_traffic = self.traffic_loss(traffic_pred, traffic_target)
 
-        # CrossEntropyLoss expects (batch, 6) logits and (batch,) labels
-        loss_weather = self.weather_loss(weather_pred, weather_target)
-
         # CrossEntropyLoss expects (batch, 4) logits and (batch,) labels
         loss_scene = self.scene_loss(scene_pred, scene_target)
 
-        # CrossEntropyLoss expects (batch, 4) logits and (batch,) labels
-        loss_night = self.night_loss(night_pred, night_target)
-
         # Total loss (weighted sum if needed)
         total_loss = (
-            loss_fog
+            loss_night
             + loss_glare
+            + loss_weather
+            + loss_fog
             + loss_road
             + loss_traffic
-            + loss_weather
             + loss_scene
-            + loss_night
         )
-        return total_loss
+
+        # individual loss elements are SCALAR tensors. These are different from floats.
+        # return in order seen in labels file
+        losses = torch.stack([loss_night, loss_glare, loss_weather, loss_fog, loss_road, loss_traffic, loss_scene])
+
+        # return both summed loss and individual losses
+        return total_loss, losses

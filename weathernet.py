@@ -14,11 +14,11 @@ class WeatherNet(nn.Module):
     def __init__(self) -> None:
         super(WeatherNet, self).__init__()
 
-        # night-net: resnet50, replaced linear layer at end to be THREE output, followed by softmax.
-        # Time of day is 4 classes (dawn/dusk, daytime, night), so we use a three output
+        # night-net: resnet50, replaced linear layer at end to be FOUR output, followed by softmax.
+        # Time of day is 4 classes (dawn/dusk, daytime, night, undefined), so we use four output
         # neurons with softmax activation to predict the probability of each one.
         self.night_net = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
-        self.night_net.fc = nn.Linear(self.night_net.fc.in_features, 3)
+        self.night_net.fc = nn.Linear(self.night_net.fc.in_features, 4)
 
         # glare-net: resnet50, replaced linear layer at end to be one output, followed by sigmoid.
         # Glare is a single class, so we use a single output with sigmoid activation to predict
@@ -51,6 +51,9 @@ class WeatherNet(nn.Module):
         self.weather_loss = nn.CrossEntropyLoss()
         self.fog_loss = nn.BCEWithLogitsLoss()
 
+        # model pipelines
+        self.num_pipelines = 4
+
     # TODO: make this an interface thing if possible and use it in all models?
     def get_num_pipelines(self) -> int:
         """
@@ -59,21 +62,21 @@ class WeatherNet(nn.Module):
         Returns:
             int: number of pipelines
         """
-        return 4
+        return self.num_pipelines
 
     def forward(self, x) -> torch.Tensor:
         """
         forward pass
         gets called by model()
         returns a Torch.Tensor of shape (batch_size, num_outputs)
-        where num_outputs is 11 due to the 11 individual classes.
+        where num_outputs is 12 due to the 12 individual classes.
         (ie. function is returning raw logits for each multiclass classifer)
         Args:
             x: Torch.Tensor (batch_size, 3, 224, 224)
         Returns:
             Torch.Tensor (batch_size, num_outputs)
         """
-        # night-net prediction, 3 classes
+        # night-net prediction, 4 classes
         night = self.night_net(x)
 
         # glare-net prediction, 1 class
@@ -97,7 +100,7 @@ class WeatherNet(nn.Module):
         The loss function expects the labels to be in the categorical format.
         Args:
             predictions: Torch.Tensor (night_pred, glare_pred, weather_pred, fog_pred)
-                1. night_pred: Torch.Tensor (batch_size, 3)
+                1. night_pred: Torch.Tensor (batch_size, 4)
                 2. glare_pred: Torch.Tensor (batch_size, 1)
                 3. weather_pred: Torch.Tensor (batch_size, 6)
                 4. fog_pred: Torch.Tensor (batch_size, 1)
@@ -110,19 +113,22 @@ class WeatherNet(nn.Module):
             Total loss (scalar)
         """
 
-        night_pred = predictions[:, 0:3]
-        glare_pred = predictions[:, 3]
-        weather_pred = predictions[:, 4:10]
-        fog_pred = predictions[:, 10]
+        night_pred = predictions[:, 0:4]
+        glare_pred = predictions[:, 4]
+        weather_pred = predictions[:, 5:11]
+        fog_pred = predictions[:, 11]
 
-        night_target = targets[:, 0].float()
+        # CrossEntropy expects label indices (ints/longs)
+        # BCEWithLogits expects label probabilities (floats)
+        night_target = targets[:, 0]
         glare_target = targets[:, 1].float()
-        weather_target = targets[:, 2].float()
+        weather_target = targets[:, 2]
         fog_target = targets[:, 3].float()
 
         # Compute individual losses
 
         # CrossEntropyLoss expects (batch, 4) logits and (batch,) labels
+        # print(night_pred.shape, night_target.shape)
         loss_night = self.night_loss(night_pred, night_target)
 
         # BCEWithLogitsLoss expects (batch,) logits and (batch,) labels
@@ -136,4 +142,11 @@ class WeatherNet(nn.Module):
 
         # Total loss (weighted sum if needed)
         total_loss = loss_night + loss_glare + loss_weather + loss_fog
-        return total_loss
+
+        # individual loss elements are SCALAR tensors. These are different from floats.
+        # tensors have unique properties, like .device, .requires_grad (if True, tracks gradients for backprop)
+        # and methods like .backward() to do backprop, or .item() to get the value as a python float.
+        losses = torch.stack([loss_night, loss_glare, loss_weather, loss_fog]) 
+        
+        # return both summed loss and individual losses
+        return total_loss, losses

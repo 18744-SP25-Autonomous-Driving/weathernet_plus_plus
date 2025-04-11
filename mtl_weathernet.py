@@ -94,21 +94,21 @@ class MtlWeatherNet(nn.Module):
         self.weather_head = nn.Sequential(
             nn.Linear(self.backbone.fc_in_features, 512),
             nn.ReLU(),
-            nn.Linear(512, 5),
+            nn.Linear(512, 6),
         )
 
         # Scene prediction head
         self.scene_head = nn.Sequential(
             nn.Linear(self.backbone.fc_in_features, 512),
             nn.ReLU(),
-            nn.Linear(512, 3),
+            nn.Linear(512, 4),
         )
 
         # Time of day prediction head
-        self.traffic_head = nn.Sequential(
+        self.tod_head = nn.Sequential(
             nn.Linear(self.backbone.fc_in_features, 512),
             nn.ReLU(),
-            nn.Linear(512, 3),
+            nn.Linear(512, 4),
         )
 
         # Define loss functions
@@ -126,11 +126,24 @@ class MtlWeatherNet(nn.Module):
         self.scene_loss = nn.CrossEntropyLoss()
         self.tod_loss = nn.CrossEntropyLoss()
 
+        # model pipelines
+        self.num_pipelines = 4
+
+    # TODO: make this an interface thing if possible and use it in all models?
+    def get_num_pipelines(self) -> int:
+        """
+        Get number of pipelines in the model.
+        Standard function across all of our custom models.
+        Returns:
+            int: number of pipelines
+        """
+        return self.num_pipelines
+
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """
         Forward pass of the model.
         Output prediction will be of dimension (batch_size, num_outputs),
-        where num_outputs is 19 due to the 19 different labels. This is because
+        where num_outputs is 22 due to the 22 different labels. This is because
         the multiclass loss functions we use expect raw logits, so we serve multiclass 
         predictions as raw logits. In order to turn these into categorical labels, use array
         slicing and torch.argmax as necessary. Binary classification problems are returned
@@ -141,10 +154,10 @@ class MtlWeatherNet(nn.Module):
             - 1 for glare
             - 3 for road (3 classes)
             - 3 for traffic (3 classes)
-            - 5 for weather (5 classes)
-            - 3 for scene (4 classes)
-            - 3 for time of day (3 classes)
-        The total is 1 + 1 + 3 + 3 + 5 + 3 + 3 = 19.
+            - 6 for weather (6 classes)
+            - 4 for scene (4 classes)
+            - 4 for time of day (4 classes)
+        The total is 1 + 1 + 3 + 3 + 6 + 4 + 4 = 22.
 
         Args:
             x: Input tensor of shape (batch_size, channels, height, width).
@@ -212,7 +225,7 @@ class MtlWeatherNet(nn.Module):
 
         tod_loss = self.tod_loss(
             preds[:, 16:], labels[:, 16:].long()
-        )  # timeofday is at index 16-18
+        )  # timeofday is at index 16-19
 
         # for now, assume all losses
         # are equally weighted

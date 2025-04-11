@@ -1,5 +1,5 @@
 import torchvision.transforms as T
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader, Subset
 from data.BDD100K_plus import Bdd100kPlus
 
 
@@ -28,7 +28,13 @@ def get_dataloaders(
 
         trainloader = DataLoader(trainset, batch_size=batch_size, shuffle=True)
         testloader = DataLoader(testset, batch_size=batch_size, shuffle=False) # shuffle disabled for testloader
+
+        # dbg_trainset = Subset(trainset, range(0, 50))  # Debugging: use only first 50 samples
+        # dbg_trainloader = DataLoader(dbg_trainset, batch_size=batch_size, shuffle=True)
+        # dbg_testset = Subset(testset, range(0, 50))
+        # dbg_testloader = DataLoader(dbg_testset, batch_size=batch_size, shuffle=False)
     else:
         raise ValueError(f"Dataset {dataset_name} not found")
 
+    # return dbg_trainloader, dbg_testloader
     return trainloader, testloader
