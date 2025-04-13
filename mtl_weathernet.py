@@ -301,3 +301,11 @@ class MtlWeatherNet(nn.Module):
         with open(filepath, "rb") as f:
             state_dict = pickle.load(f)
         self.load_state_dict(state_dict)
+
+    def get_name(self) -> str:
+        """
+        Get the name of the model.
+        Returns:
+            str: Name of the model.
+        """
+        return "MtlWeatherNet"
