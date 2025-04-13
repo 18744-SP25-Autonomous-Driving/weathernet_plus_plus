@@ -92,7 +92,7 @@ class WeatherNet(nn.Module):
         # return predictions
         return torch.cat((night, glare, weather, fog), dim=1)
 
-    def compute_loss(self, predictions, targets) -> tuple[torch.Tensor,torch.Tensor]:
+    def compute_loss(self, predictions, targets) -> tuple[torch.Tensor, torch.Tensor]:
         """
         Compute total loss. Requires the Predictions generated
         by the `forward` function, as well as the input labels.
@@ -179,4 +179,4 @@ class WeatherNet(nn.Module):
         Returns:
             str: Name of the model.
         """
-        return "MtlWeatherNetPlusPlus"
+        return "WeatherNet"
