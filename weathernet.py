@@ -14,6 +14,7 @@ class WeatherNet(nn.Module):
 
     def __init__(self) -> None:
         super(WeatherNet, self).__init__()
+        self.name = "WeatherNet"
 
         # night-net: resnet50, replaced linear layer at end to be FOUR output, followed by softmax.
         # Time of day is 4 classes (dawn/dusk, daytime, night, undefined), so we use four output

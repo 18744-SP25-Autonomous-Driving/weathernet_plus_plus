@@ -160,7 +160,7 @@ def map_labels(labels, device):
 # TODO: generalize this function to work with any model. (or multiple models simultaneously)
 # e.g. model = array of models, each trains using the same trainlaoder/testloader
 # Separate WeatherNet into 4 separate ResNet50s?
-def train(model, optimizer, criterion, trainloader, testloader, epochs, device, data_save_dir):
+def train(model, optimizer, criterion, trainloader, testloader, epochs, device, data_save_dir, writer=None):
     """
     Part 1.a: complete the training loop
     """
@@ -239,15 +239,25 @@ def train(model, optimizer, criterion, trainloader, testloader, epochs, device, 
         test_accuracy, test_accuracies = evaluate_accuracy(model, testloader, device)
         accs_msg = " | ".join(f"{pl} accuracy: {acc:.2f}%" for pl, acc in zip(pipelines, test_accuracies))
         print(f"Epoch {epoch+1}/{epochs} - [TEST] - {accs_msg}")
+
         # Ensure the data save directory exists
         os.makedirs(data_save_dir, exist_ok=True)
-
         # Construct the filename for the checkpoint
         model_name = model.get_name()
         checkpoint_filename = os.path.join(data_save_dir, f"{model_name}_epoch_{epoch+1}.pth")
-
         # Save the model checkpoint
         model.save_checkpoint(checkpoint_filename)
         print(f"Checkpoint saved: {checkpoint_filename}")
+
+        # log to tensorboard summarywriter
+        if writer:
+            # per-pipeline training losses/test accuracies
+            for i, pl in enumerate(pipelines):
+                writer.add_scalar(f"Loss/train/{pl}", train_losses[i], epoch)
+                writer.add_scalar(f"Loss/test/{pl}", train_losses[i], epoch)
+                writer.add_scalar(f"Accuracy/test/{pl}", test_accuracies[i], epoch)
+            writer.add_scalar("Loss/train", train_loss, epoch)
+            writer.add_scalar("Loss/test", test_loss, epoch)
+            writer.add_scalar("Accuracy/test", test_accuracy, epoch)
 
     return train_loss_log, test_loss_log
