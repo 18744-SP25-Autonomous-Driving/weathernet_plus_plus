@@ -3,3 +3,4 @@ __pycache__/
 *images/
 cifar-10*
 .vscode/*
+*.pth
