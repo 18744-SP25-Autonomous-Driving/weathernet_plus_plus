@@ -6,6 +6,7 @@ working with Bdd100k labels. Deals with 4 labels.
 import torch
 import torch.nn as nn
 from torchvision.models import resnet50, ResNet50_Weights
+import pickle
 
 
 class WeatherNet(nn.Module):
@@ -91,7 +92,7 @@ class WeatherNet(nn.Module):
         # return predictions
         return torch.cat((night, glare, weather, fog), dim=1)
 
-    def compute_loss(self, predictions, targets):
+    def compute_loss(self, predictions, targets) -> tuple[torch.Tensor,torch.Tensor]:
         """
         Compute total loss. Requires the Predictions generated
         by the `forward` function, as well as the input labels.
@@ -129,24 +130,45 @@ class WeatherNet(nn.Module):
 
         # CrossEntropyLoss expects (batch, 4) logits and (batch,) labels
         # print(night_pred.shape, night_target.shape)
-        loss_night = self.night_loss(night_pred, night_target)
+        loss_night: torch.Tensor = self.night_loss(night_pred, night_target)
 
         # BCEWithLogitsLoss expects (batch,) logits and (batch,) labels
-        loss_glare = self.glare_loss(glare_pred.squeeze(), glare_target)
+        loss_glare: torch.Tensor = self.glare_loss(glare_pred.squeeze(), glare_target)
 
         # CrossEntropyLoss expects (batch, 5) logits and (batch,) labels
-        loss_weather = self.weather_loss(weather_pred, weather_target)
+        loss_weather: torch.Tensor = self.weather_loss(weather_pred, weather_target)
 
         # BCEWithLogitsLoss expects (batch,) logits and (batch,) labels
-        loss_fog = self.fog_loss(fog_pred.squeeze(), fog_target)
+        loss_fog: torch.Tensor = self.fog_loss(fog_pred.squeeze(), fog_target)
 
         # Total loss (weighted sum if needed)
-        total_loss = loss_night + loss_glare + loss_weather + loss_fog
+        total_loss: torch.Tensor = loss_night + loss_glare + loss_weather + loss_fog
 
         # individual loss elements are SCALAR tensors. These are different from floats.
         # tensors have unique properties, like .device, .requires_grad (if True, tracks gradients for backprop)
         # and methods like .backward() to do backprop, or .item() to get the value as a python float.
-        losses = torch.stack([loss_night, loss_glare, loss_weather, loss_fog]) 
-        
+        losses = torch.stack([loss_night, loss_glare, loss_weather, loss_fog])
+
         # return both summed loss and individual losses
         return total_loss, losses
+
+    def save_checkpoint(self, filepath: str) -> None:
+        """
+        Save the model's current state to a pickle file.
+
+        Args:
+            filepath (str): Path to the file where the model state will be saved.
+        """
+        with open(filepath, "wb") as f:
+            pickle.dump(self.state_dict(), f)
+
+    def load_checkpoint(self, filepath: str) -> None:
+        """
+        Load the model's state from a pickle file.
+
+        Args:
+            filepath (str): Path to the file from which the model state will be loaded.
+        """
+        with open(filepath, "rb") as f:
+            state_dict = pickle.load(f)
+        self.load_state_dict(state_dict)

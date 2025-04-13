@@ -14,6 +14,7 @@ from torchvision.models import (
     efficientnet_b4,
     EfficientNet_B4_Weights,
 )
+import pickle
 
 
 class MtlBackbone(Enum):
@@ -198,7 +199,7 @@ class MtlWeatherNet(nn.Module):
 
     def compute_loss(
         self, predictions: torch.Tensor, targets: torch.Tensor
-    ) -> tuple[torch.Tensor]:
+    ) -> tuple[torch.Tensor, torch.Tensor]:
         """
         Compute total loss.
         Args:
@@ -230,28 +231,30 @@ class MtlWeatherNet(nn.Module):
         # Compute individual losses
 
         # CrossEntropyLoss expects (batch, 4) logits and (batch,) labels
-        loss_night = self.tod_loss(night_pred, night_target)
+        loss_night: torch.Tensor = self.tod_loss(night_pred, night_target)
 
         # BCEWithLogitsLoss expects (batch,) logits and (batch,) labels
-        loss_glare = self.glare_loss(glare_pred.squeeze(), glare_target.float())
+        loss_glare: torch.Tensor = self.glare_loss(
+            glare_pred.squeeze(), glare_target.float()
+        )
 
         # CrossEntropyLoss expects (batch, 6) logits and (batch,) labels
-        loss_weather = self.weather_loss(weather_pred, weather_target)
+        loss_weather: torch.Tensor = self.weather_loss(weather_pred, weather_target)
 
         # BCEWithLogitsLoss expects (batch,) logits and (batch,) labels
-        loss_fog = self.fog_loss(fog_pred.squeeze(), fog_target.float())
+        loss_fog: torch.Tensor = self.fog_loss(fog_pred.squeeze(), fog_target.float())
 
         # CrossEntropyLoss expects (batch, 3) logits and (batch,) labels
-        loss_road = self.road_loss(road_pred, road_target)
+        loss_road: torch.Tensor = self.road_loss(road_pred, road_target)
 
         # CrossEntropyLoss expects (batch, 3) logits and (batch,) labels
-        loss_traffic = self.traffic_loss(traffic_pred, traffic_target)
+        loss_traffic: torch.Tensor = self.traffic_loss(traffic_pred, traffic_target)
 
         # CrossEntropyLoss expects (batch, 4) logits and (batch,) labels
-        loss_scene = self.scene_loss(scene_pred, scene_target)
+        loss_scene: torch.Tensor = self.scene_loss(scene_pred, scene_target)
 
         # Total loss (weighted sum if needed)
-        total_loss = (
+        total_loss: torch.Tensor = (
             loss_night
             + loss_glare
             + loss_weather
@@ -263,7 +266,7 @@ class MtlWeatherNet(nn.Module):
 
         # individual loss elements are SCALAR tensors. These are different from floats.
         # return in order seen in labels file
-        losses = torch.stack(
+        losses: torch.Tensor = torch.stack(
             [
                 loss_night,
                 loss_glare,
@@ -277,3 +280,24 @@ class MtlWeatherNet(nn.Module):
 
         # return both summed loss and individual losses
         return total_loss, losses
+
+    def save_checkpoint(self, filepath: str) -> None:
+        """
+        Save the model's current state to a pickle file.
+
+        Args:
+            filepath (str): Path to the file where the model state will be saved.
+        """
+        with open(filepath, "wb") as f:
+            pickle.dump(self.state_dict(), f)
+
+    def load_checkpoint(self, filepath: str) -> None:
+        """
+        Load the model's state from a pickle file.
+
+        Args:
+            filepath (str): Path to the file from which the model state will be loaded.
+        """
+        with open(filepath, "rb") as f:
+            state_dict = pickle.load(f)
+        self.load_state_dict(state_dict)
