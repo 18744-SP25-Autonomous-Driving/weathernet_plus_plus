@@ -39,6 +39,7 @@ class MtlWeatherNet(nn.Module):
         The model is based on ResNet50 architecture.
         """
         super(MtlWeatherNet, self).__init__()
+        self.name = "MTL"
 
         # Shared backbone
         self.backbone_type = backbone
