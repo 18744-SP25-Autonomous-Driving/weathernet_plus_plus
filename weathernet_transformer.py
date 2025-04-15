@@ -24,8 +24,8 @@ class WeatherNetTransformer(nn.Module):
 
         # Shared Vision Transformer backbone
         self.backbone = vit_b_16(weights=ViT_B_16_Weights.IMAGENET1K_V1)
-        self.head_in_features = self.backbone.heads.head.in_features
-        self.backbone.heads = nn.Identity()  # Remove the classification head
+        self.head_in_features = self.backbone.heads[0].in_features
+        self.backbone.heads.head = nn.Identity()  # Remove the classification head
 
         # Task-specific heads
 
