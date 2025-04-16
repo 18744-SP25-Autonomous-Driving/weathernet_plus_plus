@@ -26,7 +26,7 @@ class WeatherNetPlusPlus(nn.Module):
         traffic_pred: torch.Tensor
         weather_pred: torch.Tensor
         scene_pred: torch.Tensor
-        night_pred: torch.Tensor
+        tod_pred: torch.Tensor
 
     def __init__(self) -> None:
         super(WeatherNetPlusPlus, self).__init__()
@@ -69,11 +69,11 @@ class WeatherNetPlusPlus(nn.Module):
         self.scene_net = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
         self.scene_net.fc = nn.Linear(self.scene_net.fc.in_features, 4)
 
-        # night-net: resnet50, replaced linear layer at end to be FOUR output, followed by softmax.
-        # timeofday is FOUR classes (dawn/dusk, daytime, night, undefined), so we use four output
+        # tod-net: resnet50, replaced linear layer at end to be FOUR output, followed by softmax.
+        # timeofday is FOUR classes (dawn/dusk, daytime, tod, undefined), so we use four output
         # neurons with softmax activation to predict the probability of each class.
-        self.night_net = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
-        self.night_net.fc = nn.Linear(self.night_net.fc.in_features, 4)
+        self.tod_net = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
+        self.tod_net.fc = nn.Linear(self.tod_net.fc.in_features, 4)
 
         # Define loss functions
         # Binary Cross Entropy with Logits Loss for binary classification
@@ -88,7 +88,7 @@ class WeatherNetPlusPlus(nn.Module):
         self.traffic_loss = nn.CrossEntropyLoss()
         self.weather_loss = nn.CrossEntropyLoss()
         self.scene_loss = nn.CrossEntropyLoss()
-        self.night_loss = nn.CrossEntropyLoss()
+        self.tod_loss = nn.CrossEntropyLoss()
 
         # model pipelines
         self.num_pipelines = 7
@@ -108,7 +108,7 @@ class WeatherNetPlusPlus(nn.Module):
         forward pass
         gets called by model()
         returns a Tuple:
-        (fog_pred, glare_pred, road_pred, traffic_pred, weather_pred, scene_pred, night_pred)
+        (fog_pred, glare_pred, road_pred, traffic_pred, weather_pred, scene_pred, tod_pred)
         """
         # fog-net prediction, 1 class
         fog = self.fog_net(x)
@@ -128,11 +128,11 @@ class WeatherNetPlusPlus(nn.Module):
         # scene-net prediction, 4 classes
         scene = self.scene_net(x)
 
-        # night-net prediction, 4 classes
-        night = self.night_net(x)
+        # tod-net prediction, 4 classes
+        tod = self.tod_net(x)
 
         # return predictions in order seen in labels file
-        return torch.cat((fog, glare, road, traffic, weather, scene, night), dim=1)
+        return torch.cat((fog, glare, road, traffic, weather, scene, tod), dim=1)
 
     def compute_loss(
         self, predictions: torch.Tensor, targets: torch.Tensor
@@ -141,9 +141,9 @@ class WeatherNetPlusPlus(nn.Module):
         Compute total loss.
         Args:
             predictions:
-            Tuple (fog_pred, glare_pred, road_pred, traffic_pred, weather_pred, scene_pred, night_pred)
+            Tuple (fog_pred, glare_pred, road_pred, traffic_pred, weather_pred, scene_pred, tod_pred)
             targets:
-            Tuple (fog_target, glare_target, road_target, traffic_target, weather_target, scene_target, night_target)
+            Tuple (fog_target, glare_target, road_target, traffic_target, weather_target, scene_target, tod_target)
         Returns:
             Total loss (scalar)
         """
@@ -154,7 +154,7 @@ class WeatherNetPlusPlus(nn.Module):
         traffic_pred = predictions[:, 5:8]
         weather_pred = predictions[:, 8:14]
         scene_pred = predictions[:, 14:18]
-        night_pred = predictions[:, 18:22]
+        tod_pred = predictions[:, 18:22]
 
         # Parse targets
         fog_target = targets[:, 0].float() # float for binary classification tasks
@@ -163,7 +163,7 @@ class WeatherNetPlusPlus(nn.Module):
         traffic_target = targets[:, 3]
         weather_target = targets[:, 4]
         scene_target = targets[:, 5]
-        night_target = targets[:, 6]
+        tod_target = targets[:, 6]
 
         # Compute individual losses
 
@@ -186,7 +186,7 @@ class WeatherNetPlusPlus(nn.Module):
         loss_scene: torch.Tensor = self.scene_loss(scene_pred, scene_target)
 
         # CrossEntropyLoss expects (batch, 4) logits and (batch,) labels
-        loss_night: torch.Tensor = self.night_loss(night_pred, night_target)
+        loss_tod: torch.Tensor = self.tod_loss(tod_pred, tod_target)
 
         # Total loss (weighted sum if needed)
         total_loss: torch.Tensor = (
@@ -196,7 +196,7 @@ class WeatherNetPlusPlus(nn.Module):
             + loss_traffic
             + loss_weather
             + loss_scene
-            + loss_night
+            + loss_tod
         )
 
         # individual loss elements are SCALAR tensors. These are different from floats.
@@ -209,7 +209,7 @@ class WeatherNetPlusPlus(nn.Module):
                 loss_traffic,
                 loss_weather,
                 loss_scene,
-                loss_night,
+                loss_tod,
             ]
         )
 

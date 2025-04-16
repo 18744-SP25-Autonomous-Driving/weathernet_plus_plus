@@ -59,12 +59,12 @@ def evaluate_accuracy(model, dataloader, device):
                 fog_out = outputs[:, 0]
                 glare_out = outputs[:, 1]
                 weather_out = outputs[:, 2:8]
-                night_out = outputs[:, 8:12]
+                tod_out = outputs[:, 8:12]
 
                 fog_labels = labels[:, 0].float() # float for binary classification tasks
                 glare_labels = labels[:, 1].float()
                 weather_labels = labels[:, 3]
-                night_labels = labels[:, 4]
+                tod_labels = labels[:, 4]
 
                 # convert raw logits on binary classifiers to categorical labels
                 fog_out = fog_out.squeeze() > 0.5
@@ -72,18 +72,18 @@ def evaluate_accuracy(model, dataloader, device):
 
                 # convert raw logits on multiclass to categorical labels
                 weather_out = torch.argmax(weather_out, dim=1)
-                night_out = torch.argmax(night_out, dim=1)
+                tod_out = torch.argmax(tod_out, dim=1)
 
                 fog_eval = (fog_out == fog_labels).sum().item()
                 glare_eval = (glare_out == glare_labels).sum().item()
                 weather_eval = (weather_out == weather_labels).sum().item()
-                night_eval = (night_out == night_labels).sum().item()
+                tod_eval = (tod_out == tod_labels).sum().item()
 
                 evals = torch.tensor([
                     fog_eval,
                     glare_eval,
                     weather_eval,
-                    night_eval
+                    tod_eval
                 ]).to(device=device)
 
                 corrects += evals # element-wise sum individual pipelines
@@ -91,13 +91,13 @@ def evaluate_accuracy(model, dataloader, device):
                     fog_labels.size(0)
                     + glare_labels.size(0)
                     + weather_labels.size(0)
-                    + night_labels.size(0)
+                    + tod_labels.size(0)
                 )
                 correct += (
                     (fog_out == fog_labels).sum().item()
                     + (glare_out == glare_labels).sum().item()
                     + (weather_out == weather_labels).sum().item()
-                    + (night_out == night_labels).sum().item()
+                    + (tod_out == tod_labels).sum().item()
                 )
             elif model.get_num_pipelines() == 7: # WeatherNet++, MtlWeatherNet, WeatherNetTransformer
                 fog_out = outputs[:, 0]
@@ -106,7 +106,7 @@ def evaluate_accuracy(model, dataloader, device):
                 traffic_out = outputs[:, 5:8]
                 weather_out = outputs[:, 8:14]
                 scene_out = outputs[:, 14:18]
-                night_out = outputs[:, 18:22]
+                tod_out = outputs[:, 18:22]
 
                 fog_labels = labels[:, 0].float() # float for binary classification tasks
                 glare_labels = labels[:, 1].float()
@@ -114,7 +114,7 @@ def evaluate_accuracy(model, dataloader, device):
                 traffic_labels = labels[:, 3]
                 weather_labels = labels[:, 4]
                 scene_labels = labels[:, 5]
-                night_labels = labels[:, 6]
+                tod_labels = labels[:, 6]
 
                 # convert raw logits on binary classifiers to categorical labels
                 fog_out = fog_out.squeeze() > 0.5
@@ -125,7 +125,7 @@ def evaluate_accuracy(model, dataloader, device):
                 traffic_out = torch.argmax(traffic_out, dim=1)
                 weather_out = torch.argmax(weather_out, dim=1)
                 scene_out = torch.argmax(scene_out, dim=1)
-                night_out = torch.argmax(night_out, dim=1)
+                tod_out = torch.argmax(tod_out, dim=1)
 
                 fog_eval = (fog_out == fog_labels).sum().item()
                 glare_eval = (glare_out == glare_labels).sum().item()
@@ -133,7 +133,7 @@ def evaluate_accuracy(model, dataloader, device):
                 traffic_eval = (traffic_out == traffic_labels).sum().item()
                 weather_eval = (weather_out == weather_labels).sum().item()
                 scene_eval = (scene_out == scene_labels).sum().item()
-                night_eval = (night_out == night_labels).sum().item()
+                tod_eval = (tod_out == tod_labels).sum().item()
 
                 evals = torch.tensor([
                     fog_eval,
@@ -142,7 +142,7 @@ def evaluate_accuracy(model, dataloader, device):
                     traffic_eval,
                     weather_eval,
                     scene_eval,
-                    night_eval
+                    tod_eval
                 ]).to(device=device)
 
                 corrects += evals # element-wise sum individual pipelines
@@ -153,7 +153,7 @@ def evaluate_accuracy(model, dataloader, device):
                     + traffic_labels.size(0)
                     + weather_labels.size(0)
                     + scene_labels.size(0)
-                    + night_labels.size(0)
+                    + tod_labels.size(0)
                 )
                 correct += (
                     (fog_out == fog_labels).sum().item()
@@ -162,7 +162,7 @@ def evaluate_accuracy(model, dataloader, device):
                     + (traffic_out == traffic_labels).sum().item()
                     + (weather_out == weather_labels).sum().item()
                     + (scene_out == scene_labels).sum().item()
-                    + (night_out == night_labels).sum().item()
+                    + (tod_out == tod_labels).sum().item()
                 )
 
     accuracy = (correct / total) * 100
@@ -179,14 +179,14 @@ def map_labels(labels, device):
     fog_labels = labels[:, 0]
     glare_labels = labels[:, 1]
     weather_labels = labels[:, 4]
-    night_labels = labels[:, 6]
-    # CSV category name is timeofday, but weathernet calls the pipeline nightnet
+    tod_labels = labels[:, 6]
+    # CSV category name is timeofday, but weathernet calls the pipeline todnet
 
     return (
         fog_labels.to(device=device),
         glare_labels.to(device=device),
         weather_labels.to(device=device),
-        night_labels.to(device=device),
+        tod_labels.to(device=device),
     )
 
 
@@ -202,9 +202,9 @@ def train(model, optimizer, criterion, trainloader, valloader, epochs, device, d
     running_losses = torch.zeros(num_pipelines).to(device=device)
 
     if num_pipelines == 4:
-        pipelines = ["fog", "glare", "weather", "night"]
+        pipelines = ["fog", "glare", "weather", "tod"]
     else:
-        pipelines = ["fog", "glare", "road", "traffic", "weather", "scene", "night"]
+        pipelines = ["fog", "glare", "road", "traffic", "weather", "scene", "tod"]
 
     # move model to device
     model.to(device=device)
@@ -226,15 +226,13 @@ def train(model, optimizer, criterion, trainloader, valloader, epochs, device, d
 
             # load inputs and labels to device
             inputs, labels = inputs.to(device=device), labels.to(device=device)
-            print(labels)
 
             # FORWARD PASS: call model and get outputs
             outputs = model(inputs)
-            # print(outputs)
 
             # Calculate the loss using loss function
             # 'losses' is a tensor of loss tensors from each pipeline
-            # e.g. [loss_fog, loss_glare, loss_road, loss_traffic, loss_weather, loss_scene, loss_night]
+            # e.g. [loss_fog, loss_glare, loss_road, loss_traffic, loss_weather, loss_scene, loss_tod]
             loss, losses = model.compute_loss(
                 outputs,
                 labels,
