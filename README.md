@@ -1,14 +1,18 @@
 ## File Descriptions
 
 *   `README.md`: This file.
-*   `weathernet.py`: The model itself.
+*   `weathernet.py`: base WeatherNet model {fog, glare, weather, timeofday}
+*   `weathernetplusplus.py`: WeatherNet++ model with all seven pipelines
+*   `mtl_weathernet.py`: multi-task learning model
+*   `weathernet_transformer.py`: transformer model
 *   `train.ipynb`: Notebook for model training and evaluation. Optionally saves model weights.
-*   `BDD100K_plus.py` Our custom dataset. It's a subclass of VisionDataset, and loosely follows CIFAR10's format.
-*   `set_seed.py`: Sets the seed for reproducibility.
+*   `data/`: directory containing images, labels, and helper files
+*   `data/BDD100K_plus.py` Our custom dataset. It's a subclass of VisionDataset, and loosely follows CIFAR10's format.
+*   `utils/set_seed.py`: Sets the seed for reproducibility.
 
 ## Instructions
-Unzip [BDD100K_test_1-1000](https://drive.google.com/file/d/1HNdvbReeh9QNol0AU1wDmVQOttO4Hx-v/view?usp=drive_link)
-into the images subdirectory, so that it looks like `data/images/cabc30fc-e7726578.jpg...` etc
+Unzip [images](https://drive.google.com/file/d/1fKOOGYfeap8o3wWUd-wu6Rd74L6V7H7C/view?usp=sharing)
+into the data subdirectory, so that it looks like `data/images/train/0a0a0b1a-7c39d841.jpg` etc
 
 ## Pipelines and Labels
 | Pipeline  | Label 0          | Label 1                  | Label 2          | Label 3         | Label 4        | Label 5  |
