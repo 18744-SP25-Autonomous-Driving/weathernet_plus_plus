@@ -566,7 +566,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 01853f47-6975b587.jpg,0,0,0,1,0,2,2
 0185631d-eabb8700.jpg,0,1,0,1,5,0,1
 018988f9-0225fc55.jpg,0,1,0,1,0,2,2
-018aca44-9a616a49.jpg,0,1,3,1,0,1,2
+018aca44-9a616a49.jpg,0,1,0,1,0,1,2
 018bf09d-cd788942.jpg,0,0,0,1,5,1,1
 018d962a-fd869a57.jpg,0,0,0,1,3,2,2
 018f06cd-834da3b3.jpg,0,0,0,1,2,1,0
@@ -3755,7 +3755,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 09ac7416-6b722ba9.jpg,0,0,1,1,3,2,2
 09ac7416-7302f662.jpg,0,1,0,1,0,2,2
 09ac7416-74752083.jpg,0,0,1,1,3,2,2
-09ac7416-76fb4b2c.jpg,0,0,3,1,0,3,2
+09ac7416-76fb4b2c.jpg,0,0,0,1,0,3,2
 09ac7416-7c587077.jpg,0,0,1,1,3,2,2
 09ac7416-835e703f.jpg,0,0,0,1,0,1,2
 09ac7416-89d3deee.jpg,0,1,1,1,3,1,2
@@ -3765,7 +3765,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 09ac7416-a111a98a.jpg,0,1,0,1,0,2,2
 09ac7416-a3f1d634.jpg,0,0,0,1,0,2,2
 09ac7416-d0e852a3.jpg,0,1,0,1,0,2,2
-09ac7416-e1082bec.jpg,0,0,3,1,5,2,2
+09ac7416-e1082bec.jpg,0,0,0,1,5,2,2
 09ac7416-e6a289ed.jpg,0,0,0,1,0,0,2
 09ac7416-ea7be0e4.jpg,0,0,1,1,0,2,2
 09acd1a2-3f161bde.jpg,0,0,0,1,5,1,1
@@ -10806,7 +10806,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 1be932d6-cc8dbce1.jpg,0,0,2,1,4,2,2
 1be932d6-d6dce22b.jpg,0,0,2,1,4,2,2
 1bea510c-9cbfcefb.jpg,0,0,0,1,0,1,2
-1bea510c-d7f4d911.jpg,0,0,3,1,0,2,2
+1bea510c-d7f4d911.jpg,0,0,0,1,0,2,2
 1bea596d-fd44c211.jpg,0,0,0,1,0,2,1
 1bea929c-dd58269a.jpg,0,0,0,1,5,2,1
 1beb4677-77bb3de4.jpg,0,0,0,1,0,2,1
@@ -13893,7 +13893,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 235376b3-e8cef7eb.jpg,0,0,0,1,0,2,1
 2354bb99-338bca25.jpg,0,0,0,1,0,0,1
 2357db00-55751c6f.jpg,0,0,0,1,0,2,1
-2357db00-7b7930b2.jpg,0,0,3,0,0,3,0
+2357db00-7b7930b2.jpg,0,0,0,0,0,3,0
 2357db00-9a6abe09.jpg,0,0,0,1,0,0,1
 23583802-185ff83d.jpg,0,1,0,1,0,2,2
 23589c13-5e64b087.jpg,0,0,0,1,0,1,1
@@ -14767,7 +14767,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 25a3e475-841dfac3.jpg,0,0,0,1,0,2,2
 25a3e475-a510cb83.jpg,0,1,0,1,0,2,2
 25a3fb43-ee1eb53d.jpg,0,0,1,1,3,2,1
-25a49b9b-5b650d4e.jpg,0,1,3,1,4,2,1
+25a49b9b-5b650d4e.jpg,0,1,0,1,4,2,1
 25a7a3f7-834aa2d9.jpg,0,1,0,1,0,1,2
 25a85673-54c28966.jpg,0,0,0,1,0,2,1
 25a9865d-258bde32.jpg,0,1,0,1,0,2,2
@@ -16627,7 +16627,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 2a5426eb-f3bb20d1.jpg,0,0,0,1,4,0,2
 2a54b3d9-4f3729c7.jpg,0,0,1,1,3,0,1
 2a554470-c314a903.jpg,0,0,1,1,4,2,2
-2a58d708-143af8c7.jpg,0,1,3,1,0,3,2
+2a58d708-143af8c7.jpg,0,1,0,1,0,3,2
 2a58d708-329f0a73.jpg,0,1,0,1,0,2,2
 2a58d708-4d6992fa.jpg,0,1,1,1,0,2,2
 2a58d708-e281b697.jpg,0,0,0,1,0,1,2
@@ -17644,7 +17644,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 2cd74998-bd1bf22a.jpg,0,0,0,1,0,2,1
 2cd7f72d-af5b4760.jpg,0,0,0,1,1,2,1
 2cd8dc44-b563cdfe.jpg,0,1,0,1,0,1,2
-2cda0aa2-06f7749e.jpg,0,1,3,0,5,3,3
+2cda0aa2-06f7749e.jpg,0,1,0,0,5,3,3
 2cdad010-d2d72def.jpg,0,1,0,1,0,2,2
 2cdad195-2c90af4a.jpg,0,0,1,1,3,2,0
 2cdaea04-98b6ffdb.jpg,0,0,0,1,0,2,1
@@ -20575,7 +20575,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 346bdf2c-66a9b9f1.jpg,0,0,0,1,1,2,1
 346be4c0-c6743dbd.jpg,0,1,0,1,2,2,1
 346ddf8c-8974b307.jpg,0,0,0,1,2,2,1
-346e09e7-19bd383e.jpg,0,1,3,1,5,3,2
+346e09e7-19bd383e.jpg,0,1,0,1,5,3,2
 346e09e7-334fa496.jpg,0,0,0,1,0,2,2
 346e09e7-feba3eb6.jpg,1,1,0,1,0,2,2
 34729dd1-b5432485.jpg,0,0,0,1,0,3,2
@@ -20740,7 +20740,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 34f408a6-d88ceae5.jpg,0,0,0,1,0,1,2
 34f7af33-1790fd47.jpg,0,1,1,1,0,2,2
 34f7af33-8535d856.jpg,0,0,0,1,0,2,2
-34f8336e-9b3d21fe.jpg,0,0,3,0,1,3,0
+34f8336e-9b3d21fe.jpg,0,0,0,0,1,3,0
 34fc3a52-6de5dd3b.jpg,0,0,0,1,1,2,1
 34fcce27-0abe6438.jpg,0,0,0,1,2,1,1
 34fd0d11-15615915.jpg,0,1,0,1,0,2,2
@@ -22581,7 +22581,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 3979fced-de798316.jpg,0,0,0,1,0,1,2
 3979fced-e01be945.jpg,0,0,0,1,0,2,2
 397c390c-7737bc59.jpg,0,0,0,1,0,2,1
-397cfb2a-77707f3d.jpg,0,0,3,0,5,2,1
+397cfb2a-77707f3d.jpg,0,0,0,0,5,2,1
 39805d08-0738f83c.jpg,0,1,1,1,4,2,2
 39805d08-262beff4.jpg,0,0,2,1,4,2,1
 39805d08-55e66eff.jpg,0,0,1,1,4,2,0
@@ -22595,7 +22595,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 3984f672-ac9dd404.jpg,0,0,0,1,0,0,2
 3985baa5-bb9f1021.jpg,0,0,0,1,0,2,1
 3985d0be-fa696e36.jpg,0,0,1,1,3,2,1
-39871212-84f76fe6.jpg,0,0,3,0,5,3,3
+39871212-84f76fe6.jpg,0,0,0,0,5,3,3
 39878b31-bda2c5b8.jpg,0,1,1,1,3,2,1
 39889c08-ab2b229d.jpg,0,0,0,1,0,2,2
 398982e1-281c78d3.jpg,0,0,0,1,0,1,1
@@ -31668,7 +31668,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 50faf7c5-49880b6f.jpg,0,0,0,1,2,2,1
 50fb3f62-73d7cf32.jpg,0,1,0,1,0,1,2
 50fb3f62-d7bc140c.jpg,0,0,0,1,0,1,2
-50fb3f62-e62f36a8.jpg,0,0,3,1,0,0,2
+50fb3f62-e62f36a8.jpg,0,0,0,1,0,0,2
 50fcee80-8d2bd5e3.jpg,0,0,0,1,2,0,1
 50fef7a0-7cb46dd2.jpg,0,0,0,1,5,2,0
 51006ddd-2c0f9178.jpg,0,0,0,1,0,0,1
@@ -36604,7 +36604,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 5d163f42-02a4e365.jpg,0,0,1,0,3,1,1
 5d163f42-082fad4c.jpg,0,0,1,1,3,1,0
 5d163f42-f78e2ce2.jpg,0,0,1,1,5,0,1
-5d16b212-a33b153e.jpg,0,0,3,0,0,2,2
+5d16b212-a33b153e.jpg,0,0,0,0,0,2,2
 5d170a01-4b2a7c00.jpg,0,0,2,1,4,2,2
 5d170a01-e3a96b5d.jpg,0,0,2,1,4,2,2
 5d17566b-018c4359.jpg,0,0,0,1,5,2,1
@@ -36865,7 +36865,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 5db5eb44-eee6a826.jpg,0,0,0,1,3,0,1
 5db6820b-4f1bb6bd.jpg,0,0,0,1,1,0,1
 5db7248c-0d93e696.jpg,0,0,0,1,0,1,1
-5db79dfe-dd19ff26.jpg,0,0,3,3,2,2,1
+5db79dfe-dd19ff26.jpg,0,0,0,2,2,2,1
 5dba306d-8d574c13.jpg,0,0,1,1,4,2,2
 5dba7eaf-7a280607.jpg,0,0,0,1,0,1,2
 5dbaee15-42b41cab.jpg,0,0,0,2,0,1,1
@@ -37658,7 +37658,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 5fc7fbd7-ea7b7963.jpg,0,1,0,2,0,2,2
 5fc93bea-4753652a.jpg,0,0,0,1,0,2,1
 5fc941fb-b8e2baad.jpg,0,1,0,1,0,2,2
-5fc9a313-0ccdbaff.jpg,0,0,3,1,5,3,2
+5fc9a313-0ccdbaff.jpg,0,0,0,1,5,3,2
 5fcacab5-8818f992.jpg,0,0,0,0,0,2,2
 5fcacab5-8a9b2d76.jpg,0,0,0,1,0,2,2
 5fcb2ae7-1e4db63c.jpg,0,0,0,1,1,1,0
@@ -40122,7 +40122,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 66644eeb-0db701bb.jpg,0,1,1,1,3,2,1
 66644eeb-2b2fd958.jpg,0,0,1,1,3,1,1
 66644eeb-4630ca80.jpg,0,0,1,1,4,2,1
-66644eeb-4a127cf2.jpg,0,0,3,1,0,3,2
+66644eeb-4a127cf2.jpg,0,0,0,1,0,3,2
 66644eeb-51f5e359.jpg,0,0,1,1,4,1,1
 66644eeb-5d10fcde.jpg,0,1,1,2,3,2,2
 66644eeb-7c7c3755.jpg,0,0,1,1,3,2,1
@@ -40790,7 +40790,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 6814b6e4-0118e5f2.jpg,0,0,0,1,4,2,2
 6814b6e4-45de62e2.jpg,0,0,0,1,0,2,2
 6814b6e4-9558192a.jpg,0,0,0,1,0,2,2
-6814b6e4-9a684004.jpg,0,1,3,1,5,3,2
+6814b6e4-9a684004.jpg,0,1,0,1,5,3,2
 6814b6e4-f2a86676.jpg,0,0,0,1,0,1,2
 6814dd32-3f5661ff.jpg,0,0,0,1,5,0,1
 6814dd32-e3330a78.jpg,0,0,0,1,2,2,1
@@ -41175,7 +41175,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 69142ad3-ea75eb92.jpg,0,0,1,1,2,2,1
 6914985e-bf1dcd0a.jpg,0,0,0,1,0,2,2
 691658e6-443db26d.jpg,0,0,0,1,2,1,1
-6917719b-039fd669.jpg,0,1,3,1,0,2,2
+6917719b-039fd669.jpg,0,1,0,1,0,2,2
 6917719b-1e700ba6.jpg,0,0,0,1,0,2,2
 6917719b-beebebdc.jpg,0,0,0,1,0,2,2
 6917719b-dd9fe28c.jpg,0,0,0,1,0,2,2
@@ -48204,7 +48204,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 7ad52fcc-c67c4e6d.jpg,0,0,0,1,2,1,0
 7ad8f9c6-4ba45b79.jpg,0,0,0,1,5,0,1
 7ada67cd-7268f678.jpg,0,0,1,1,2,0,1
-7adaeab3-10ec73b5.jpg,0,1,3,3,3,3,3
+7adaeab3-10ec73b5.jpg,0,1,0,0,3,3,3
 7adb4bc8-da06ad09.jpg,0,0,0,2,0,2,2
 7adb69fb-5d525b5a.jpg,0,0,1,1,0,1,2
 7adc1b6a-983f33a0.jpg,0,0,0,1,1,2,1
@@ -52447,10 +52447,10 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 85d654e6-6d6ab47a.jpg,0,1,0,1,0,2,2
 85d654e6-e6fa5433.jpg,0,1,0,1,0,2,2
 85d81130-136fbb80.jpg,0,1,0,1,5,3,2
-85d81130-7375b827.jpg,0,1,3,0,0,0,2
+85d81130-7375b827.jpg,0,1,0,0,0,0,2
 85d81130-8d5a0b71.jpg,0,1,0,1,0,0,2
 85d81130-a500d1a0.jpg,0,1,0,0,0,3,2
-85d81130-bca7067e.jpg,0,1,3,0,0,0,2
+85d81130-bca7067e.jpg,0,1,0,0,0,0,2
 85d98b40-0411eb2b.jpg,0,1,0,1,0,2,2
 85d98b40-88c6b459.jpg,0,1,0,1,0,2,2
 85d9f7f2-ec78d533.jpg,0,0,0,1,1,1,1
@@ -52815,7 +52815,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 86c8fa55-549e3ee7.jpg,0,0,0,1,5,0,1
 86c9d230-ee1d5c9d.jpg,0,0,1,1,3,2,2
 86ca14d4-ff25633c.jpg,0,0,0,1,0,1,2
-86ce3783-14e62fd7.jpg,0,1,3,0,5,2,2
+86ce3783-14e62fd7.jpg,0,1,0,0,5,2,2
 86cf0299-093f50ac.jpg,0,0,0,1,0,2,2
 86d30eb2-59b8e862.jpg,0,0,0,1,0,2,0
 86d30eb2-6b2f6260.jpg,0,0,0,1,0,1,0
@@ -53985,7 +53985,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 89cecd80-4f21bbac.jpg,0,1,0,1,4,2,2
 89cecd80-6e185681.jpg,0,1,0,1,0,2,2
 89cecd80-ae11477c.jpg,0,0,0,1,4,2,2
-89cf0ec9-ec7adeaf.jpg,0,0,3,0,5,2,1
+89cf0ec9-ec7adeaf.jpg,0,0,0,0,5,2,1
 89d042aa-bec7b508.jpg,0,0,0,1,0,2,2
 89d0c161-e2d7723c.jpg,0,0,1,1,3,2,1
 89d0c161-f2d905d1.jpg,0,0,1,1,4,1,1
@@ -56577,7 +56577,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 903b47d0-8f6803bf.jpg,0,1,0,1,0,2,2
 903b4b9a-5a644cea.jpg,0,0,1,1,3,1,2
 903b98c2-0df39f06.jpg,0,0,0,1,0,1,2
-903bc127-c5b3065d.jpg,0,1,3,1,0,3,2
+903bc127-c5b3065d.jpg,0,1,0,1,0,3,2
 903c4e4d-c1b3adbf.jpg,0,0,0,1,5,2,1
 903cce67-5eccbcaf.jpg,0,0,0,1,5,2,1
 903cce67-a1ea5c32.jpg,0,0,0,1,2,1,1
@@ -58485,7 +58485,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 9587a93e-81879404.jpg,0,0,1,1,5,0,1
 9587d2e0-2c70883c.jpg,0,0,0,1,2,2,1
 958823bd-a933ecf1.jpg,0,0,1,2,4,2,1
-95885429-2a7fff00.jpg,0,1,3,1,5,3,3
+95885429-2a7fff00.jpg,0,1,0,1,5,3,3
 958a8a29-8b5ac170.jpg,0,0,0,1,2,2,1
 958b3e44-0816103e.jpg,0,0,0,1,0,1,2
 958ded86-63bc47a8.jpg,0,0,0,1,5,1,1
@@ -60519,7 +60519,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 9a9e4916-aaee21c3.jpg,0,0,0,1,2,2,1
 9a9e4916-cf5a26f4.jpg,0,1,1,1,2,2,1
 9a9e4916-d5acd1cd.jpg,0,0,0,1,0,1,2
-9a9e4916-ecd0689e.jpg,0,1,3,1,5,3,2
+9a9e4916-ecd0689e.jpg,0,1,0,1,5,3,2
 9a9fc4cb-1d17c094.jpg,0,0,0,1,0,2,1
 9a9fc4cb-dd67bc32.jpg,0,0,0,1,0,0,1
 9aa0ebdb-49344424.jpg,0,0,0,1,0,1,0
@@ -61594,7 +61594,7 @@ filename,fog,glare,road,traffic,weather,scene,timeofday
 9d711bfb-47f5ae4a.jpg,0,0,0,1,0,2,2
 9d735e6f-dc0237f1.jpg,0,1,0,1,0,2,2
 9d7388ef-04e26c8a.jpg,0,0,0,1,5,2,1
-9d7388ef-a7b21ebf.jpg,0,1,3,1,5,2,3
+9d7388ef-a7b21ebf.jpg,0,1,0,1,5,2,3
 9d7567f6-cb388da2.jpg,0,0,0,1,0,2,1
 9d78daa0-4f2b93a5.jpg,0,1,0,1,0,2,1
 9d78daa0-9685c5af.jpg,0,0,1,1,0,1,1
@@ -65808,7 +65808,7 @@ a7be6776-5cce85b9.jpg,0,0,0,1,0,2,2
 a7bf3617-face9e43.jpg,0,1,0,1,0,2,2
 a7c0f19a-8613e48b.jpg,0,0,0,1,4,0,1
 a7c1bdfb-3c5c1ec6.jpg,0,0,0,1,0,1,1
-a7c3adb6-b8ae19c0.jpg,0,0,3,0,0,2,2
+a7c3adb6-b8ae19c0.jpg,0,0,0,0,0,2,2
 a7c3cc42-3f82d619.jpg,0,1,0,1,2,2,1
 a7c3e51a-b5b4f0e6.jpg,0,1,0,1,0,2,2
 a7c405a9-cbb11b89.jpg,0,0,0,1,0,0,1
@@ -68477,7 +68477,7 @@ ae653a7e-e55e3083.jpg,0,0,0,1,0,1,1
 ae653a7e-ec18ef73.jpg,0,0,0,1,1,2,1
 ae653a7e-f2f30b5d.jpg,0,0,0,1,0,2,1
 ae65e24e-442a5e15.jpg,0,0,0,1,0,2,2
-ae66fe02-0f4dfea6.jpg,0,0,3,1,5,3,2
+ae66fe02-0f4dfea6.jpg,0,0,0,1,5,3,2
 ae67159c-29f0367f.jpg,0,0,0,1,0,2,2
 ae67159c-3252afec.jpg,0,0,0,1,0,2,2
 ae67c9c0-8b8b8e1e.jpg,0,0,0,1,1,2,1
@@ -69041,7 +69041,7 @@ afa7cd59-d54aa873.jpg,0,0,0,1,1,1,1
 afa7cd59-e22c1803.jpg,0,0,0,1,2,0,1
 afa7cd59-e539d0a6.jpg,0,0,0,1,0,2,1
 afa7cd59-ed98b3f3.jpg,0,0,0,1,0,1,1
-afa7cd59-f4a0f460.jpg,0,0,3,1,0,2,2
+afa7cd59-f4a0f460.jpg,0,0,0,1,0,2,2
 afa8dc07-2156be13.jpg,0,0,0,1,0,2,1
 afa90ad4-f997191b.jpg,0,1,0,1,1,2,1
 afaaacec-258cdc0f.jpg,0,1,0,1,0,0,2
