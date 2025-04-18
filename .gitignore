@@ -5,3 +5,5 @@ cifar-10*
 .vscode/*
 *.pth
 images.zip
+images_resized/
+images_resized.tar

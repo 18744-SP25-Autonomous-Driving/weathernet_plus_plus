@@ -30,6 +30,8 @@ class Bdd100kPlus(VisionDataset):
         root (str or ``pathlib.Path``): Root directory of dataset where directory
             ``BDD100K_plus`` exists or will be saved to if download is set to True.
         set (str ['train', 'val', or 'test']): Creates dataset from one of the three sets.
+        subset (int, optional): If provided, uses only the specified subset (0-6) from 
+            the partitioned data. When None, uses all subsets.
         transform (callable, optional): A function/transform that takes in a PIL image
             and returns a transformed version. E.g, ``transforms.RandomCrop``
         target_transform (callable, optional): A function/transform that takes in the
@@ -41,6 +43,7 @@ class Bdd100kPlus(VisionDataset):
         self,
         root: Union[str, Path],
         set: str = "train",
+        subset: Optional[int] = None,
         transform: Optional[Callable] = None,
         target_transform: Optional[Callable] = None,
     ) -> None:
@@ -49,25 +52,52 @@ class Bdd100kPlus(VisionDataset):
 
         if set not in ["train", "val", "test"]:
             raise ValueError(f"Invalid set '{set}'. Expected one of: 'train', 'val', 'test'.")
+        
+        if subset is not None and (subset < 0 or subset > 6):
+            raise ValueError(f"Invalid subset '{subset}'. Expected None or integer between 0 and 6.")
 
         self.set = set  # train, val, or test
+        self.subset = subset  # which subset to use (0-6), or None for all
 
         # Setup dataset specifics here
         self.img_dir = os.path.join(self.root, f"images/{self.set}")
         self.labels_file = os.path.join(self.root, f"labels/labels_{self.set}.csv")
 
-        # Instantiate image paths and labels as empty lists
-        self.img_paths = [] # list of strings
         # Load the labels file using pandas
         self.df_labels = pd.read_csv(self.labels_file)
+        
+        # Filter by subset if specified
+        if subset is not None:
+            # Calculate which rows belong to this subset (each subset has 10,000 images)
+            start_idx = subset * 10000
+            end_idx = min(start_idx + 10000, len(self.df_labels))
+            self.df_labels = self.df_labels.iloc[start_idx:end_idx]
+        
         # Populate labels into a tensor, converting numeric strings to int64
         # all columns besides 0th column (filename) MUST BE INTS
         self.labels = torch.tensor(self.df_labels.iloc[:, 1:].values, dtype=torch.int64)
+        
         # Populate the image paths list using 0th column (filename)
-        self.img_paths = [
-            os.path.join(self.img_dir, img_name)
-            for img_name in self.df_labels.iloc[:, 0]
-        ]
+        self.img_paths = []
+        for idx, img_name in enumerate(self.df_labels.iloc[:, 0]):
+            if self.set == "train":
+                # Determine which subset this image belongs to
+                if self.subset is None:
+                    # When using all subsets, calculate which subset each image belongs to
+                    img_subset = min(idx // 10000, 6)
+                    img_path = os.path.join(self.img_dir, f"subset_{img_subset}", img_name)
+                else:
+                    # When using a specific subset, all images are in that subset's directory
+                    img_path = os.path.join(self.img_dir, f"subset_{self.subset}", img_name)
+            else:
+                # For validation and test sets, all images are in the same directory
+                img_path = os.path.join(self.img_dir, img_name)
+
+            # Check if the image file exists
+            # Handles AFS's inability to untar all of the training data set.
+            if not os.path.isfile(img_path):
+                break # or continue?
+            self.img_paths.append(img_path)
 
     def __getitem__(self, index, _open=False):
         # Load the image
@@ -84,9 +114,7 @@ class Bdd100kPlus(VisionDataset):
         if self.transform is not None:
             image = self.transform(image)
 
-        if (
-            self.target_transform is not None
-        ):  # might be funky... idk if we use target_transforms.
+        if self.target_transform is not None: # might be funky... idk if we use target_transforms.
             pipeline_labels = self.target_transform(pipeline_labels)
 
         return image, pipeline_labels
@@ -98,6 +126,8 @@ class Bdd100kPlus(VisionDataset):
         head = "Dataset " + self.__class__.__name__
         body = [f"Number of datapoints: {self.__len__()}"]
         body.append(f"Images directory: {self.img_dir}")
+        if self.subset is not None:
+            body.append(f"Using subset: {self.subset}")
         body.append(f"Labels file: {self.labels_file}")
         body += self.extra_repr().splitlines()
         if hasattr(self, "transforms") and self.transforms is not None:
@@ -132,20 +162,18 @@ class Bdd100kPlus(VisionDataset):
 
 
 # BDD100K Dataset (TESTING)
-# train_transforms = T.Compose([T.ToTensor(), T.Normalize(mean=(0.2843, 0.3026, 0.2996),
-#     std=(0.1918, 0.1945, 0.1989),), T.Resize((224, 224)),])
-# val_transforms = T.Compose([T.ToTensor(), T.Normalize(mean=(0.2843, 0.3026, 0.2996),
-#     std=(0.1918, 0.1945, 0.1989),), T.Resize((224, 224)),])
-# test_transforms = T.Compose([T.ToTensor(), T.Normalize(mean=(0.2843, 0.3026, 0.2996),
+# transforms = T.Compose([T.ToTensor(), T.Normalize(mean=(0.2843, 0.3026, 0.2996),
 #     std=(0.1918, 0.1945, 0.1989),), T.Resize((224, 224)),])
 
 # x = Bdd100kPlus(
 #     root="data",
 #     set="train",
-#     transform=train_transforms,
+#     transform=transforms,
 # )
 # print(x) # dataset stats
 
-# # y = x.__getitem__(0)
-# # print(y)
-# z = x.__getitem__(150, _open=True)
+# y = x.__getitem__(0)
+# print(y)
+# z = x.__getitem__(1150, _open=True)
+# z = x.__getitem__(11150, _open=True)
+# z = x.__getitem__(57250, _open=True)
