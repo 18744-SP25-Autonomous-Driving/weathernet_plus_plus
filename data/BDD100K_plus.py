@@ -96,7 +96,7 @@ class Bdd100kPlus(VisionDataset):
             # Check if the image file exists
             # Handles AFS's inability to untar all of the training data set.
             if not os.path.isfile(img_path):
-                break # or continue?
+                continue
             self.img_paths.append(img_path)
 
     def __getitem__(self, index, _open=False):
