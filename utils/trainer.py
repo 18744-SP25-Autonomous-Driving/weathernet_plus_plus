@@ -41,16 +41,6 @@ def evaluate_accuracy(model, dataloader, device):
             # load inputs and labels to device
             inputs, labels = inputs.to(device=device), labels.to(device=device)
 
-            # Separate labels for each pipeline
-            model_dim = model.get_num_pipelines()
-            if model_dim == 4:
-                # TODO: check correctness
-                # WeatherNet: 4 pipelines
-                labels = torch.cat(
-                    (labels[:, 0].unsqueeze(1), labels[:, 1].unsqueeze(1), 
-                     labels[:, 4].unsqueeze(1), labels[:, 6].unsqueeze(1)), dim=1
-                )
-
             # FORWARD PASS: call model and get outputs
             outputs = model(inputs)
 
@@ -63,8 +53,8 @@ def evaluate_accuracy(model, dataloader, device):
 
                 fog_labels = labels[:, 0].float() # float for binary classification tasks
                 glare_labels = labels[:, 1].float()
-                weather_labels = labels[:, 3]
-                tod_labels = labels[:, 4]
+                weather_labels = labels[:, 4]
+                tod_labels = labels[:, 6]
 
                 # convert raw logits on binary classifiers to categorical labels
                 fog_out = fog_out.squeeze() > 0.5
