@@ -203,6 +203,8 @@ def train(model, optimizer, criterion, trainloader, valloader, epochs, device, d
     for epoch in range(epochs):
         print(f"Epoch {epoch+1}/{epochs}")
         running_loss = 0.0
+        running_losses = torch.zeros(num_pipelines).to(device=device)
+
         # Set the model to train mode
         model.train()
 
@@ -265,12 +267,15 @@ def train(model, optimizer, criterion, trainloader, valloader, epochs, device, d
         print(f"Checkpoint saved: {checkpoint_filename}")
 
         # log to tensorboard summarywriter
+        train_loss_map = {pl: loss.item() for pl, loss in zip(pipelines, train_losses)}
+        val_loss_map = {pl: loss.item() for pl, loss in zip(pipelines, val_losses)}
+        val_accuracy_map = {pl: acc.item() for pl, acc in zip(pipelines, val_accuracies)}
         if writer:
             # per-pipeline training losses/val accuracies
             for i, pl in enumerate(pipelines):
-                writer.add_scalar(f"Loss/train/{pl}", train_losses[i], epoch)
-                writer.add_scalar(f"Loss/val/{pl}", train_losses[i], epoch)
-                writer.add_scalar(f"Accuracy/val/{pl}", val_accuracies[i], epoch)
+                writer.add_scalar(f"Loss/train/{pl}", train_loss_map[pl], epoch)
+                writer.add_scalar(f"Loss/val/{pl}", val_loss_map[pl], epoch)
+                writer.add_scalar(f"Accuracy/val/{pl}", val_accuracy_map[pl], epoch)
             writer.add_scalar("Loss/train", train_loss, epoch)
             writer.add_scalar("Loss/val", val_loss, epoch)
             writer.add_scalar("Accuracy/val", val_accuracy, epoch)
