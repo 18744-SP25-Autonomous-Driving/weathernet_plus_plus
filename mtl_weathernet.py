@@ -325,4 +325,4 @@ class MtlWeatherNet(nn.Module):
         Returns:
             str: Name of the model.
         """
-        return "MtlWeatherNet"
+        return self.name

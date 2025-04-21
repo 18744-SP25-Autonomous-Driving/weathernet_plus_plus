@@ -243,4 +243,4 @@ class WeatherNetPlusPlus(nn.Module):
         Returns:
             str: Name of the model.
         """
-        return "WeatherNetPlusPlus"
+        return self.name

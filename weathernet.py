@@ -178,4 +178,4 @@ class WeatherNet(nn.Module):
         Returns:
             str: Name of the model.
         """
-        return "WeatherNet"
+        return self.name
