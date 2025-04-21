@@ -14,13 +14,13 @@ class WeatherNet(nn.Module):
 
     def __init__(self) -> None:
         super(WeatherNet, self).__init__()
-        self.name = "WeatherNet"
+        self.name = "weathernet"
 
-        # night-net: resnet50, replaced linear layer at end to be FOUR output, followed by softmax.
-        # Time of day is 4 classes (dawn/dusk, daytime, night, undefined), so we use four output
-        # neurons with softmax activation to predict the probability of each one.
-        self.night_net = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
-        self.night_net.fc = nn.Linear(self.night_net.fc.in_features, 4)
+        # fog-net: resnet50, replaced linear layer at end to be one output, followed by sigmoid.
+        # Fog is a single class, so we use a single output with sigmoid activation to predict
+        # the probability of fog.
+        self.fog_net = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
+        self.fog_net.fc = nn.Linear(self.fog_net.fc.in_features, 1)
 
         # glare-net: resnet50, replaced linear layer at end to be one output, followed by sigmoid.
         # Glare is a single class, so we use a single output with sigmoid activation to predict
@@ -37,21 +37,21 @@ class WeatherNet(nn.Module):
         self.weather_net = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
         self.weather_net.fc = nn.Linear(self.weather_net.fc.in_features, 6)
 
-        # fog-net: resnet50, replaced linear layer at end to be one output, followed by sigmoid.
-        # Fog is a single class, so we use a single output with sigmoid activation to predict
-        # the probability of fog.
-        self.fog_net = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
-        self.fog_net.fc = nn.Linear(self.fog_net.fc.in_features, 1)
+        # tod-net: resnet50, replaced linear layer at end to be FOUR output, followed by softmax.
+        # Time of day is 4 classes (dawn/dusk, daytime, tod, undefined), so we use four output
+        # neurons with softmax activation to predict the probability of each one.
+        self.tod_net = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
+        self.tod_net.fc = nn.Linear(self.tod_net.fc.in_features, 4)
 
         # Define loss functions
         # Binary Cross Entropy with Logits Loss for binary classification
         # combines cross entropy with a sigmoid activation function in a single class,
         # making it more numerically stable.
         # For multiclass, we use CrossEntropyLoss (softmax).
-        self.night_loss = nn.CrossEntropyLoss()
+        self.fog_loss = nn.BCEWithLogitsLoss()
         self.glare_loss = nn.BCEWithLogitsLoss()
         self.weather_loss = nn.CrossEntropyLoss()
-        self.fog_loss = nn.BCEWithLogitsLoss()
+        self.tod_loss = nn.CrossEntropyLoss()
 
         # model pipelines
         self.num_pipelines = 4
@@ -78,8 +78,8 @@ class WeatherNet(nn.Module):
         Returns:
             Torch.Tensor (batch_size, num_outputs)
         """
-        # night-net prediction, 4 classes
-        night = self.night_net(x)
+        # fog-net prediction, 1 class
+        fog = self.fog_net(x)
 
         # glare-net prediction, 1 class
         glare = self.glare_net(x)
@@ -87,11 +87,11 @@ class WeatherNet(nn.Module):
         # weather-net prediction, 6 classes
         weather = self.weather_net(x)
 
-        # fog-net prediction, 1 class
-        fog = self.fog_net(x)
+        # tod-net prediction, 4 classes
+        tod = self.tod_net(x)
 
         # return predictions
-        return torch.cat((night, glare, weather, fog), dim=1)
+        return torch.cat((fog, glare, weather, tod), dim=1)
 
     def compute_loss(self, predictions, targets) -> tuple[torch.Tensor, torch.Tensor]:
         """
@@ -101,37 +101,35 @@ class WeatherNet(nn.Module):
         function returns the raw logits for each multiclass classifier.
         The loss function expects the labels to be in the categorical format.
         Args:
-            predictions: Torch.Tensor (night_pred, glare_pred, weather_pred, fog_pred)
-                1. night_pred: Torch.Tensor (batch_size, 4)
+            predictions: Torch.Tensor (fog_pred, glare_pred, weather_pred, tod_pred)
+                1. fog_pred: Torch.Tensor (batch_size, 1)
                 2. glare_pred: Torch.Tensor (batch_size, 1)
                 3. weather_pred: Torch.Tensor (batch_size, 6)
-                4. fog_pred: Torch.Tensor (batch_size, 1)
-            targets: Torch.Tensor (night_target, glare_target, weather_target, fog_target)
-                1. night_target: Torch.Tensor (batch_size, 1)
+                4. tod_pred: Torch.Tensor (batch_size, 4)
+            targets: Torch.Tensor (fog_target, glare_target, weather_target, tod_target)
+                1. fog_target: Torch.Tensor (batch_size, 1)
                 2. glare_target: Torch.Tensor (batch_size, 1)
                 3. weather_target: Torch.Tensor (batch_size, 1)
-                4. fog_target: Torch.Tensor (batch_size, 1)
+                4. tod_target: Torch.Tensor (batch_size, 1)
         Returns:
             Total loss (scalar)
         """
 
-        night_pred = predictions[:, 0:4]
-        glare_pred = predictions[:, 4]
-        weather_pred = predictions[:, 5:11]
-        fog_pred = predictions[:, 11]
+        fog_pred = predictions[:, 0]
+        glare_pred = predictions[:, 1]
+        weather_pred = predictions[:, 2:8]
+        tod_pred = predictions[:, 8:12]
 
         # CrossEntropy expects label indices (ints/longs)
         # BCEWithLogits expects label probabilities (floats)
-        night_target = targets[:, 0]
+        fog_target = targets[:, 0].float()
         glare_target = targets[:, 1].float()
-        weather_target = targets[:, 2]
-        fog_target = targets[:, 3].float()
+        weather_target = targets[:, 4]
+        tod_target = targets[:, 6]
 
         # Compute individual losses
-
-        # CrossEntropyLoss expects (batch, 4) logits and (batch,) labels
-        # print(night_pred.shape, night_target.shape)
-        loss_night: torch.Tensor = self.night_loss(night_pred, night_target)
+        # BCEWithLogitsLoss expects (batch,) logits and (batch,) labels
+        loss_fog: torch.Tensor = self.fog_loss(fog_pred.squeeze(), fog_target)
 
         # BCEWithLogitsLoss expects (batch,) logits and (batch,) labels
         loss_glare: torch.Tensor = self.glare_loss(glare_pred.squeeze(), glare_target)
@@ -139,16 +137,16 @@ class WeatherNet(nn.Module):
         # CrossEntropyLoss expects (batch, 5) logits and (batch,) labels
         loss_weather: torch.Tensor = self.weather_loss(weather_pred, weather_target)
 
-        # BCEWithLogitsLoss expects (batch,) logits and (batch,) labels
-        loss_fog: torch.Tensor = self.fog_loss(fog_pred.squeeze(), fog_target)
+        # CrossEntropyLoss expects (batch, 4) logits and (batch,) labels
+        loss_tod: torch.Tensor = self.tod_loss(tod_pred, tod_target)
 
         # Total loss (weighted sum if needed)
-        total_loss: torch.Tensor = loss_night + loss_glare + loss_weather + loss_fog
+        total_loss: torch.Tensor = loss_fog + loss_glare + loss_weather + loss_tod
 
         # individual loss elements are SCALAR tensors. These are different from floats.
         # tensors have unique properties, like .device, .requires_grad (if True, tracks gradients for backprop)
         # and methods like .backward() to do backprop, or .item() to get the value as a python float.
-        losses = torch.stack([loss_night, loss_glare, loss_weather, loss_fog])
+        losses: torch.Tensor = torch.stack([loss_fog, loss_glare, loss_weather, loss_tod])
 
         # return both summed loss and individual losses
         return total_loss, losses

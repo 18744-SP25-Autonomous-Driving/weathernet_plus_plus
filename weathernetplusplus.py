@@ -26,11 +26,11 @@ class WeatherNetPlusPlus(nn.Module):
         traffic_pred: torch.Tensor
         weather_pred: torch.Tensor
         scene_pred: torch.Tensor
-        night_pred: torch.Tensor
+        tod_pred: torch.Tensor
 
     def __init__(self) -> None:
         super(WeatherNetPlusPlus, self).__init__()
-        self.name = "WeatherNetPlusPlus"
+        self.name = "weathernetpp"
 
         # fog-net: resnet50, replaced linear layer at end to be ONE output, followed by sigmoid.
         # fog is a single class, so we use a single output with sigmoid activation to predict
@@ -69,11 +69,11 @@ class WeatherNetPlusPlus(nn.Module):
         self.scene_net = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
         self.scene_net.fc = nn.Linear(self.scene_net.fc.in_features, 4)
 
-        # night-net: resnet50, replaced linear layer at end to be FOUR output, followed by softmax.
-        # timeofday is FOUR classes (dawn/dusk, daytime, night, undefined), so we use four output
+        # tod-net: resnet50, replaced linear layer at end to be FOUR output, followed by softmax.
+        # timeofday is FOUR classes (dawn/dusk, daytime, tod, undefined), so we use four output
         # neurons with softmax activation to predict the probability of each class.
-        self.night_net = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
-        self.night_net.fc = nn.Linear(self.night_net.fc.in_features, 4)
+        self.tod_net = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
+        self.tod_net.fc = nn.Linear(self.tod_net.fc.in_features, 4)
 
         # Define loss functions
         # Binary Cross Entropy with Logits Loss for binary classification
@@ -88,7 +88,7 @@ class WeatherNetPlusPlus(nn.Module):
         self.traffic_loss = nn.CrossEntropyLoss()
         self.weather_loss = nn.CrossEntropyLoss()
         self.scene_loss = nn.CrossEntropyLoss()
-        self.night_loss = nn.CrossEntropyLoss()
+        self.tod_loss = nn.CrossEntropyLoss()
 
         # model pipelines
         self.num_pipelines = 7
@@ -108,19 +108,13 @@ class WeatherNetPlusPlus(nn.Module):
         forward pass
         gets called by model()
         returns a Tuple:
-        (fog_pred, glare_pred, road_pred, traffic_pred, weather_pred, scene_pred, night_pred)
+        (fog_pred, glare_pred, road_pred, traffic_pred, weather_pred, scene_pred, tod_pred)
         """
-        # night-net prediction, 4 classes
-        night = self.night_net(x)
+        # fog-net prediction, 1 class
+        fog = self.fog_net(x)
 
         # glare-net prediction, 1 class
         glare = self.glare_net(x)
-
-        # weather-net prediction, 6 classes
-        weather = self.weather_net(x)
-
-        # fog-net prediction, 1 class
-        fog = self.fog_net(x)
 
         # road-net prediction, 3 classes
         road = self.road_net(x)
@@ -128,13 +122,17 @@ class WeatherNetPlusPlus(nn.Module):
         # traffic-net prediction, 3 class
         traffic = self.traffic_net(x)
 
+        # weather-net prediction, 6 classes
+        weather = self.weather_net(x)
+
         # scene-net prediction, 4 classes
         scene = self.scene_net(x)
 
-        # return predictions in order seen in labels file
-        return torch.cat((night, glare, weather, fog, road, traffic, scene), dim=1)
+        # tod-net prediction, 4 classes
+        tod = self.tod_net(x)
 
-        # return WeatherNetPlusPlus.WeatherNetPlusPlusOutput(fog, glare, road, traffic, weather, scene, night)
+        # return predictions in order seen in labels file
+        return torch.cat((fog, glare, road, traffic, weather, scene, tod), dim=1)
 
     def compute_loss(
         self, predictions: torch.Tensor, targets: torch.Tensor
@@ -143,43 +141,37 @@ class WeatherNetPlusPlus(nn.Module):
         Compute total loss.
         Args:
             predictions:
-            Tuple (fog_pred, glare_pred, road_pred, traffic_pred, weather_pred, scene_pred, night_pred)
+            Tuple (fog_pred, glare_pred, road_pred, traffic_pred, weather_pred, scene_pred, tod_pred)
             targets:
-            Tuple (fog_target, glare_target, road_target, traffic_target, weather_target, scene_target, night_target)
+            Tuple (fog_target, glare_target, road_target, traffic_target, weather_target, scene_target, tod_target)
         Returns:
             Total loss (scalar)
         """
         # Parse predictions
-        night_pred = predictions[:, 0:4]
-        glare_pred = predictions[:, 4]
-        weather_pred = predictions[:, 5:11]
-        fog_pred = predictions[:, 11]
-        road_pred = predictions[:, 12:15]
-        traffic_pred = predictions[:, 15:18]
-        scene_pred = predictions[:, 18:22]
+        fog_pred = predictions[:, 0]
+        glare_pred = predictions[:, 1]
+        road_pred = predictions[:, 2:5]
+        traffic_pred = predictions[:, 5:8]
+        weather_pred = predictions[:, 8:14]
+        scene_pred = predictions[:, 14:18]
+        tod_pred = predictions[:, 18:22]
 
         # Parse targets
-        night_target = targets[:, 0]
-        glare_target = targets[:, 1].float()  # float for binary classification tasks
-        weather_target = targets[:, 2]
-        fog_target = targets[:, 3].float()
-        road_target = targets[:, 4]
-        traffic_target = targets[:, 5]
-        scene_target = targets[:, 6]
+        fog_target = targets[:, 0].float() # float for binary classification tasks
+        glare_target = targets[:, 1].float()
+        road_target = targets[:, 2]
+        traffic_target = targets[:, 3]
+        weather_target = targets[:, 4]
+        scene_target = targets[:, 5]
+        tod_target = targets[:, 6]
 
         # Compute individual losses
 
-        # CrossEntropyLoss expects (batch, 4) logits and (batch,) labels
-        loss_night: torch.Tensor = self.night_loss(night_pred, night_target)
+        # BCEWithLogitsLoss expects (batch,) logits and (batch,) labels
+        loss_fog: torch.Tensor = self.fog_loss(fog_pred.squeeze(), fog_target.float())
 
         # BCEWithLogitsLoss expects (batch,) logits and (batch,) labels
         loss_glare: torch.Tensor = self.glare_loss(glare_pred.squeeze(), glare_target.float())
-
-        # CrossEntropyLoss expects (batch, 6) logits and (batch,) labels
-        loss_weather: torch.Tensor = self.weather_loss(weather_pred, weather_target)
-
-        # BCEWithLogitsLoss expects (batch,) logits and (batch,) labels
-        loss_fog: torch.Tensor = self.fog_loss(fog_pred.squeeze(), fog_target.float())
 
         # CrossEntropyLoss expects (batch, 3) logits and (batch,) labels
         loss_road: torch.Tensor = self.road_loss(road_pred, road_target)
@@ -187,31 +179,37 @@ class WeatherNetPlusPlus(nn.Module):
         # CrossEntropyLoss expects (batch, 3) logits and (batch,) labels
         loss_traffic: torch.Tensor = self.traffic_loss(traffic_pred, traffic_target)
 
+        # CrossEntropyLoss expects (batch, 6) logits and (batch,) labels
+        loss_weather: torch.Tensor = self.weather_loss(weather_pred, weather_target)
+
         # CrossEntropyLoss expects (batch, 4) logits and (batch,) labels
         loss_scene: torch.Tensor = self.scene_loss(scene_pred, scene_target)
 
+        # CrossEntropyLoss expects (batch, 4) logits and (batch,) labels
+        loss_tod: torch.Tensor = self.tod_loss(tod_pred, tod_target)
+
         # Total loss (weighted sum if needed)
         total_loss: torch.Tensor = (
-            loss_night
+            loss_fog
             + loss_glare
-            + loss_weather
-            + loss_fog
             + loss_road
             + loss_traffic
+            + loss_weather
             + loss_scene
+            + loss_tod
         )
 
         # individual loss elements are SCALAR tensors. These are different from floats.
-        # return in order seen in labels file
+        # return in order seen in README/labels file
         losses = torch.stack(
             [
-                loss_night,
-                loss_glare,
-                loss_weather,
                 loss_fog,
+                loss_glare,
                 loss_road,
                 loss_traffic,
+                loss_weather,
                 loss_scene,
+                loss_tod,
             ]
         )
 
