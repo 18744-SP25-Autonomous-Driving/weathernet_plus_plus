@@ -2,7 +2,7 @@ import torch
 import os
 
 
-def evaluate_loss(model, criterion, dataloader, device):
+def evaluate_loss(model, dataloader, device):
     # set model to eval mode
     model.eval()
     total_loss = 0.0
@@ -183,7 +183,7 @@ def map_labels(labels, device):
 # TODO: generalize this function to work with any model. (or multiple models simultaneously)
 # e.g. model = array of models, each trains using the same trainlaoder/valloader
 # Separate WeatherNet into 4 separate ResNet50s?
-def train(model, optimizer, criterion, trainloader, valloader, epochs, device, data_save_dir, writer=None):
+def train(model, optimizer, trainloader, valloader, epochs, device, data_save_dir, writer=None):
     """
     Part 1.a: complete the training loop
     """
@@ -249,7 +249,7 @@ def train(model, optimizer, criterion, trainloader, valloader, epochs, device, d
         losses_msg = " | ".join(f"{pl} loss: {loss:.2f}" for pl, loss in zip(pipelines, train_losses))
         print(f"Epoch {epoch+1}/{epochs} - [TRAIN] - {losses_msg}")
 
-        val_loss, val_losses = evaluate_loss(model, criterion, valloader, device)
+        val_loss, val_losses = evaluate_loss(model, valloader, device)
         losses_msg = " | ".join(f"{pl} loss: {loss:.2f}" for pl, loss in zip(pipelines, val_losses))
         print(f"Epoch {epoch+1}/{epochs} - [VAL] - {losses_msg}")
 
@@ -261,7 +261,7 @@ def train(model, optimizer, criterion, trainloader, valloader, epochs, device, d
         os.makedirs(data_save_dir, exist_ok=True)
         # Construct the filename for the checkpoint
         model_name = model.get_name()
-        checkpoint_filename = os.path.join(data_save_dir, f"{model_name}_epoch_{epoch+1}.pth")
+        checkpoint_filename = os.path.join(data_save_dir, f"{model_name}_epoch_{epoch}.pth")
         # Save the model checkpoint
         model.save_checkpoint(checkpoint_filename)
         print(f"Checkpoint saved: {checkpoint_filename}")
@@ -279,3 +279,32 @@ def train(model, optimizer, criterion, trainloader, valloader, epochs, device, d
             writer.add_scalar("Loss/train", train_loss, epoch)
             writer.add_scalar("Loss/val", val_loss, epoch)
             writer.add_scalar("Accuracy/val", val_accuracy, epoch)
+
+
+def evaluate_model(model, dataloader, device, writer=None):
+    """
+    Part 1.a: complete the training loop
+    """
+    # set up running losses for logging
+    num_pipelines = model.get_num_pipelines()
+    running_losses = torch.zeros(num_pipelines).to(device=device)
+
+    if num_pipelines == 4:
+        pipelines = ["fog", "glare", "weather", "tod"]
+    else:
+        pipelines = ["fog", "glare", "road", "traffic", "weather", "scene", "tod"]
+
+    # move model to device
+    model.to(device=device)
+
+    loss, losses = evaluate_loss(model, dataloader, device)
+    losses_msg = " | ".join(f"{pl} loss: {loss:.2f}" for pl, loss in zip(pipelines, losses))
+    print(f"[LOSSES] - {losses_msg}")
+    accuracy, accuracies = evaluate_accuracy(model, dataloader, device)
+    accs_msg = " | ".join(f"{pl} accuracy: {acc:.2f}%" for pl, acc in zip(pipelines, accuracies))
+    print(f"[ACCURACIES] - {accs_msg}")
+
+    print(f"OVERALL LOSS - {loss:.2f}")
+    print(f"OVERALL ACCURACY - {accuracy:.2f}%")
+
+    # log to tensorboard?
