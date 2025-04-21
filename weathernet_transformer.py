@@ -20,7 +20,7 @@ class WeatherNetTransformer(nn.Module):
         The model is based on a Vision Transformer (ViT) architecture.
         """
         super(WeatherNetTransformer, self).__init__()
-        self.name = "WeatherNetTransformer"
+        self.name = "transformer"
 
         # Shared Vision Transformer backbone
         self.backbone = vit_b_16(weights=ViT_B_16_Weights.IMAGENET1K_V1)

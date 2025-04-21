@@ -99,6 +99,9 @@ class Bdd100kPlus(VisionDataset):
                 continue
             self.img_paths.append(img_path)
 
+            # if idx > 1000: # DEBUG: only load first 1000 images
+            #     break
+
     def __getitem__(self, index, _open=False):
         # Load the image
         img_path = self.img_paths[index]

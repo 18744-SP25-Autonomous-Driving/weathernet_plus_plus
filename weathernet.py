@@ -14,7 +14,7 @@ class WeatherNet(nn.Module):
 
     def __init__(self) -> None:
         super(WeatherNet, self).__init__()
-        self.name = "WeatherNet"
+        self.name = "weathernet"
 
         # fog-net: resnet50, replaced linear layer at end to be one output, followed by sigmoid.
         # Fog is a single class, so we use a single output with sigmoid activation to predict
