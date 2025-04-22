@@ -7,3 +7,6 @@ cifar-10*
 images.zip
 images_resized/
 images_resized.tar
+archive/
+resize-images.py
+*Results.ipynb

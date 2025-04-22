@@ -5,14 +5,39 @@
 *   `weathernetplusplus.py`: WeatherNet++ model with all seven pipelines
 *   `mtl_weathernet.py`: multi-task learning model
 *   `weathernet_transformer.py`: transformer model
-*   `train.ipynb`: Notebook for model training and evaluation. Optionally saves model weights.
+*   `train.ipynb`: Notebook for model training. Optionally saves model weights.
+*   `evaluate.ipynb`: Notebook for model evaluation. Can load checkpointed model weights
 *   `data/`: directory containing images, labels, and helper files
 *   `data/BDD100K_plus.py` Our custom dataset. It's a subclass of VisionDataset, and loosely follows CIFAR10's format.
 *   `utils/set_seed.py`: Sets the seed for reproducibility.
 
-## Instructions
-Unzip [images](https://drive.google.com/file/d/1fKOOGYfeap8o3wWUd-wu6Rd74L6V7H7C/view?usp=sharing)
-into the data subdirectory, so that it looks like `data/images/train/0a0a0b1a-7c39d841.jpg` etc
+## Setup Instructions
+Extract the [images.tar](https://drive.google.com/file/d/1qQ2wQJhw_I9per92ecVMG2CO7TBnNIyJ/view?usp=sharing) archive into the data subdirectory, so that it looks like `weathernet_plus_plus/data/images/train/0a0a0b1a-7c39d841.jpg` etc.
+
+Extract the [checkpoints.tar](https://drive.google.com/file/d/1i7jvoEkXa9ksxtnSVqUApQXBnz9WPcmx/view?usp=sharing) archive into the base project directory, so that it looks like `weathernet_plus_plus/checkpoints/mtl_0.pth` etc.
+
+Run `conda env create -f environment.yml` to create a conda environment with the required packages/libraries. 
+
+Then run `conda activate tensorboard-gpu` to activate the conda environment
+
+## Directory Structure
+```
+weathernet_plus_plus/
+├── checkpoints/            # Model weights
+├── data/                   # Images, labels, helper files
+│   ├── images/
+│   │   ├── test/
+│   │   ├── train/
+│   │   └── val/
+│   ├── labels/
+│   └── BDD100K_plus.py     # Custom dataset
+├── runs/                   # TensorBoard logging
+├── utils/                  # Helper functions
+├── environment.yml         # Set up conda environment
+├── evaluate.ipynb          # Evaluate model
+├── README.md               # This file
+└── train.ipynb             # Train model
+```
 
 ## Pipelines and Labels
 | Pipeline  | Label 0          | Label 1                  | Label 2          | Label 3         | Label 4        | Label 5  |
