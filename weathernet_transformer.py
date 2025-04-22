@@ -31,49 +31,84 @@ class WeatherNetTransformer(nn.Module):
 
         # Fog prediction head
         self.fog_head = nn.Sequential(
-            nn.Linear(self.head_in_features, 512),
+            nn.Conv2d(self.head_in_features, 256, kernel_size=3, padding=1),
+            nn.ReLU(),
+            nn.BatchNorm2d(256),
+            nn.Dropout(0.3),
+            nn.Flatten(),
+            nn.Linear(256, 512),
             nn.ReLU(),
             nn.Linear(512, 1),
         )
 
         # Glare Prediction Head
         self.glare_head = nn.Sequential(
-            nn.Linear(self.head_in_features, 512),
+            nn.Conv2d(self.head_in_features, 256, kernel_size=3, padding=1),
+            nn.ReLU(),
+            nn.BatchNorm2d(256),
+            nn.Dropout(0.3),
+            nn.Flatten(),
+            nn.Linear(256, 512),
             nn.ReLU(),
             nn.Linear(512, 1),
         )
 
         # Road prediction
         self.road_head = nn.Sequential(
-            nn.Linear(self.head_in_features, 512),
+            nn.Conv2d(self.head_in_features, 256, kernel_size=3, padding=1),
+            nn.ReLU(),
+            nn.BatchNorm2d(256),
+            nn.Dropout(0.3),
+            nn.Flatten(),
+            nn.Linear(256, 512),
             nn.ReLU(),
             nn.Linear(512, 3),
         )
 
         # Traffic prediction head
         self.traffic_head = nn.Sequential(
-            nn.Linear(self.head_in_features, 512),
+            nn.Conv2d(self.head_in_features, 256, kernel_size=3, padding=1),
+            nn.ReLU(),
+            nn.BatchNorm2d(256),
+            nn.Dropout(0.3),
+            nn.Flatten(),
+            nn.Linear(256, 512),
             nn.ReLU(),
             nn.Linear(512, 3),
         )
 
         # Weather prediction head
         self.weather_head = nn.Sequential(
-            nn.Linear(self.head_in_features, 512),
+            nn.Conv2d(self.head_in_features, 256, kernel_size=3, padding=1),
+            nn.ReLU(),
+            nn.BatchNorm2d(256),
+            nn.Dropout(0.3),
+            nn.Flatten(),
+            nn.Linear(256, 512),
             nn.ReLU(),
             nn.Linear(512, 6),
         )
 
         # Scene prediction head
         self.scene_head = nn.Sequential(
-            nn.Linear(self.head_in_features, 512),
+            nn.Conv2d(self.head_in_features, 256, kernel_size=3, padding=1),
+            nn.ReLU(),
+            nn.BatchNorm2d(256),
+            nn.Dropout(0.3),
+            nn.Flatten(),
+            nn.Linear(256, 512),
             nn.ReLU(),
             nn.Linear(512, 4),
         )
 
         # Time of day prediction head
         self.tod_head = nn.Sequential(
-            nn.Linear(self.head_in_features, 512),
+            nn.Conv2d(self.head_in_features, 256, kernel_size=3, padding=1),
+            nn.ReLU(),
+            nn.BatchNorm2d(256),
+            nn.Dropout(0.3),
+            nn.Flatten(),
+            nn.Linear(256, 512),
             nn.ReLU(),
             nn.Linear(512, 4),
         )
