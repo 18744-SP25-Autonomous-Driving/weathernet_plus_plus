@@ -7,6 +7,7 @@ import torch
 import torch.nn as nn
 from torchvision.models import vit_b_16, ViT_B_16_Weights
 import pickle
+import math
 
 
 class WeatherNetTransformer(nn.Module):
@@ -24,9 +25,8 @@ class WeatherNetTransformer(nn.Module):
 
         # Shared Vision Transformer backbone
         self.backbone = vit_b_16(weights=ViT_B_16_Weights.IMAGENET1K_V1)
-        self.head_in_features = self.backbone.heads[0].in_features
         self.backbone.heads.head = nn.Identity()  # Remove the classification head
-
+        self.head_in_features = self.backbone.hidden_dim
         # Task-specific heads
 
         # Fog prediction head
@@ -35,6 +35,7 @@ class WeatherNetTransformer(nn.Module):
             nn.ReLU(),
             nn.BatchNorm2d(256),
             nn.Dropout(0.3),
+            nn.AdaptiveAvgPool2d(1),
             nn.Flatten(),
             nn.Linear(256, 512),
             nn.ReLU(),
@@ -47,6 +48,7 @@ class WeatherNetTransformer(nn.Module):
             nn.ReLU(),
             nn.BatchNorm2d(256),
             nn.Dropout(0.3),
+            nn.AdaptiveAvgPool2d(1),
             nn.Flatten(),
             nn.Linear(256, 512),
             nn.ReLU(),
@@ -59,6 +61,7 @@ class WeatherNetTransformer(nn.Module):
             nn.ReLU(),
             nn.BatchNorm2d(256),
             nn.Dropout(0.3),
+            nn.AdaptiveAvgPool2d(1),
             nn.Flatten(),
             nn.Linear(256, 512),
             nn.ReLU(),
@@ -71,6 +74,7 @@ class WeatherNetTransformer(nn.Module):
             nn.ReLU(),
             nn.BatchNorm2d(256),
             nn.Dropout(0.3),
+            nn.AdaptiveAvgPool2d(1),
             nn.Flatten(),
             nn.Linear(256, 512),
             nn.ReLU(),
@@ -83,6 +87,7 @@ class WeatherNetTransformer(nn.Module):
             nn.ReLU(),
             nn.BatchNorm2d(256),
             nn.Dropout(0.3),
+            nn.AdaptiveAvgPool2d(1),
             nn.Flatten(),
             nn.Linear(256, 512),
             nn.ReLU(),
@@ -95,6 +100,7 @@ class WeatherNetTransformer(nn.Module):
             nn.ReLU(),
             nn.BatchNorm2d(256),
             nn.Dropout(0.3),
+            nn.AdaptiveAvgPool2d(1),
             nn.Flatten(),
             nn.Linear(256, 512),
             nn.ReLU(),
@@ -107,6 +113,7 @@ class WeatherNetTransformer(nn.Module):
             nn.ReLU(),
             nn.BatchNorm2d(256),
             nn.Dropout(0.3),
+            nn.AdaptiveAvgPool2d(1),
             nn.Flatten(),
             nn.Linear(256, 512),
             nn.ReLU(),
@@ -146,7 +153,15 @@ class WeatherNetTransformer(nn.Module):
             predictions: Output tensor of shape (batch_size, num_outputs).
         """
         # Pass through the backbone
-        x = self.backbone(x)
+        B = x.size(0)
+        x = self.backbone._process_input(x)                 # [B, N, 768]
+        x = torch.cat([self.backbone.class_token.expand(B, -1, -1), x], dim=1)
+        x = self.backbone.encoder(x)                # [B, N+1, 768]
+        x = x[:, 1:, :]                      # drop CLS, keep N patches
+        H = W = int(math.sqrt(x.size(1)))        # N = (img/patch)^2
+        x = x.transpose(1, 2).reshape(B, 768, H, W)  # [B, 768, H, W]
+
+
 
         # Pass through the prediction heads
         fog_pred = self.fog_head(x)

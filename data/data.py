@@ -31,9 +31,9 @@ def get_dataloaders(
             root="./data", set="test", transform=test_transforms
         )
 
-        trainloader = DataLoader(trainset, batch_size=batch_size, shuffle=True)
-        valloader = DataLoader(valset, batch_size=batch_size, shuffle=False) # shuffle disabled for valloader
-        testloader = DataLoader(testset, batch_size=batch_size, shuffle=False) # shuffle disabled for testloader
+        trainloader = DataLoader(trainset, batch_size=batch_size, shuffle=True, num_workers=8)
+        valloader = DataLoader(valset, batch_size=batch_size, shuffle=False, num_workers=8) # shuffle disabled for valloader
+        testloader = DataLoader(testset, batch_size=batch_size, shuffle=False, num_workers=8) # shuffle disabled for testloader
 
         # dbg_trainset = Subset(trainset, range(0, 50))  # Debugging: use only first 50 samples
         # dbg_trainloader = DataLoader(dbg_trainset, batch_size=batch_size, shuffle=True)
