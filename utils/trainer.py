@@ -1,5 +1,6 @@
 import torch
 import os
+from torch.optim.lr_scheduler import CosineAnnealingLR 
 
 def evaluate_loss_accuracy(model, dataloader, device):
     """
@@ -175,7 +176,6 @@ def evaluate_loss(model, dataloader, device):
     average_losses = total_losses / len(dataloader)
     return average_loss, average_losses
 
-
 def evaluate_accuracy(model, dataloader, device):
     # set model to eval mode
     model.eval()
@@ -331,7 +331,7 @@ def map_labels(labels, device):
 # TODO: generalize this function to work with any model. (or multiple models simultaneously)
 # e.g. model = array of models, each trains using the same trainlaoder/valloader
 # Separate WeatherNet into 4 separate ResNet50s?
-def train(model, optimizer, trainloader, valloader, epochs, device, data_save_dir, writer=None):
+def train(model, optimizer, trainloader, valloader, epochs, device, data_save_dir, resume_ckpt_epoch_num=0, writer=None):
     """
     Part 1.a: complete the training loop
     """
@@ -346,10 +346,16 @@ def train(model, optimizer, trainloader, valloader, epochs, device, data_save_di
 
     # move model to device
     model.to(device=device)
+    scheduler = CosineAnnealingLR(
+        optimizer,
+        T_max=epochs,
+        eta_min=0.0,
+        # last_epoch=resume_ckpt_epoch_num
+    )
 
     print("Begin training")
-    for epoch in range(epochs):
-        print(f"Epoch {epoch+1}/{epochs}")
+    for epoch in range(epochs - resume_ckpt_epoch_num):
+        print(f"Epoch {epoch+1+resume_ckpt_epoch_num}/{epochs}")
         running_loss = 0.0
         running_losses = torch.zeros(num_pipelines).to(device=device)
 
@@ -408,10 +414,12 @@ def train(model, optimizer, trainloader, valloader, epochs, device, data_save_di
         os.makedirs(data_save_dir, exist_ok=True)
         # Construct the filename for the checkpoint
         model_name = model.get_name()
-        checkpoint_filename = os.path.join(data_save_dir, f"{model_name}_{epoch}.pth")
+        checkpoint_filename = os.path.join(data_save_dir, f"{model_name}_{epoch+1+resume_ckpt_epoch_num}.pth")
         # Save the model checkpoint
         model.save_checkpoint(checkpoint_filename)
         print(f"Checkpoint saved: {checkpoint_filename}")
+
+        scheduler.step()
 
         # log to tensorboard summarywriter
         train_loss_map = {pl:loss.item() for pl, loss in zip(pipelines, train_losses)}
@@ -420,12 +428,13 @@ def train(model, optimizer, trainloader, valloader, epochs, device, data_save_di
         if writer:
             # per-pipeline training losses/val accuracies
             for i, pl in enumerate(pipelines):
-                writer.add_scalar(f"Loss/train/{pl}", train_loss_map[pl], epoch)
-                writer.add_scalar(f"Loss/val/{pl}", val_loss_map[pl], epoch)
-                writer.add_scalar(f"Accuracy/val/{pl}", val_accuracy_map[pl], epoch)
-            writer.add_scalar("Loss/train", train_loss, epoch)
-            writer.add_scalar("Loss/val", val_loss, epoch)
-            writer.add_scalar("Accuracy/val", val_accuracy, epoch)
+                writer.add_scalar(f"Loss/train/{pl}", train_loss_map[pl], epoch+resume_ckpt_epoch_num)
+                writer.add_scalar(f"Loss/val/{pl}", val_loss_map[pl], epoch+resume_ckpt_epoch_num)
+                writer.add_scalar(f"Accuracy/val/{pl}", val_accuracy_map[pl], epoch+resume_ckpt_epoch_num)
+            writer.add_scalar("Loss/train", train_loss, epoch+resume_ckpt_epoch_num)
+            writer.add_scalar("Loss/val", val_loss, epoch+resume_ckpt_epoch_num)
+            writer.add_scalar("Accuracy/val", val_accuracy, epoch+resume_ckpt_epoch_num)
+        
 
 
 def evaluate_model(model, dataloader, device, writer=None):
